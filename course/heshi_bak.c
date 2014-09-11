@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-/*还没完成括号功能*/
-
 int balance = 0;
 
 int heshi(char *str)
