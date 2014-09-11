@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+/*还没完成括号功能*/
+
 int heshi(char *str)
 {
     while(*str != '\0') {
