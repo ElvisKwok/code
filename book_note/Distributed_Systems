@@ -1,0 +1,27 @@
+---------------
+Book title: Distributed Systems Principles and Paradigms
+Author: Andrew S.Tanenbaum, Maaarten Van Steen
+---------------
+
+1 Introduction
+
+-1.1 Definition of a distributed system
+    a collection of independent computers that appears to its users as a single coherent system.
+    * hardware: autonomous
+    * software: appear as a single system
+
+-1.2 Goals
+  1.2.1 Connecting users and resources
+    easy to access and share remote resources
+  1.2.2 Transparency
+    hide the fact that resources are distributed across mulitple computers
+    several aspects: access, location, migration, relocation, replication, concurrency, failure, persistence
+    degrees of transparency
+  1.2.3 Openness
+    offers services according to standard rules, services are specified through interfaces, described in an IDL
+    separating policy from mechanism
+  1.2.4 Scalability
+    3 dimensions: size, geographically scalable, administratively scalable
+    scalability problems
+    scaling techniques: hiding communication latencies(time), distribution, replication
+

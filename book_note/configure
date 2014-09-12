@@ -1,0 +1,26 @@
+shell command
+
+python -m SimpleHTTPServer
+一句话实现一个HTTP服务，把当前目录设为HTTP服务目录，可以通过http://localhost:8000访问 这也许是这个星球上最简单的HTTP服务器的实现了。
+command > log_file 2>&1
+vimrc配置
+set hlsearch "高亮显示搜索结果
+set incsearch  	"输入/b会自动找到第一个以b开头的单词
+set tabstop=4
+"set smartindent	"智能对齐
+set autoindent  "自动对齐
+set nu      	"显示行号
+"set cul     "显示当前行
+set ruler	"显示光标所在行列
+set mouse=a "设置鼠标可用
+set showmatch   "设置匹配模式，e.g. 输入左括号匹配右括号
+"set showmode    
+syntax on   "打开语法高亮
+
+gcc -o test.exe test.c
+
+xargs将参数列表转换成小块分段传递给其他命令，以避免参数列表过长的问题
+如下命令查找指定路径下包含指定字符串的文件	
+	$ find 指定路径 -type f -name “*.c”  | xargs grep “string”
+	-type f 只找文件 -name “*.c” 指定后缀
+		或 $ grep -r “string”  路径 
