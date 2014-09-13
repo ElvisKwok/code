@@ -56,10 +56,18 @@ int main(int argc, char *argv[])
 {
     char str[100];
 
+    /*
+    puts("please input a string:");
+    gets(str);
+    printf("%d\n",heshi(str));
+    */
+
     while(1) {
+        balance = 0;
         puts("please input a string:");
         gets(str);
         printf("%d\n",heshi(str));
+        printf("balance = %d\n", balance);
     }
 
 

@@ -21,7 +21,7 @@ void partition(int n, int m)
         display(m);					/* n reduce to 0, finish one result */
     else
         for (i = n; i >= 1; i--)
-            if (m == 0 || i <= a[m-1]) {
+            if (i <= a[m-1] || m == 0) {
                 a[m] = i;
                 partition(n-i, m+1);
             }
