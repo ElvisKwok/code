@@ -12,8 +12,9 @@ void dec_to_bin(int n, int *a)
 	}
 }
 
-void zuhe(int *input, int n, int *a)
+void zuhe(int *input, int n)
 {
+	int a[N];
 	for(int i = 0; i < (int)pow(2,n); i++) {
 		dec_to_bin(i, a);
 		for(int i = 0; i < n; i++) {
@@ -27,7 +28,7 @@ void zuhe(int *input, int n, int *a)
 
 int main(int argc, char *argv[])
 {
-	int input[N], a[N];
+	int input[N];
 	int n;
 	printf("how many number?:");
 	scanf("%d", &n);
@@ -36,7 +37,7 @@ int main(int argc, char *argv[])
 		scanf("%d", &input[i]);
 	}
 	
-	zuhe(input, n, a);
+	zuhe(input, n);
 
 
 	return 0;
