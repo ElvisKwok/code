@@ -17,6 +17,8 @@ int heshi(char *str)
         else if(*str == '!')
             heshi(str+1);
 
+		
+/*
         else if(*str == '(') {
             balance++;
             heshi(str+1);
@@ -30,14 +32,18 @@ int heshi(char *str)
                 return 0;
         }
 
+*/
+
         else
             return 0;
 
         str++;
     }
+	/*
     if(balance != 0)
         return 0;
-    return 1;
+    */
+	return 0;
 }
 
 
