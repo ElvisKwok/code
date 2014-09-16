@@ -9,11 +9,11 @@
 
 int main()
 {
-	double sum;
-	char line[MAXLINE];
-	
-	sum = 0;
-	while (getline2(line, MAXLINE) > 0)
-		printf("now:\t%g\n", sum += atof(line));
-	return 0;
+    double sum;
+    char line[MAXLINE];
+
+    sum = 0;
+    while (getline2(line, MAXLINE) > 0)
+        printf("now:\t%g\n", sum += atof(line));
+    return 0;
 }

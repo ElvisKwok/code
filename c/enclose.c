@@ -2,5 +2,5 @@
 
 static void hello()
 {
-	printf("hello wolrd");
+    printf("hello wolrd");
 }

@@ -7,13 +7,13 @@ int bufp = 0;				/* next empty space of buf	*/
 
 int getch(void)			/* fetch a character */
 {
-	return (bufp > 0) ? buf[--bufp] : getchar();
+    return (bufp > 0) ? buf[--bufp] : getchar();
 }
 
 void ungetch(int c)		/* return back the character to input */
 {
-	if (bufp >= BUFSIZE)
-		printf("ungetch: too many characters\n");
-	else
-		buf[bufp++] = c;
+    if (bufp >= BUFSIZE)
+        printf("ungetch: too many characters\n");
+    else
+        buf[bufp++] = c;
 }

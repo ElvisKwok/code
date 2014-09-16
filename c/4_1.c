@@ -11,15 +11,15 @@
 char pattern[] = "ould";
 
 int main()
-{	
-	
-	char line[MAXLINE];
-	int found = 0;
+{
 
-	while (getline2(line, MAXLINE) > 0)
-		if (strindex(line, pattern) >= 0){
-			printf("%s", line);
-			found++;
-		}
-	return found;
+    char line[MAXLINE];
+    int found = 0;
+
+    while (getline2(line, MAXLINE) > 0)
+        if (strindex(line, pattern) >= 0) {
+            printf("%s", line);
+            found++;
+        }
+    return found;
 }

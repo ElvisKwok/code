@@ -11,10 +11,10 @@ int main()
     int n;
     n = ~0;
     printf("%u\n", n);
-    
+
     printf("%f\n", pow(2,32));
 
     printf("%d\n", getbits(10, 2, 2));
-    
+
     return 0;
 }

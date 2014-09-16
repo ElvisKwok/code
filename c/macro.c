@@ -4,9 +4,9 @@
 
 int main()
 {
-	dprint(19.0 / 3.0);
-	int a = 1, b = 2;
-	swap(int, a, b);
-	printf("a=%d b=%d\n", a, b);
-	return 0;
+    dprint(19.0 / 3.0);
+    int a = 1, b = 2;
+    swap(int, a, b);
+    printf("a=%d b=%d\n", a, b);
+    return 0;
 }

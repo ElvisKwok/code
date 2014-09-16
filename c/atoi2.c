@@ -6,5 +6,5 @@
 
 int atoi(char s[])
 {
-	return (int) atof(s);
+    return (int) atof(s);
 }

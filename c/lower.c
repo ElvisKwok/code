@@ -5,9 +5,9 @@
 int lower(int c)
 {
     if (isupper(c))
-    //if ( c >= 'A' && c <= 'Z')
-    	c = c + 32;
-	//c = c + 'a' - 'A';
+        //if ( c >= 'A' && c <= 'Z')
+        c = c + 32;
+    //c = c + 'a' - 'A';
     return c;
 }
 

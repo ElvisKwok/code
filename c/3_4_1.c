@@ -6,23 +6,23 @@ void escape(char s[], char t[])
     for (i = 0; t[i] != '\0'; i++)
     {
         if ( t[i] == '\\')
-	{
+        {
             switch ( t[i+1] )
-	    {
-	    case 't':
-	        s[j++] = '\t';
-		i++;
-		break;
-	    case 'n':
-	        s[j++] = '\n';
-		i++;
-		break;
-	    default:
-	        s[j++] = t[i];
-	    }
-	}
-	else
-	    s[j++] = t[i];
+            {
+            case 't':
+                s[j++] = '\t';
+                i++;
+                break;
+            case 'n':
+                s[j++] = '\n';
+                i++;
+                break;
+            default:
+                s[j++] = t[i];
+            }
+        }
+        else
+            s[j++] = t[i];
     }
     s[j] = '\0';
 }
