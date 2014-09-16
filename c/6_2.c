@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+#define min(a, b) ((a) < (b) ? (a) : (b))
+#define max(a, b) ((a) > (b) ? (a) : (b))
+
 struct point {
     int x;
     int y;
@@ -30,6 +33,12 @@ struct point addpoint(struct point p1, struct point p2)
     p1.y += p2.y;
     return p1;
 }
+
+int ptinrect(struct point p, struct rect r)
+{
+    return p.x >= r.pt1.x && p.x < r.pt2.x && p.y >= r.pt1.y && y < r.pt2.y
+}
+
 
 int main(int argc, char *argv[])
 {
