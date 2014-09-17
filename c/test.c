@@ -1,12 +1,13 @@
 #include <stdio.h>
 
-static char *daytab[2] = {
-    {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
-    {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
+
+struct test {
+    char a;
+    int b;
 };
 
 int main()
 {
-    printf("%d\n", daytab[0]);
+    printf("%d\n", sizeof(struct test));
     return 0;
 }
