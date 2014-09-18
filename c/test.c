@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-
+#define ok(s)   ((s) >= 'A' && (s) <= 'Z') ? 1: 0
 struct test {
     char a;
     int b;
@@ -8,6 +8,6 @@ struct test {
 
 int main()
 {
-    printf("%d\n", sizeof(struct test));
+    printf("%d\n",ok('A'));
     return 0;
 }
