@@ -5,3 +5,16 @@
 45
 245
 4
+#define NAME_MAX    14      /* max file name */
+
+typedef struct {
+    long ino;               /* inode No. */
+    char name[NAME_MAX+1];  /* file name + '\0' */    
+} Dirent;
+
+typedef struct {
+    int fd;         /* 目录的文件描述符 */
+    Dirent d;       /* 目录项 */
+} DIR;
+
+
