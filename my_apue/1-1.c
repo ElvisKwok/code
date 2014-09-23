@@ -1,3 +1,6 @@
+/*
+ * simple implementation of command "ls"
+ */
 #include <apue.h>
 #include <dirent.h>
 int main(int argc, char *argv[])

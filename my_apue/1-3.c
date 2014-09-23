@@ -1,3 +1,7 @@
+/*
+ * copy stdin to stdout using standard I/O
+ */
+
 #include "apue.h"
 
 int main(int argc, char *argv[])

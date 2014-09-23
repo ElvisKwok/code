@@ -1,3 +1,7 @@
+/*
+ * copy stdin to stdout
+ */
+
 #include "apue.h"
 
 #define BUFFSIZE	4096
