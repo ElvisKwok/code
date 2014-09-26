@@ -4,7 +4,7 @@ active proctype ARRAY() {
     int prod = 1;
 
     int i;
-    for(i:0..4) {
+    for(i : 0 .. N-1) {
         if
             :: true -> a[i] = 1
             :: true -> a[i] = 2
@@ -13,7 +13,7 @@ active proctype ARRAY() {
             :: true -> a[i] = 5
         fi
         prod = prod * a[i];
-    }
+    };
 
 
     printf("The product is: %d\n", prod)
