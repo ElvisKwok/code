@@ -1,12 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_Length 100;
-
-//点对结构体
 typedef struct Point {
-    float d;//点对距离
-    float x1,x2;//点对坐标
+    float d;    
+    float x1,x2;
 } Pair;
 
 int input(float s[]);//构造S
@@ -20,8 +17,6 @@ int main()
     m=input(s);
     d=Cpair(s,0,m-1);
     printf("%f", d.d);
-    //cout<<endl<<"最近点对坐标为： (d1:"<<d.x1<<",d2:"<<d.x2<<")";
-    //cout<<endl<<"这两点距离为： "<<d.d<<endl;
     return 0;
 }
 int input(float s[])
