@@ -29,25 +29,27 @@ int min(int a, int b, int c)
 /* 返回pair结构的函数Cpair,对于数组a的点，返回最接近点和距离 */
 struct pair Cpair(int a[], int low, int high)
 {
-    int median, distance, p, q;
-    struct pair final={MAX, 0, 0};    /* 最终输出的点对，先进行初始化 */
+    int median, distance, p, q, m, i;
+    struct pair final;    /* 最终输出的点对，先进行初始化 */
+    final.distance = MAX;
+    final.x1 = 0;
+    final.x2 = 0;
+    
     struct pair S1, S2;
  
     if (low >= high) 
         return final;
  
-    /* 中位数下标median  */
-    int m1 = a[low], m2 = a[high];
-    int m = (m1+m2)/2;
-    int i;
-    for (i=low;i<high;i++) {
-        if(a[low]<=m&&a[high]>m) {
+    /* 中位数下标median  
+    m = (a[low] + a[high]) / 2;
+    for (i = low;i < high; i++) {
+        if(a[low] <= m && a[high] > m) {
             median = i;
             break;
         }
     }
-    /* median = (high - low)/2;       //wrong!! */
-    
+    */
+    median = (low + high) / 2;
     S1 = Cpair(a, low, median);     
     S2 = Cpair(a, median+1, high);   
 
@@ -70,10 +72,18 @@ struct pair Cpair(int a[], int low, int high)
 
 int main(int argc, char *argv[])
 {
-    int a[SIZE], i;
-    for (i = 0; i < SIZE; i++)
-        a[i] = rand()%100;
+    int a[SIZE], i, j;
+    for (i = 0; i < SIZE; i++) {
+        a[i] = (rand()+i) % 100;
+        for (j = 0; j < i; j++) {
+            if (a[j] == a[i]) {
+                a[i] = rand() % 100;
+                break;
+            }
+        }
+    }
     qsort(a, SIZE, sizeof(a[0]), cmp);
+    printf("%d random numbers: ", SIZE);
     for(i = 0; i < SIZE; i++)
         printf("%d ", a[i]);
     printf("\n");
@@ -81,7 +91,7 @@ int main(int argc, char *argv[])
     struct pair final_pair = Cpair(a, 0, SIZE-1);
     printf("pair: <%d, %d>, distance: %d\n",  final_pair.x1, final_pair.x2, final_pair.distance);
     
+
     return 0;
 }
-
 
