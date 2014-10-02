@@ -14,6 +14,9 @@ int catalan(int n)
 
 int main() 
 {
-    printf("catalan(4) is %d\n", catalan(4));   
+    int n;
+    printf("input n:");
+    scanf("%d", &n);
+    printf("catalan(%d) is %d\n", n, catalan(n));   
     return 0;
 }
