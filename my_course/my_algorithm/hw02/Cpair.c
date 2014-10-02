@@ -4,11 +4,6 @@
 #define MAX 100
 #define SIZE 10
 
-struct pair {           /* 点对     */
-    int distance;       /* 两点距离 */
-    int x1, x2;         /* 两点坐标 */
-};
-
 /* qsort函数的比较函数 */
 int cmp(const void *a, const void *b) 
 {
@@ -26,6 +21,11 @@ int min(int a, int b, int c)
     return m;
 }
 
+struct pair {           /* 点对     */
+    int distance;       /* 两点距离 */
+    int x1, x2;         /* 两点坐标 */
+};
+
 /* 返回pair结构的函数Cpair,对于数组a的点，返回最接近点和距离 */
 struct pair Cpair(int a[], int low, int high)
 {
@@ -40,15 +40,6 @@ struct pair Cpair(int a[], int low, int high)
     if (low >= high) 
         return final;
  
-    /* 中位数下标median  
-    m = (a[low] + a[high]) / 2;
-    for (i = low;i < high; i++) {
-        if(a[low] <= m && a[high] > m) {
-            median = i;
-            break;
-        }
-    }
-    */
     median = (low + high) / 2;
     S1 = Cpair(a, low, median);     
     S2 = Cpair(a, median+1, high);   

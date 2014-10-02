@@ -1,82 +1,71 @@
 #include <stdio.h>
-#include <stdlib.h>
-using namespace std;
 
-const int L=100;
+#include <conio.h>
 
-//点对结构体
-struct Pair
+#include <string.h>
+
+int count=0;
+
+char a[10]; /*数组a 存储入栈序列*/
+
+void pop( char a[], int k, int n) /*求所有出栈序列*/
+
 {
-    float d;//点对距离
-    float d1,d2;//点对坐标
-};
 
-int input(float s[]);//构造S
-Pair Cpair(float s[],int left,int right);
+int i, u, v, w,flag;
 
-int main()
+char temp, t[10];
+
+strcpy( t, a) ;
+
+if( k==n)
+
 {
-    srand((unsigned)time(NULL));
-    int m;
-    float s[L];
-    Pair d;
-    m=input(s);
-    d=Cpair(s,0,m-1);
-    cout<<d.d<<endl;
-    //cout<<endl<<"最近点对坐标为： (d1:"<<d.d1<<",d2:"<<d.d2<<")";
-    //cout<<endl<<"这两点距离为： "<<d.d<<endl;
-    return 0;
+
+flag=1;
+
+for( u=0; u<=n- 2; u++)
+
+for( v=u+1; v<=n- 1; v++)
+
+for(w=v+1; w<=n; w++)
+
+if( ( a[v]<a[w])&&( a[w]<a[u]) ) flag=0;
+
+if( flag) /*判断序列是否为出栈序列, 若是则输出序列*/
+
+{count++;
+
+printf( "%d:%s\n", count, a) ;}
+
 }
-int input(float s[])
-{
-    int length, cum, i;
-    cin>>length;
-    for(i=0; i < length; i++) {
-        cin>>cum;
-        s[i]=cum;
-    }
-    return length;
+
+else
+
+for( i=k; i<=n; i++)
+
+{strcpy( a, t) ;
+
+temp=a[k];
+
+a[k]=a[i];
+
+a[i]=temp;
+
+pop( a, k+1, n) ;}
+
 }
 
-//返回s[]中的具有最近距离的点对及其距离
-Pair Cpair(float s[],int left,int right)
-{
-    Pair min_d= {99999,0,0}; //最短距离
+void main( )
 
-    if(right-left<1) return min_d;
-    float m1=s[left],m2=s[right];
-    float m=(m1+m2)/2;//找出点集中的中位数
-    int j,i;
-    for(i=left; i < right; i++)
-        if(s[i]<=m&&s[i+1]>m)
-        {
-            j=i;
-            break;
-        }
-    Pair d1=Cpair(s,left,j),d2=Cpair(s,j+1,right);//递归
-    float p=s[j],q=s[j+1];
-
-    //返回s[]中的具有最近距离的点对及其距离
-    if(d1.d<d2.d)
 {
-    if((q-p)<d1.d)
-    {
-        min_d.d=(q-p);
-            //min_d.d1=q;
-            // min_d.d2=p;
-            return min_d;
-        }
-        else return d1;
-        }
-    else
-    {
-        if((q-p)<d2.d)
-    {
-        min_d.d=(q-p);
-            // min_d.d1=q;
-            //    min_d.d2=p;
-            return min_d;
-        }
-        else return d2;
-        }
+
+printf( "请输入入栈序列( 如:abc) ") ;
+
+scanf( "%s", &a) ;
+
+printf( "所有出栈序列为: \n") ;
+
+pop( a, 0, strlen( a) - 1) ;
+
 }
