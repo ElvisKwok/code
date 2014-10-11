@@ -47,15 +47,15 @@ void LCS(int i, int j, char *x, int b[MAX][MAX])
 
 int main(int argc, char *argv[])
 {
-    char x[MAX] = "abcdefg" , y[MAX] = "kabllkjdoejf";
-    /*
     char x[MAX], y[MAX];
-    puts("input string x and y:");
+    printf("input string x:");
     gets(x);
+    printf("input string y:");
     gets(y);
-    */
+    
     int m = strlen(x), n = strlen(y);
     LCSLength(m, n, x, y, c, b);
+    printf("the longest common subsequence is: ");
     LCS(m, n, x, b);
     putchar('\n');
     printf("the max common length is: %d\n", c[m][n]);
