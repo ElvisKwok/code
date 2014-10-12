@@ -5,6 +5,7 @@
 #include "apue.h"
 #include <dirent.h>
 #include <limits.h>
+#include "pathalloc.c"          /* manually copy by me from apue.2e/lib/pathalloc.c */
 
 /* function type that is called for each filename */
 typedef int     Myfunc(const char *, const struct stat *, int);
@@ -52,7 +53,7 @@ static char *fullpath;        /* contains full pathname for every file */
 static int myftw(char *pathname, Myfunc *func) /* return whatever func() returns */
 {
     int len;
-    fullpath = path_alloc(&len);        /* malloc's for PATH_MAX+1 bytes */
+    fullpath = path_alloc(&len);        /* malloc's for PATH_MAX+1 bytes */         /* pathalloc.c */
     strncpy(fullpath, pathname, len);   /* protect against */
     fullpath[len-1] = 0;                /* buffer overrun */
     return (dopath(func));
