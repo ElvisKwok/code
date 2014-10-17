@@ -39,8 +39,7 @@ void traceback(int i,int j){
 }
 
 int main(){
-    cout<<"input n:"<<endl;
-    cin>>n;
+    int n=6;
     cout<<"intput 6 30 15 5 10 20 35"<<endl;
     for(int i=0;i<=n;i++)cin>>p[i];
     //测试数据可以设为六个矩阵分别为

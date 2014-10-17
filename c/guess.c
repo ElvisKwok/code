@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <time.h>
 int main()
 {
     int i, x, n;
+    srand((unsigned)time(NULL));
     n = rand() % 100;
-    printf("输入一个100以内的数字，你有5次机会:");
+    printf("输入一个100以内的数字，你有5次机会");
     for(i = 4; i >= 0; i--) {
         scanf("%d", &x);
         if (x == n) {
