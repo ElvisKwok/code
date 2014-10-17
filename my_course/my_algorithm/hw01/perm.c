@@ -10,15 +10,16 @@ void swap(int *a, int *b)
 
 void perm(int list[], int k, int m)
 {
+    int i;
     if (k == m)
     {
-        for (int i = 0; i <= m; i++)
+        for (i = 0; i <= m; i++)
             printf("%d ", list[i]);
         printf("\n");
     }
     else
     {
-        for(int i = k; i <= m; i++) {
+        for(i = k; i <= m; i++) {
             swap(&list[k], &list[i]);
             perm(list, k+1, m);
             swap(&list[k], &list[i]);
