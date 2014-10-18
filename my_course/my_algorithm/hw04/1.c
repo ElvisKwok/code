@@ -62,22 +62,22 @@ TreeNode insert(int n, TreeNode T)
     return T;
 }
 
-/* print tree in the in-order */
+/* print tree in the pre-order */
 /*
-void inorder(TreeNode T) {
+void preorder(TreeNode T) {
     if(T != NULL) {
         printf("%d ", T->data);
         if(T->lchild == NULL)
             printf("# ");
-        inorder(T->lchild);
+        preorder(T->lchild);
         if(T->rchild == NULL)
             printf("# ");
-        inorder(T->rchild);
+        preorder(T->rchild);
     }
 }
 */
 
-void save_inorder(TreeNode T, char *str) {
+void save_preorder(TreeNode T, char *str) {
     if(T != NULL) {
         char tmp[MAX];
         sprintf(tmp, "%d", T->data);    /* transfer int to string */
@@ -85,10 +85,10 @@ void save_inorder(TreeNode T, char *str) {
         strcat(str, " ");
         if(T->lchild == NULL)
             strcat(str, "# ");
-        save_inorder(T->lchild, str);
+        save_preorder(T->lchild, str);
         if(T->rchild == NULL)
             strcat(str, "# ");
-        save_inorder(T->rchild, str);
+        save_preorder(T->rchild, str);
     }
 }
 
@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
 
     for (i = 0; i < count; i++) {
         T = BuildTree(T, perm_result[i], n);
-        save_inorder(T, str[i]);
+        save_preorder(T, str[i]);
         T = NULL;
     }
     
