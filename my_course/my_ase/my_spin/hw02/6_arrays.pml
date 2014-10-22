@@ -14,8 +14,11 @@ active proctype ARRAY() {
         fi
         printf("a[%d] = %d ", i, a[i]);
         prod = prod * a[i];
-    };
+    }
 
-
+    assert(prod >= 0);
+    for(i : 0 .. N-1) {
+        assert(prod >= a[i]);
+    }
     printf("\nThe product is: %d\n", prod)
 }
