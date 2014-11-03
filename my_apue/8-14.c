@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     if ((pid = fork()) < 0)
         err_sys("fork eroor");
     else if (pid != 0) {
-        execl("/bin/dd", "dd", "if=/etc/termcap", "of=/dev/null", NULL);
+        execl("/bin/dd", "dd", "if=/etc/ts.conf", "of=/dev/null", NULL);
         exit(7);                /* shouldn't get here */
     }
 
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 
                                 /* forth child */
     sleep(6);
-    kill(getpid(), SIGKILL);
+    kill(getpid(), SIGKILL);    /* terminate w/signal, no core dump */
 
-	exit(0);
+	exit(6);                    /* shouldn't get here */
 }
