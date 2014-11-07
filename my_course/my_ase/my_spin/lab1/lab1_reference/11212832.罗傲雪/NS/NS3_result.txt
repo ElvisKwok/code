@@ -1,0 +1,29 @@
+pan:1: acceptance cycle (at depth 23)
+pan: wrote NS3.pml.trail
+
+(Spin Version 6.2.2 -- 6 June 2012)
+Warning: Search not completed
+
+Full statespace search for:
+	never claim         	+ (BOTH_ARE_OK)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 64 byte, depth reached 37, errors: 1
+      292 states, stored (572 visited)
+      901 states, matched
+     1473 transitions (= visited+matched)
+        0 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.022	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.286	actual memory usage for states
+   64.000	memory used for hash table (-w24)
+    0.343	memory used for DFS stack (-m10000)
+   64.539	total actual memory usage
+
+
+
+pan: elapsed time 0.005 seconds

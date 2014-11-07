@@ -1,0 +1,30 @@
+0: Claim PROP_AB (3), from state 5
+pan:1: end state in claim reached (at depth 85)
+pan: wrote NS6.pml.trail
+
+(Spin Version 6.2.2 -- 6 June 2012)
+Warning: Search not completed
+
+Full statespace search for:
+	never claim         	+ (PROP_AB)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 72 byte, depth reached 85, errors: 1
+      433 states, stored
+      437 states, matched
+      870 transitions (= stored+matched)
+        0 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.036	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.283	actual memory usage for states
+   64.000	memory used for hash table (-w24)
+    0.343	memory used for DFS stack (-m10000)
+   64.539	total actual memory usage
+
+
+
+pan: elapsed time 0.005 seconds

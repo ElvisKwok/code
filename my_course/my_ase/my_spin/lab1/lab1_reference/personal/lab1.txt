@@ -1,0 +1,184 @@
+Q1. Use assertions in your code to verify this property about forks.
+Q2.
+a. Does your model have deadlocks? If yes, use SPIN to derive a counter example showing a
+problematic trace. Modify your solution to eliminate deadlocks.
+b. Verify absence of deadlocks in your model using SPIN.
+Q3. Verify property (1) with an LTL formula instead of assertions
+
+A: 
+A1:
+Related files are:
+Dining\Dining.pml  : the code of my first try for Dining problem;
+Dinig\Dinig_result.txt : the result after verification for Dining\Dining.pml;
+Dining\Ding_trail_output.txt : the counter example for the verification.
+assertions in my code are listed below: 
+Code-1.1
+/*assertions to verify safety to ensure that a fork can not be used by two philosopher simultaneously */
+assert(forks[id]==1);
+assert(forks[(id+1)%NUM_PHIL]==1);
+And the main idea of my first try of Dining\Dinign.pml is :For each philosopher he will firstly get its left fork then for its right fork. 
+
+A2-a: 
+After verification for “spin –a Dining.pml && gcc –DSAFETY pan.c –o pan && .\pan >Dinig_result.txt”.  the result is showed in Dining_result.txt .we found that there exist invalid end state .So the model of my first try for the Dining problem have deadlock problem. simulate Dining.pml in guided option by “spin –t –p –l Dining.pml >Dining_trail_output.txt”. So the counter example is showed in Dining_trail_output.txt.
+Cut from Dining_trail_output.txt
+#processes: 5
+		forks[0] = 1
+		forks[1] = 1
+		forks[2] = 1
+		forks[3] = 1
+ 76:	proc  4 (phil) Dining.pml:20 (state 11)
+ 76:	proc  3 (phil) Dining.pml:20 (state 11)
+ 76:	proc  2 (phil) Dining.pml:20 (state 11)
+ 76:	proc  1 (phil) Dining.pml:20 (state 11)
+ 76:	proc  0 (:init:) Dining.pml:44 (state 9) <valid end state>
+As showed in the table. At last, all philosophers are blocked in line-20 ,which is to fetch the right fork. So at last , all philosopher can not eat as they all hold the left fork without release the right.
+
+A2-b
+After modification, the related code are:
+Dining\Dining1.pml : the code of my second try for the Dining problem;
+Dining\Dining1_result.txt: the verification result of Dining\Ding1.pml;
+
+From Dining1_result.txt. we found that there exist no error. so deadlock is avoided in my second try for Dining problem.
+Cut from Dining\Dining1_result.txt
+State-vector 88 byte, depth reached 483, errors: 0
+The main idea of Dining\Dining1.pml is : firstly, we number the forks with distinguished identifier. And for each philosopher, one can only fetch the fork with lower identifier then for the higher identifier. And the partial order of the forks help to ensure the avoid of deadlock.
+
+3-A:
+Simply delete the assertion statement. LTL is as below:
+ltl safety{[]((forks[0]<=1)&&forks[1]<=1 &&forks[2]<=1)}
+
+
+
+
+
+
+
+##############################################################################
+1. Use assertions in your code to verify this property about forks.
+A: Dining1.pml is the code for problem 1.
+
+2.
+a. Does your model have deadlocks? If yes, use SPIN to derive a counter example showing a
+problematic trace. Modify your solution to eliminate deadlocks.
+A: Yes, my model has deadlocks. Dining1_output.txt is a counter example showing the problematic trace and Dining1.pml.trail shows its trail. From it, we can see that philosopher 0-3 are all thinking and no one can eat. Dining2.pml is my solution to eliminate deadlocks. 
+
+b. Verify absence of deadlocks in your model using SPIN.
+A: Dining2_output.txt is the result of verifying Dining2.pml. We can see that there is 0 error, so deadlocks are absent in my model.  
+
+3. Verify property (1) with an LTL formula instead of assertions.
+A: Dining3.pml is the code for problem 3 and Dining3_output.txt is its verification result. My LTL formula is "ltl {[](fork[0]<=1 && fork[1]<=1 && fork[2]<=1 && fork[3]<=1)}".
+
+
+
+
+
+
+
+##############################################################################
+Model说明：
+为了模拟哲学家问题，需要保证每个叉子同一时间最多被一个哲学家拿起。
+每个哲学家在思考之后先对左手边的叉子$i-1$发出请求，得到同意之后再对
+右手边的叉子发出请求，得到同意再开始进食。 这样子在每个哲学家都对左手边的
+叉子发出请求之后可能会造成死锁，于是需要保证各个叉子在某个状态下只
+允许某个特定的哲学家拿起，当一个叉子被拿起一次之后下一次只允许让另外一个
+哲学家拿起，这样子就避免了死锁。
+
+1. 用一个整数$fork\_used_i$表示第i个叉子被拿起多少次，则需要保证$\forall i, fork\_used_i < 2$恒成立，
+通过verifier可以看到assert没有被违反。
+
+2.运行verifier的输出如下：
+
+spin -a Dining.pml && gcc -DSAFETY pan.c -o pan && ./pan -m1000000
+Depth=  563093 States=    1e+06 Transitions= 2.38e+06 Memory=   457.382	t=     5.11 R=   2e+05
+
+(Spin Version 6.2.2 -- 6 June 2012)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	- (none specified)
+	assertion violations	+
+	cycle checks       	- (disabled by -DSAFETY)
+	invalid end states	+
+
+State-vector 416 byte, depth reached 563687, errors: 0
+  1447266 states, stored
+  2230485 states, matched
+  3677751 transitions (= stored+matched)
+        0 atomic steps
+hash conflicts:     48539 (resolved)
+
+Stats on memory usage (in Megabytes):
+  612.818	equivalent memory usage for states (stored*(State-vector + overhead))
+  399.572	actual memory usage for states (compression: 65.20%)
+         	state-vector as stored = 261 byte + 28 byte overhead
+  128.000	memory used for hash table (-w24)
+   53.406	memory used for DFS stack (-m1000000)
+  580.332	total actual memory usage
+
+
+unreached in proctype phil
+	Dining.pml:45, state 36, "-end-"
+	(1 of 36 states)
+unreached in proctype fork_proc
+	Dining.pml:72, state 23, "-end-"
+	(1 of 23 states)
+unreached in init
+	(0 of 10 states)
+
+pan: elapsed time 8.16 seconds
+pan: rate 177361.03 states/second
+
+可以看出其中并没有出现invalid end state，因此不存在死锁的情况。
+
+3.在Dining.pml中加入LTL声明：
+ltl fork_unique {[](fork_used[0] < 2 && fork_used[1] < 2 && fork_used[2] < 2 && fork_used[3] < 2 && fork_used[4] < 2)};
+
+运行verifier:
+
+
+spin -a Dining.pml && gcc -DSAFETY  -o pan pan.c && ./pan  -m1000000 
+ltl fork_unique: [] ((((((fork_used[0]<2)) && ((fork_used[1]<2))) && ((fork_used[2]<2))) && ((fork_used[3]<2))) && ((fork_used[4]<2)))
+warning: never claim + accept labels requires -a flag to fully verify
+Depth=  975582 States=    1e+06 Transitions= 2.38e+06 Memory=   457.382	t=     5.19 R=   2e+05
+
+(Spin Version 6.2.2 -- 6 June 2012)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (fork_unique)
+	assertion violations	+ (if within scope of claim)
+	cycle checks       	- (disabled by -DSAFETY)
+	invalid end states	- (disabled by never claim)
+
+State-vector 424 byte, depth reached 976609, errors: 0
+  1447266 states, stored
+  2230485 states, matched
+  3677751 transitions (= stored+matched)
+        0 atomic steps
+hash conflicts:     47945 (resolved)
+
+Stats on memory usage (in Megabytes):
+  623.860	equivalent memory usage for states (stored*(State-vector + overhead))
+  399.571	actual memory usage for states (compression: 64.05%)
+         	state-vector as stored = 261 byte + 28 byte overhead
+  128.000	memory used for hash table (-w24)
+   53.406	memory used for DFS stack (-m1000000)
+  580.332	total actual memory usage
+
+
+unreached in proctype phil
+	Dining.pml:48, state 36, "-end-"
+	(1 of 36 states)
+unreached in proctype fork_proc
+	Dining.pml:75, state 23, "-end-"
+	(1 of 23 states)
+unreached in init
+	(0 of 10 states)
+unreached in claim fork_unique
+	_spin_nvr.tmp:8, state 8, "-end-"
+	(1 of 8 states)
+
+pan: elapsed time 8.26 seconds
+pan: rate  175213.8 states/second
+
+可以看到LTL验证成功，没有出现反例。

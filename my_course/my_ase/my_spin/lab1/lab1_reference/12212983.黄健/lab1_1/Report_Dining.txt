@@ -1,0 +1,13 @@
+1. Use assertions in your code to verify this property about forks.
+A: Dining1.pml is the code for problem 1.
+
+2.
+a. Does your model have deadlocks? If yes, use SPIN to derive a counter example showing a
+problematic trace. Modify your solution to eliminate deadlocks.
+A: Yes, my model has deadlocks. Dining1_output.txt is a counter example showing the problematic trace and Dining1.pml.trail shows its trail. From it, we can see that philosopher 0-3 are all thinking and no one can eat. Dining2.pml is my solution to eliminate deadlocks. 
+
+b. Verify absence of deadlocks in your model using SPIN.
+A: Dining2_output.txt is the result of verifying Dining2.pml. We can see that there is 0 error, so deadlocks are absent in my model.  
+
+3. Verify property (1) with an LTL formula instead of assertions.
+A: Dining3.pml is the code for problem 3 and Dining3_output.txt is its verification result. My LTL formula is "ltl {[](fork[0]<=1 && fork[1]<=1 && fork[2]<=1 && fork[3]<=1)}".

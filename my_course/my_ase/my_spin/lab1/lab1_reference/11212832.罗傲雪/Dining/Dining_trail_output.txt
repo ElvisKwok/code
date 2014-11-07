@@ -1,0 +1,242 @@
+using statement merging
+  1:	proc  0 (:init:) Dining.pml:41 (state 3)	[else]
+Starting phil with pid 1
+  2:	proc  0 (:init:) Dining.pml:41 (state 4)	[(run phil(i))]
+          philosopher 0 is thinking
+  3:	proc  1 (phil) Dining.pml:11 (state 1)	[printf('philosopher %d is thinking\\n',id)]
+          0 is hungry
+  3:	proc  1 (phil) Dining.pml:13 (state 2)	[printf('%d is hungry\\n',id)]
+  4:	proc  0 (:init:) Dining.pml:42 (state 5)	[i = (i+1)]
+		:init:(0):i = 1
+  5:	proc  0 (:init:) Dining.pml:41 (state 3)	[else]
+Starting phil with pid 2
+  6:	proc  0 (:init:) Dining.pml:41 (state 4)	[(run phil(i))]
+              philosopher 1 is thinking
+  7:	proc  2 (phil) Dining.pml:11 (state 1)	[printf('philosopher %d is thinking\\n',id)]
+              1 is hungry
+  7:	proc  2 (phil) Dining.pml:13 (state 2)	[printf('%d is hungry\\n',id)]
+  8:	proc  0 (:init:) Dining.pml:42 (state 5)	[i = (i+1)]
+		:init:(0):i = 2
+  9:	proc  0 (:init:) Dining.pml:41 (state 3)	[else]
+Starting phil with pid 3
+ 10:	proc  0 (:init:) Dining.pml:41 (state 4)	[(run phil(i))]
+                  philosopher 2 is thinking
+ 11:	proc  3 (phil) Dining.pml:11 (state 1)	[printf('philosopher %d is thinking\\n',id)]
+                  2 is hungry
+ 11:	proc  3 (phil) Dining.pml:13 (state 2)	[printf('%d is hungry\\n',id)]
+ 12:	proc  0 (:init:) Dining.pml:42 (state 5)	[i = (i+1)]
+		:init:(0):i = 3
+ 13:	proc  0 (:init:) Dining.pml:41 (state 3)	[else]
+Starting phil with pid 4
+ 14:	proc  0 (:init:) Dining.pml:41 (state 4)	[(run phil(i))]
+                      philosopher 3 is thinking
+ 15:	proc  4 (phil) Dining.pml:11 (state 1)	[printf('philosopher %d is thinking\\n',id)]
+                      3 is hungry
+ 15:	proc  4 (phil) Dining.pml:13 (state 2)	[printf('%d is hungry\\n',id)]
+ 16:	proc  0 (:init:) Dining.pml:42 (state 5)	[i = (i+1)]
+		:init:(0):i = 4
+ 17:	proc  0 (:init:) Dining.pml:40 (state 1)	[((i>=4))]
+ 18:	proc  4 (phil) Dining.pml:16 (state 3)	[((forks[id]==0))]
+ 18:	proc  4 (phil) Dining.pml:17 (state 4)	[forks[id] = (forks[id]+1)]
+                      3 get its left fork
+ 18:	proc  4 (phil) Dining.pml:18 (state 5)	[printf('%d get its left fork\\n',id)]
+ 19:	proc  4 (phil) Dining.pml:22 (state 7)	[((forks[((id+1)%4)]==0))]
+ 19:	proc  4 (phil) Dining.pml:23 (state 8)	[forks[((id+1)%4)] = (forks[((id+1)%4)]+1)]
+                      forks[id]=1
+ 19:	proc  4 (phil) Dining.pml:25 (state 9)	[printf('forks[id]=%d\\n',forks[id])]
+                      3 eating with fork 3 and 0
+ 19:	proc  4 (phil) Dining.pml:28 (state 10)	[printf('%d eating with fork %d and %d\\n',id,id,((id+1)%4))]
+ 20:	proc  4 (phil) Dining.pml:31 (state 12)	[forks[id] = (forks[id]-1)]
+ 21:	proc  4 (phil) Dining.pml:32 (state 13)	[forks[((id+1)%4)] = (forks[((id+1)%4)]-1)]
+ 22:	proc  3 (phil) Dining.pml:16 (state 3)	[((forks[id]==0))]
+ 22:	proc  3 (phil) Dining.pml:17 (state 4)	[forks[id] = (forks[id]+1)]
+                  2 get its left fork
+ 22:	proc  3 (phil) Dining.pml:18 (state 5)	[printf('%d get its left fork\\n',id)]
+                      philosopher 3 is thinking
+ 23:	proc  4 (phil) Dining.pml:11 (state 1)	[printf('philosopher %d is thinking\\n',id)]
+                      3 is hungry
+ 23:	proc  4 (phil) Dining.pml:13 (state 2)	[printf('%d is hungry\\n',id)]
+ 24:	proc  4 (phil) Dining.pml:16 (state 3)	[((forks[id]==0))]
+ 24:	proc  4 (phil) Dining.pml:17 (state 4)	[forks[id] = (forks[id]+1)]
+                      3 get its left fork
+ 24:	proc  4 (phil) Dining.pml:18 (state 5)	[printf('%d get its left fork\\n',id)]
+ 25:	proc  4 (phil) Dining.pml:22 (state 7)	[((forks[((id+1)%4)]==0))]
+ 25:	proc  4 (phil) Dining.pml:23 (state 8)	[forks[((id+1)%4)] = (forks[((id+1)%4)]+1)]
+                      forks[id]=1
+ 25:	proc  4 (phil) Dining.pml:25 (state 9)	[printf('forks[id]=%d\\n',forks[id])]
+                      3 eating with fork 3 and 0
+ 25:	proc  4 (phil) Dining.pml:28 (state 10)	[printf('%d eating with fork %d and %d\\n',id,id,((id+1)%4))]
+ 26:	proc  4 (phil) Dining.pml:31 (state 12)	[forks[id] = (forks[id]-1)]
+ 27:	proc  3 (phil) Dining.pml:22 (state 7)	[((forks[((id+1)%4)]==0))]
+ 27:	proc  3 (phil) Dining.pml:23 (state 8)	[forks[((id+1)%4)] = (forks[((id+1)%4)]+1)]
+                  forks[id]=1
+ 27:	proc  3 (phil) Dining.pml:25 (state 9)	[printf('forks[id]=%d\\n',forks[id])]
+                  2 eating with fork 2 and 3
+ 27:	proc  3 (phil) Dining.pml:28 (state 10)	[printf('%d eating with fork %d and %d\\n',id,id,((id+1)%4))]
+ 28:	proc  4 (phil) Dining.pml:32 (state 13)	[forks[((id+1)%4)] = (forks[((id+1)%4)]-1)]
+                      philosopher 3 is thinking
+ 29:	proc  4 (phil) Dining.pml:11 (state 1)	[printf('philosopher %d is thinking\\n',id)]
+                      3 is hungry
+ 29:	proc  4 (phil) Dining.pml:13 (state 2)	[printf('%d is hungry\\n',id)]
+ 30:	proc  3 (phil) Dining.pml:31 (state 12)	[forks[id] = (forks[id]-1)]
+ 31:	proc  3 (phil) Dining.pml:32 (state 13)	[forks[((id+1)%4)] = (forks[((id+1)%4)]-1)]
+ 32:	proc  4 (phil) Dining.pml:16 (state 3)	[((forks[id]==0))]
+ 32:	proc  4 (phil) Dining.pml:17 (state 4)	[forks[id] = (forks[id]+1)]
+                      3 get its left fork
+ 32:	proc  4 (phil) Dining.pml:18 (state 5)	[printf('%d get its left fork\\n',id)]
+ 33:	proc  4 (phil) Dining.pml:22 (state 7)	[((forks[((id+1)%4)]==0))]
+ 33:	proc  4 (phil) Dining.pml:23 (state 8)	[forks[((id+1)%4)] = (forks[((id+1)%4)]+1)]
+                      forks[id]=1
+ 33:	proc  4 (phil) Dining.pml:25 (state 9)	[printf('forks[id]=%d\\n',forks[id])]
+                      3 eating with fork 3 and 0
+ 33:	proc  4 (phil) Dining.pml:28 (state 10)	[printf('%d eating with fork %d and %d\\n',id,id,((id+1)%4))]
+ 34:	proc  4 (phil) Dining.pml:31 (state 12)	[forks[id] = (forks[id]-1)]
+ 35:	proc  4 (phil) Dining.pml:32 (state 13)	[forks[((id+1)%4)] = (forks[((id+1)%4)]-1)]
+ 36:	proc  2 (phil) Dining.pml:16 (state 3)	[((forks[id]==0))]
+ 36:	proc  2 (phil) Dining.pml:17 (state 4)	[forks[id] = (forks[id]+1)]
+              1 get its left fork
+ 36:	proc  2 (phil) Dining.pml:18 (state 5)	[printf('%d get its left fork\\n',id)]
+                      philosopher 3 is thinking
+ 37:	proc  4 (phil) Dining.pml:11 (state 1)	[printf('philosopher %d is thinking\\n',id)]
+                      3 is hungry
+ 37:	proc  4 (phil) Dining.pml:13 (state 2)	[printf('%d is hungry\\n',id)]
+                  philosopher 2 is thinking
+ 38:	proc  3 (phil) Dining.pml:11 (state 1)	[printf('philosopher %d is thinking\\n',id)]
+                  2 is hungry
+ 38:	proc  3 (phil) Dining.pml:13 (state 2)	[printf('%d is hungry\\n',id)]
+ 39:	proc  4 (phil) Dining.pml:16 (state 3)	[((forks[id]==0))]
+ 39:	proc  4 (phil) Dining.pml:17 (state 4)	[forks[id] = (forks[id]+1)]
+                      3 get its left fork
+ 39:	proc  4 (phil) Dining.pml:18 (state 5)	[printf('%d get its left fork\\n',id)]
+ 40:	proc  4 (phil) Dining.pml:22 (state 7)	[((forks[((id+1)%4)]==0))]
+ 40:	proc  4 (phil) Dining.pml:23 (state 8)	[forks[((id+1)%4)] = (forks[((id+1)%4)]+1)]
+                      forks[id]=1
+ 40:	proc  4 (phil) Dining.pml:25 (state 9)	[printf('forks[id]=%d\\n',forks[id])]
+                      3 eating with fork 3 and 0
+ 40:	proc  4 (phil) Dining.pml:28 (state 10)	[printf('%d eating with fork %d and %d\\n',id,id,((id+1)%4))]
+ 41:	proc  4 (phil) Dining.pml:31 (state 12)	[forks[id] = (forks[id]-1)]
+ 42:	proc  4 (phil) Dining.pml:32 (state 13)	[forks[((id+1)%4)] = (forks[((id+1)%4)]-1)]
+ 43:	proc  3 (phil) Dining.pml:16 (state 3)	[((forks[id]==0))]
+ 43:	proc  3 (phil) Dining.pml:17 (state 4)	[forks[id] = (forks[id]+1)]
+                  2 get its left fork
+ 43:	proc  3 (phil) Dining.pml:18 (state 5)	[printf('%d get its left fork\\n',id)]
+                      philosopher 3 is thinking
+ 44:	proc  4 (phil) Dining.pml:11 (state 1)	[printf('philosopher %d is thinking\\n',id)]
+                      3 is hungry
+ 44:	proc  4 (phil) Dining.pml:13 (state 2)	[printf('%d is hungry\\n',id)]
+ 45:	proc  4 (phil) Dining.pml:16 (state 3)	[((forks[id]==0))]
+ 45:	proc  4 (phil) Dining.pml:17 (state 4)	[forks[id] = (forks[id]+1)]
+                      3 get its left fork
+ 45:	proc  4 (phil) Dining.pml:18 (state 5)	[printf('%d get its left fork\\n',id)]
+ 46:	proc  4 (phil) Dining.pml:22 (state 7)	[((forks[((id+1)%4)]==0))]
+ 46:	proc  4 (phil) Dining.pml:23 (state 8)	[forks[((id+1)%4)] = (forks[((id+1)%4)]+1)]
+                      forks[id]=1
+ 46:	proc  4 (phil) Dining.pml:25 (state 9)	[printf('forks[id]=%d\\n',forks[id])]
+                      3 eating with fork 3 and 0
+ 46:	proc  4 (phil) Dining.pml:28 (state 10)	[printf('%d eating with fork %d and %d\\n',id,id,((id+1)%4))]
+ 47:	proc  4 (phil) Dining.pml:31 (state 12)	[forks[id] = (forks[id]-1)]
+ 48:	proc  3 (phil) Dining.pml:22 (state 7)	[((forks[((id+1)%4)]==0))]
+ 48:	proc  3 (phil) Dining.pml:23 (state 8)	[forks[((id+1)%4)] = (forks[((id+1)%4)]+1)]
+                  forks[id]=1
+ 48:	proc  3 (phil) Dining.pml:25 (state 9)	[printf('forks[id]=%d\\n',forks[id])]
+                  2 eating with fork 2 and 3
+ 48:	proc  3 (phil) Dining.pml:28 (state 10)	[printf('%d eating with fork %d and %d\\n',id,id,((id+1)%4))]
+ 49:	proc  4 (phil) Dining.pml:32 (state 13)	[forks[((id+1)%4)] = (forks[((id+1)%4)]-1)]
+                      philosopher 3 is thinking
+ 50:	proc  4 (phil) Dining.pml:11 (state 1)	[printf('philosopher %d is thinking\\n',id)]
+                      3 is hungry
+ 50:	proc  4 (phil) Dining.pml:13 (state 2)	[printf('%d is hungry\\n',id)]
+ 51:	proc  3 (phil) Dining.pml:31 (state 12)	[forks[id] = (forks[id]-1)]
+ 52:	proc  2 (phil) Dining.pml:22 (state 7)	[((forks[((id+1)%4)]==0))]
+ 52:	proc  2 (phil) Dining.pml:23 (state 8)	[forks[((id+1)%4)] = (forks[((id+1)%4)]+1)]
+              forks[id]=1
+ 52:	proc  2 (phil) Dining.pml:25 (state 9)	[printf('forks[id]=%d\\n',forks[id])]
+              1 eating with fork 1 and 2
+ 52:	proc  2 (phil) Dining.pml:28 (state 10)	[printf('%d eating with fork %d and %d\\n',id,id,((id+1)%4))]
+ 53:	proc  3 (phil) Dining.pml:32 (state 13)	[forks[((id+1)%4)] = (forks[((id+1)%4)]-1)]
+                  philosopher 2 is thinking
+ 54:	proc  3 (phil) Dining.pml:11 (state 1)	[printf('philosopher %d is thinking\\n',id)]
+                  2 is hungry
+ 54:	proc  3 (phil) Dining.pml:13 (state 2)	[printf('%d is hungry\\n',id)]
+ 55:	proc  4 (phil) Dining.pml:16 (state 3)	[((forks[id]==0))]
+ 55:	proc  4 (phil) Dining.pml:17 (state 4)	[forks[id] = (forks[id]+1)]
+                      3 get its left fork
+ 55:	proc  4 (phil) Dining.pml:18 (state 5)	[printf('%d get its left fork\\n',id)]
+ 56:	proc  4 (phil) Dining.pml:22 (state 7)	[((forks[((id+1)%4)]==0))]
+ 56:	proc  4 (phil) Dining.pml:23 (state 8)	[forks[((id+1)%4)] = (forks[((id+1)%4)]+1)]
+                      forks[id]=1
+ 56:	proc  4 (phil) Dining.pml:25 (state 9)	[printf('forks[id]=%d\\n',forks[id])]
+                      3 eating with fork 3 and 0
+ 56:	proc  4 (phil) Dining.pml:28 (state 10)	[printf('%d eating with fork %d and %d\\n',id,id,((id+1)%4))]
+ 57:	proc  4 (phil) Dining.pml:31 (state 12)	[forks[id] = (forks[id]-1)]
+ 58:	proc  4 (phil) Dining.pml:32 (state 13)	[forks[((id+1)%4)] = (forks[((id+1)%4)]-1)]
+ 59:	proc  2 (phil) Dining.pml:31 (state 12)	[forks[id] = (forks[id]-1)]
+                      philosopher 3 is thinking
+ 60:	proc  4 (phil) Dining.pml:11 (state 1)	[printf('philosopher %d is thinking\\n',id)]
+                      3 is hungry
+ 60:	proc  4 (phil) Dining.pml:13 (state 2)	[printf('%d is hungry\\n',id)]
+ 61:	proc  4 (phil) Dining.pml:16 (state 3)	[((forks[id]==0))]
+ 61:	proc  4 (phil) Dining.pml:17 (state 4)	[forks[id] = (forks[id]+1)]
+                      3 get its left fork
+ 61:	proc  4 (phil) Dining.pml:18 (state 5)	[printf('%d get its left fork\\n',id)]
+ 62:	proc  4 (phil) Dining.pml:22 (state 7)	[((forks[((id+1)%4)]==0))]
+ 62:	proc  4 (phil) Dining.pml:23 (state 8)	[forks[((id+1)%4)] = (forks[((id+1)%4)]+1)]
+                      forks[id]=1
+ 62:	proc  4 (phil) Dining.pml:25 (state 9)	[printf('forks[id]=%d\\n',forks[id])]
+                      3 eating with fork 3 and 0
+ 62:	proc  4 (phil) Dining.pml:28 (state 10)	[printf('%d eating with fork %d and %d\\n',id,id,((id+1)%4))]
+ 63:	proc  4 (phil) Dining.pml:31 (state 12)	[forks[id] = (forks[id]-1)]
+ 64:	proc  2 (phil) Dining.pml:32 (state 13)	[forks[((id+1)%4)] = (forks[((id+1)%4)]-1)]
+ 65:	proc  4 (phil) Dining.pml:32 (state 13)	[forks[((id+1)%4)] = (forks[((id+1)%4)]-1)]
+                      philosopher 3 is thinking
+ 66:	proc  4 (phil) Dining.pml:11 (state 1)	[printf('philosopher %d is thinking\\n',id)]
+                      3 is hungry
+ 66:	proc  4 (phil) Dining.pml:13 (state 2)	[printf('%d is hungry\\n',id)]
+ 67:	proc  4 (phil) Dining.pml:16 (state 3)	[((forks[id]==0))]
+ 67:	proc  4 (phil) Dining.pml:17 (state 4)	[forks[id] = (forks[id]+1)]
+                      3 get its left fork
+ 67:	proc  4 (phil) Dining.pml:18 (state 5)	[printf('%d get its left fork\\n',id)]
+ 68:	proc  4 (phil) Dining.pml:22 (state 7)	[((forks[((id+1)%4)]==0))]
+ 68:	proc  4 (phil) Dining.pml:23 (state 8)	[forks[((id+1)%4)] = (forks[((id+1)%4)]+1)]
+                      forks[id]=1
+ 68:	proc  4 (phil) Dining.pml:25 (state 9)	[printf('forks[id]=%d\\n',forks[id])]
+                      3 eating with fork 3 and 0
+ 68:	proc  4 (phil) Dining.pml:28 (state 10)	[printf('%d eating with fork %d and %d\\n',id,id,((id+1)%4))]
+ 69:	proc  3 (phil) Dining.pml:16 (state 3)	[((forks[id]==0))]
+ 69:	proc  3 (phil) Dining.pml:17 (state 4)	[forks[id] = (forks[id]+1)]
+                  2 get its left fork
+ 69:	proc  3 (phil) Dining.pml:18 (state 5)	[printf('%d get its left fork\\n',id)]
+ 70:	proc  4 (phil) Dining.pml:31 (state 12)	[forks[id] = (forks[id]-1)]
+ 71:	proc  4 (phil) Dining.pml:32 (state 13)	[forks[((id+1)%4)] = (forks[((id+1)%4)]-1)]
+                      philosopher 3 is thinking
+ 72:	proc  4 (phil) Dining.pml:11 (state 1)	[printf('philosopher %d is thinking\\n',id)]
+                      3 is hungry
+ 72:	proc  4 (phil) Dining.pml:13 (state 2)	[printf('%d is hungry\\n',id)]
+ 73:	proc  4 (phil) Dining.pml:16 (state 3)	[((forks[id]==0))]
+ 73:	proc  4 (phil) Dining.pml:17 (state 4)	[forks[id] = (forks[id]+1)]
+                      3 get its left fork
+ 73:	proc  4 (phil) Dining.pml:18 (state 5)	[printf('%d get its left fork\\n',id)]
+ 74:	proc  1 (phil) Dining.pml:16 (state 3)	[((forks[id]==0))]
+ 74:	proc  1 (phil) Dining.pml:17 (state 4)	[forks[id] = (forks[id]+1)]
+          0 get its left fork
+ 74:	proc  1 (phil) Dining.pml:18 (state 5)	[printf('%d get its left fork\\n',id)]
+              philosopher 1 is thinking
+ 75:	proc  2 (phil) Dining.pml:11 (state 1)	[printf('philosopher %d is thinking\\n',id)]
+              1 is hungry
+ 75:	proc  2 (phil) Dining.pml:13 (state 2)	[printf('%d is hungry\\n',id)]
+ 76:	proc  2 (phil) Dining.pml:16 (state 3)	[((forks[id]==0))]
+ 76:	proc  2 (phil) Dining.pml:17 (state 4)	[forks[id] = (forks[id]+1)]
+              1 get its left fork
+ 76:	proc  2 (phil) Dining.pml:18 (state 5)	[printf('%d get its left fork\\n',id)]
+spin: trail ends after 76 steps
+#processes: 5
+		forks[0] = 1
+		forks[1] = 1
+		forks[2] = 1
+		forks[3] = 1
+ 76:	proc  4 (phil) Dining.pml:20 (state 11)
+ 76:	proc  3 (phil) Dining.pml:20 (state 11)
+ 76:	proc  2 (phil) Dining.pml:20 (state 11)
+ 76:	proc  1 (phil) Dining.pml:20 (state 11)
+ 76:	proc  0 (:init:) Dining.pml:44 (state 9) <valid end state>
+5 processes created

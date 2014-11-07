@@ -1,0 +1,41 @@
+
+(Spin Version 6.2.2 -- 6 June 2012)
+
+Full statespace search for:
+	never claim         	+ (PROP_B)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 76 byte, depth reached 64, errors: 0
+      784 states, stored
+      949 states, matched
+     1733 transitions (= stored+matched)
+        0 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.069	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.284	actual memory usage for states
+   64.000	memory used for hash table (-w24)
+    0.343	memory used for DFS stack (-m10000)
+   64.539	total actual memory usage
+
+
+unreached in proctype Alice
+	(0 of 21 states)
+unreached in proctype Bob
+	(0 of 20 states)
+unreached in proctype Intruder
+	NS7.pml:140, state 11, "knows_nonceB = 1"
+	NS7.pml:142, state 12, "pnonceB = data.content1"
+	NS7.pml:155, state 24, "msg = msg3"
+	NS7.pml:177, state 45, "data.content1 = pnonceB"
+	NS7.pml:178, state 46, "data.content2 = 0"
+	NS7.pml:184, state 53, "-end-"
+	(6 of 53 states)
+unreached in claim PROP_B
+	_spin_nvr.tmp:8, state 8, "-end-"
+	(1 of 8 states)
+
+pan: elapsed time 0.002 seconds

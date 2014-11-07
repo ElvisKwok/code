@@ -1,0 +1,49 @@
+          Philosopher 0 is thinking
+              Philosopher 1 is thinking
+                  Philosopher 2 is thinking
+                      Philosopher 3 is thinking
+                          Philosopher 4 is thinking
+                          Philosopher 4 is eating with fork 4 and 0
+                          Philosopher 4 is thinking
+                          Philosopher 4 is eating with fork 4 and 0
+                      Philosopher 3 is eating with fork 3 and 4
+                          Philosopher 4 is thinking
+                          Philosopher 4 is eating with fork 4 and 0
+                          Philosopher 4 is thinking
+                      Philosopher 3 is thinking
+                          Philosopher 4 is eating with fork 4 and 0
+                          Philosopher 4 is thinking
+                          Philosopher 4 is eating with fork 4 and 0
+                      Philosopher 3 is eating with fork 3 and 4
+                          Philosopher 4 is thinking
+                  Philosopher 2 is eating with fork 2 and 3
+                      Philosopher 3 is thinking
+                          Philosopher 4 is eating with fork 4 and 0
+                          Philosopher 4 is thinking
+                          Philosopher 4 is eating with fork 4 and 0
+                          Philosopher 4 is thinking
+                          Philosopher 4 is eating with fork 4 and 0
+                          Philosopher 4 is thinking
+                  Philosopher 2 is thinking
+                          Philosopher 4 is eating with fork 4 and 0
+                          Philosopher 4 is thinking
+                      Philosopher 3 is eating with fork 3 and 4
+                      Philosopher 3 is thinking
+                          Philosopher 4 is eating with fork 4 and 0
+                          Philosopher 4 is thinking
+                          Philosopher 4 is eating with fork 4 and 0
+                          Philosopher 4 is thinking
+spin: trail ends after 101 steps
+#processes: 6
+		fork[0] = 1
+		fork[1] = 1
+		fork[2] = 1
+		fork[3] = 1
+		fork[4] = 1
+101:	proc  5 (phil:1) Dining_1.pml:11 (state 10)
+101:	proc  4 (phil:1) Dining_1.pml:11 (state 10)
+101:	proc  3 (phil:1) Dining_1.pml:11 (state 10)
+101:	proc  2 (phil:1) Dining_1.pml:11 (state 10)
+101:	proc  1 (phil:1) Dining_1.pml:11 (state 10)
+101:	proc  0 (:init::1) Dining_1.pml:32 (state 9) <valid end state>
+6 processes created

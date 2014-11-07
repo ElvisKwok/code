@@ -1,0 +1,33 @@
+
+(Spin Version 6.2.2 -- 6 June 2012)
+
+Full statespace search for:
+	never claim         	+ (BOTH_ARE_OK)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 52 byte, depth reached 31, errors: 0
+       22 states, stored (44 visited)
+       31 states, matched
+       75 transitions (= visited+matched)
+        0 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.001	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.290	actual memory usage for states
+   64.000	memory used for hash table (-w24)
+    0.343	memory used for DFS stack (-m10000)
+   64.539	total actual memory usage
+
+
+unreached in proctype Alice
+	(0 of 15 states)
+unreached in proctype Bob
+	(0 of 18 states)
+unreached in claim BOTH_ARE_OK
+	_spin_nvr.tmp:6, state 5, "-end-"
+	(1 of 5 states)
+
+pan: elapsed time 0.001 seconds

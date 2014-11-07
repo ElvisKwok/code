@@ -1,0 +1,29 @@
+ltl BOTH_ARE_OK: <> (((statusA==ok)) && ((statusB==ok)))
+starting claim 3
+spin: couldn't find claim 3 (ignored)
+using statement merging
+  2:	proc  2 (Intruder) lab1_2.3.pml:100 (state 8)	[msg = msg1]
+  4:	proc  2 (Intruder) lab1_2.3.pml:106 (state 14)	[recpt = agentB]
+  6:	proc  2 (Intruder) lab1_2.3.pml:109 (state 17)	[data.key = intercepted.key]
+  6:	proc  2 (Intruder) lab1_2.3.pml:110 (state 18)	[data.content1 = intercepted.content1]
+  6:	proc  2 (Intruder) lab1_2.3.pml:111 (state 19)	[data.content2 = intercepted.content2]
+  8:	proc  2 (Intruder) lab1_2.3.pml:125 (state 34)	[network!msg,recpt,data.key,data.content1,data.content2]
+  9:	proc  1 (Bob) lab1_2.3.pml:63 (state 1)	[network?msg1,agentB,data.key,data.content1,data.content2]
+ 11:	proc  2 (Intruder) lab1_2.3.pml:100 (state 8)	[msg = msg1]
+ 13:	proc  2 (Intruder) lab1_2.3.pml:105 (state 13)	[recpt = agentA]
+ 15:	proc  2 (Intruder) lab1_2.3.pml:109 (state 17)	[data.key = intercepted.key]
+ 15:	proc  2 (Intruder) lab1_2.3.pml:110 (state 18)	[data.content1 = intercepted.content1]
+ 15:	proc  2 (Intruder) lab1_2.3.pml:111 (state 19)	[data.content2 = intercepted.content2]
+ 17:	proc  0 (Alice) lab1_2.3.pml:23 (state 1)	[partnerA = agentB]
+ 19:	proc  0 (Alice) lab1_2.3.pml:24 (state 2)	[pkey = keyB]
+ 19:	proc  0 (Alice) lab1_2.3.pml:26 (state 3)	[messageAB.key = pkey]
+ 19:	proc  0 (Alice) lab1_2.3.pml:27 (state 4)	[messageAB.content1 = agentA]
+ 19:	proc  0 (Alice) lab1_2.3.pml:28 (state 5)	[messageAB.content2 = nonceA]
+<<<<<START OF CYCLE>>>>>
+spin: trail ends after 21 steps
+#processes: 3
+ 21:	proc  2 (Intruder) lab1_2.3.pml:125 (state 34)
+ 21:	proc  1 (Bob) lab1_2.3.pml:65 (state 2)
+ 21:	proc  0 (Alice) lab1_2.3.pml:30 (state 6)
+3 processes created
+Exit-Status 0

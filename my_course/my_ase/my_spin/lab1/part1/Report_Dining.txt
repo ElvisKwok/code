@@ -1,0 +1,19 @@
+Q1. Use assertions in your code to verify this property about forks.
+Answer: 
+In my file Dining_1.pml, I use assertions to verfify the property that a fork can not be grabed by 2 philosoher at the same time as follows:
+    assert(fork[id] <= 1);
+    assert(fork[(id+1)%NUM_PHIL]);
+
+Q2.
+(a). Does your model have deadlocks? If yes, use SPIN to derive a counter example showing a
+problematic trace. Modify your solution to eliminate deadlocks.
+Answer: 
+1. Yes, deadlocks could be found in my model, invalid end state is raised when I run a verfier pan. Finally, all philosophers are blocked waiting to fetch the left fork. As a consequence, no body can get the left fork without releasing the right.
+2. Dining_1_trail_output.txt shows the counter example.
+3. Dining2.pml is my solution to eliminate deadlocks. 
+
+b. Verify absence of deadlocks in your model using SPIN.
+Answer: Dining2_output.txt is the result of verifying Dining2.pml. We can see that there is 0 error, so deadlocks are absent in my model.  
+
+Q3. Verify property (1) with an LTL formula instead of assertions.
+Answer: Dining3.pml is the code for problem 3 and Dining3_output.txt is its verification result. My LTL formula is "ltl {[](fork[0]<=1 && fork[1]<=1 && fork[2]<=1 && fork[3]<=1)}".

@@ -1,0 +1,107 @@
+Model说明：
+为了模拟哲学家问题，需要保证每个叉子同一时间最多被一个哲学家拿起。
+每个哲学家在思考之后先对左手边的叉子$i-1$发出请求，得到同意之后再对
+右手边的叉子发出请求，得到同意再开始进食。 这样子在每个哲学家都对左手边的
+叉子发出请求之后可能会造成死锁，于是需要保证各个叉子在某个状态下只
+允许某个特定的哲学家拿起，当一个叉子被拿起一次之后下一次只允许让另外一个
+哲学家拿起，这样子就避免了死锁。
+
+1. 用一个整数$fork\_used_i$表示第i个叉子被拿起多少次，则需要保证$\forall i, fork\_used_i < 2$恒成立，
+通过verifier可以看到assert没有被违反。
+
+2.运行verifier的输出如下：
+
+spin -a Dining.pml && gcc -DSAFETY pan.c -o pan && ./pan -m1000000
+Depth=  563093 States=    1e+06 Transitions= 2.38e+06 Memory=   457.382	t=     5.11 R=   2e+05
+
+(Spin Version 6.2.2 -- 6 June 2012)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	- (none specified)
+	assertion violations	+
+	cycle checks       	- (disabled by -DSAFETY)
+	invalid end states	+
+
+State-vector 416 byte, depth reached 563687, errors: 0
+  1447266 states, stored
+  2230485 states, matched
+  3677751 transitions (= stored+matched)
+        0 atomic steps
+hash conflicts:     48539 (resolved)
+
+Stats on memory usage (in Megabytes):
+  612.818	equivalent memory usage for states (stored*(State-vector + overhead))
+  399.572	actual memory usage for states (compression: 65.20%)
+         	state-vector as stored = 261 byte + 28 byte overhead
+  128.000	memory used for hash table (-w24)
+   53.406	memory used for DFS stack (-m1000000)
+  580.332	total actual memory usage
+
+
+unreached in proctype phil
+	Dining.pml:45, state 36, "-end-"
+	(1 of 36 states)
+unreached in proctype fork_proc
+	Dining.pml:72, state 23, "-end-"
+	(1 of 23 states)
+unreached in init
+	(0 of 10 states)
+
+pan: elapsed time 8.16 seconds
+pan: rate 177361.03 states/second
+
+可以看出其中并没有出现invalid end state，因此不存在死锁的情况。
+
+3.在Dining.pml中加入LTL声明：
+ltl fork_unique {[](fork_used[0] < 2 && fork_used[1] < 2 && fork_used[2] < 2 && fork_used[3] < 2 && fork_used[4] < 2)};
+
+运行verifier:
+
+
+spin -a Dining.pml && gcc -DSAFETY  -o pan pan.c && ./pan  -m1000000 
+ltl fork_unique: [] ((((((fork_used[0]<2)) && ((fork_used[1]<2))) && ((fork_used[2]<2))) && ((fork_used[3]<2))) && ((fork_used[4]<2)))
+warning: never claim + accept labels requires -a flag to fully verify
+Depth=  975582 States=    1e+06 Transitions= 2.38e+06 Memory=   457.382	t=     5.19 R=   2e+05
+
+(Spin Version 6.2.2 -- 6 June 2012)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (fork_unique)
+	assertion violations	+ (if within scope of claim)
+	cycle checks       	- (disabled by -DSAFETY)
+	invalid end states	- (disabled by never claim)
+
+State-vector 424 byte, depth reached 976609, errors: 0
+  1447266 states, stored
+  2230485 states, matched
+  3677751 transitions (= stored+matched)
+        0 atomic steps
+hash conflicts:     47945 (resolved)
+
+Stats on memory usage (in Megabytes):
+  623.860	equivalent memory usage for states (stored*(State-vector + overhead))
+  399.571	actual memory usage for states (compression: 64.05%)
+         	state-vector as stored = 261 byte + 28 byte overhead
+  128.000	memory used for hash table (-w24)
+   53.406	memory used for DFS stack (-m1000000)
+  580.332	total actual memory usage
+
+
+unreached in proctype phil
+	Dining.pml:48, state 36, "-end-"
+	(1 of 36 states)
+unreached in proctype fork_proc
+	Dining.pml:75, state 23, "-end-"
+	(1 of 23 states)
+unreached in init
+	(0 of 10 states)
+unreached in claim fork_unique
+	_spin_nvr.tmp:8, state 8, "-end-"
+	(1 of 8 states)
+
+pan: elapsed time 8.26 seconds
+pan: rate  175213.8 states/second
+
+可以看到LTL验证成功，没有出现反例。

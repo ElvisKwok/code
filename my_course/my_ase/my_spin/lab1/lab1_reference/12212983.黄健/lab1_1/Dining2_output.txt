@@ -1,0 +1,40 @@
+verification result:
+spin -a  lab1_1.2.pml
+gcc -DMEMLIM=1024 -O2 -DXUSAFE -DSAFETY -DNOCLAIM -w -o pan pan.c
+./pan -m10000 
+Pid: 4368
+
+(Spin Version 6.2.2 -- 6 June 2012)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	- (not selected)
+	assertion violations	+
+	cycle checks       	- (disabled by -DSAFETY)
+	invalid end states	+
+
+State-vector 64 byte, depth reached 176, errors: 0
+      263 states, stored
+      422 states, matched
+      685 transitions (= stored+matched)
+        0 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.019	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.291	actual memory usage for states
+   64.000	memory used for hash table (-w24)
+    0.343	memory used for DFS stack (-m10000)
+   64.539	total actual memory usage
+
+
+unreached in proctype phil
+	lab1_1.2.pml:18, state 14, "-end-"
+	(1 of 14 states)
+unreached in init
+	(0 of 9 states)
+
+pan: elapsed time 0.001 seconds
+No errors found -- did you verify all claims?
+
+

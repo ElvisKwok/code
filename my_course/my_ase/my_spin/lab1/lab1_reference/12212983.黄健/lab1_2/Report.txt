@@ -1,0 +1,19 @@
+Task 1
+A: The code of Bob can be found in NS2.pml. 
+
+Task2
+A: NS2.pml is the code for problem in task 2. The LTL formula I used is "ltl BOTH_ARE_OK {<>(statusA==ok && statusB==ok)}". No error is found in verification. 
+
+Task 3
+A: NS3.pml is the code after introducing Intruder. There's an error in verification and NS3.pml.trail is for replaying the error. NS3_outpur.pml and NS3.jpg show the process of how the error occured. We can see that in the begining, Intruder sent a msg1 to Bob and Bob received it. Thus, the msg1 sent by Alice can't be received by Bob and the progress of communication is blocked. That's the cause of this error. 
+
+Task 6
+A: NS6.pml is the code for task 6. The LTL formula I used are as below, 
+ltl PROP_AB {[]((statusA==ok && statusB==ok) -> (partnerA==agentB && partnerB==agentA))}
+ltl PROP_A {[]((statusA==ok && partnerA==agentB) -> (!knows_nonceA))}
+ltl PROP_B {[]((statusB==ok && partnerB==agentA) -> (!knows_nonceB))}
+In my verification, only property (1) and (3) are violated. There is no error when verifying property (2). And NS6.pml.trail is the trail for a counterexample. NS6_output.txt and NS6.jpg show the process of error. 
+At first, Alice took Itruder as its partner and sent msg1 to Intruder. So, nonceA was known by Intruder. Then Intruder disguised as Alice and cheated Bod to begin a communication. After getting the msg2 from Bob, Intruder sent msg2 to Alice who helped him decrypt it and sent nonceB back. Now, Intruder knew nonceB and sent msg3 to Bob in the identity of Alice. Finally, both statusA=ok and statusB=ok are reached while partnerA=agentI and parnerB=agentA. 
+
+Task 7
+A: NS7.pml is the code after implementing the patch. And NS7_output.pml is the verification result. We can see that there's no error, so property (1)-(3) are satisfied in this new model. In my opniion, the attack can be defended because Alice is able to verify the identity of msg2's sender in the patched version protocol. 

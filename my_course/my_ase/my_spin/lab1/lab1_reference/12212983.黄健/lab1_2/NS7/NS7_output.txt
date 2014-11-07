@@ -1,0 +1,60 @@
+spin -a  lab1_2.7.pml
+ltl ltl_0: [] ((! (((statusA==ok)) && ((statusB==ok)))) || (((partnerA==agentB)) && ((partnerB==agentA))))
+ltl ltl_1: [] ((! (((statusA==ok)) && ((partnerA==agentB)))) || (! (knows_nonceA)))
+ltl ltl_2: [] ((! (((statusB==ok)) && ((partnerB==agentA)))) || (! (knows_nonceB)))
+  the model contains 3 never claims: ltl_2, ltl_1, ltl_0
+  only one claim is used in a verification run
+  choose which one with ./pan -N name (defaults to -N ltl_0)
+gcc -DMEMLIM=1024 -O2 -DXUSAFE -w -o pan pan.c
+./pan -m10000  -a
+Pid: 7028
+0: Claim ltl_0 (3), from state 5
+Depth=      79 States=   1e+006 Transitions= 1.87e+006 Memory=   102.722	t=     1.03 R=  1e+006
+
+(Spin Version 6.2.2 -- 6 June 2012)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (ltl_0)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 80 byte, depth reached 86, errors: 0
+   965386 states, stored (1.93077e+006 visited)
+  1813205 states, matched
+  3743977 transitions (= visited+matched)
+        0 atomic steps
+hash conflicts:     41346 (resolved)
+
+Stats on memory usage (in Megabytes):
+   88.384	equivalent memory usage for states (stored*(State-vector + overhead))
+   73.914	actual memory usage for states (compression: 83.63%)
+         	state-vector as stored = 64 byte + 16 byte overhead
+   64.000	memory used for hash table (-w24)
+    0.343	memory used for DFS stack (-m10000)
+  138.172	total actual memory usage
+
+
+unreached in proctype Alice
+	(0 of 21 states)
+unreached in proctype Bob
+	(0 of 19 states)
+unreached in proctype Intruder
+	lab1_2.7.pml:121, state 16, "knows_nonceB = 1"
+	lab1_2.7.pml:161, state 60, "-end-"
+	(2 of 60 states)
+unreached in claim ltl_0
+	_spin_nvr.tmp:8, state 8, "-end-"
+	(1 of 8 states)
+unreached in claim ltl_1
+	_spin_nvr.tmp:17, state 8, "-end-"
+	(1 of 8 states)
+unreached in claim ltl_2
+	_spin_nvr.tmp:26, state 8, "-end-"
+	(1 of 8 states)
+
+pan: elapsed time 2 seconds
+No errors found -- did you verify all claims?
+
+
