@@ -69,19 +69,19 @@ active proctype Bob() {
 	Crypt data; /* received encrypted message */
 
     
-    //inintialized
+    /* inintialized */
     pkey = keyA;
     partnerB = agentA;
     
-    //prepare to receive message from alice
+    /* prepare to receive message from alice */
     network ? msg1(agentB, data);
     
-    //check the content of the message
+    /* check the content of the message */
     (data.key == keyB) && (data.content1 == partnerB);
     
     pnonce = data.content2;
     
-    //prepare to sent message to Alice
+    /* prepare to sent message to Alice */
     
     messageBA.key = pkey;
     messageBA.content1 = pnonce;
@@ -89,10 +89,10 @@ active proctype Bob() {
     
     network ! msg2(partnerB, messageBA);
     
-    //prepar to receive the last message from Alice
+    /* prepar to receive the last message from Alice */
     network ? (msg3, agentB, data);
     
-    //check the message content
+    /* check the message content */
     (data.key == keyB) && (data.content1 == nonceB);
     
     statusB = ok;

@@ -1,14 +1,7 @@
-verification result:
-spin -a  NS3.pml
-ltl BOTH_ARE_OK: <> (((statusA==ok)) && ((statusB==ok)))
-gcc -DMEMLIM=1024 -O2 -DXUSAFE -w -o pan pan.c
-./pan -m10000  -a -N 1
-Pid: 15979
-warning: only one claim defined, -N ignored
 pan:1: acceptance cycle (at depth 23)
 pan: wrote NS3.pml.trail
 
-(Spin Version 6.4.2 -- 8 October 2014)
+(Spin Version 6.3.2 -- 17 May 2014)
 Warning: Search not completed
 	+ Partial Order Reduction
 
@@ -34,7 +27,4 @@ Stats on memory usage (in Megabytes):
 
 
 
-pan: elapsed time 0 seconds
-To replay the error-trail, goto Simulate/Replay and select "Run"
-
-
+pan: elapsed time 0.01 seconds
