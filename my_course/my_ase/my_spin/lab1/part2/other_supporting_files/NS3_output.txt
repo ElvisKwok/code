@@ -1,0 +1,40 @@
+verification result:
+spin -a  NS3.pml
+ltl BOTH_ARE_OK: <> (((statusA==ok)) && ((statusB==ok)))
+gcc -DMEMLIM=1024 -O2 -DXUSAFE -w -o pan pan.c
+./pan -m10000  -a -N 1
+Pid: 15979
+warning: only one claim defined, -N ignored
+pan:1: acceptance cycle (at depth 23)
+pan: wrote NS3.pml.trail
+
+(Spin Version 6.4.2 -- 8 October 2014)
+Warning: Search not completed
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (BOTH_ARE_OK)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 76 byte, depth reached 37, errors: 1
+      225 states, stored (438 visited)
+      251 states, matched
+      689 transitions (= visited+matched)
+        0 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.022	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.284	actual memory usage for states
+  128.000	memory used for hash table (-w24)
+    0.534	memory used for DFS stack (-m10000)
+  128.730	total actual memory usage
+
+
+
+pan: elapsed time 0 seconds
+To replay the error-trail, goto Simulate/Replay and select "Run"
+
+

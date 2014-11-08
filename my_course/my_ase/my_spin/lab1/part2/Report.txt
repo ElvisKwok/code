@@ -1,0 +1,13 @@
+Task 1: Write a model for Bob.
+Task 2: SPIN.
+Answer: Implemented in NS2.pml and the verification result of NS2.pml is recorded in NS2_output.txt. As the verfication result shows, there is 0 error, indicating that both status are OK.
+
+Task 3:Introducing the attacker.
+Answer: NS3.pml is ther code that introduce the attacter. NS3_output.txt saves the verfication result of NS3.pml. NS3_trail_output.txt shows the trail.
+There is a counterexample like this: 
+    If intruder send message first. Then after Bob received it, will be blocked in checking the key or content1. And Alice will be blocked in sending message for reason that no receiver in the network. 
+
+Task 4: New assumptions on the attacker.
+Task 5: Extending the intruder.
+Task 6: Attack.
+Answer:

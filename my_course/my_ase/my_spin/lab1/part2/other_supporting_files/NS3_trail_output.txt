@@ -1,0 +1,14 @@
+ltl BOTH_ARE_OK: <> (((statusA==ok)) && ((statusB==ok)))
+Never claim moves to line 4	[(!(((statusA==ok)&&(statusB==ok))))]
+  <<<<<START OF CYCLE>>>>>
+spin: trail ends after 25 steps
+#processes: 3
+		partnerA = agentB
+		partnerB = agentA
+		statusA = err
+		statusB = err
+ 25:	proc  2 (Intruder:1) NS3.pml:140 (state 34)
+ 25:	proc  1 (Bob:1) NS3.pml:80 (state 4)
+ 25:	proc  0 (Alice:1) NS3.pml:33 (state 6)
+ 25:	proc  - (BOTH_ARE_OK:1) _spin_nvr.tmp:3 (state 3)
+3 processes created

@@ -1,62 +1,32 @@
+
 Related files:
-NS6.pml: modified some code for intruder and Alice so is Bob.
-NS6_result.txt: the verification result of NS6.pml for the property of ltl PROP_AB
-NS6_result1.txt: the verification result of NS6.pml for the property of ltl PROP_A
-NS6_result2.txt: the verification result of NS6.pml for the property of ltl PROP_B
-The Ltl property and the modified code listed below:
-ltl PROP_AB {[]((statusA == ok && statusB == ok) -> (partnerA == agentB && partnerB == agentA))}
-ltl PROP_A {[]((statusA == ok && partnerA == agentB) -> (!knows_nonceA))}
-ltl PROP_B {[]((statusB == ok && partnerB == agentA) -> (!knows_nonceB))}
-Alice:
-if 
-    ::true->partnerA = agentB;
-      pkey = keyB;
-    ::true->partnerA = agentI;
-      pkey = keyI;
-  fi;
-Bob:
-if 
-    ::true->partnerB = agentA;
-      pkey = keyA;
-    ::true->partnerB = agentI;
-      pkey = keyI;
-  fi;
+NS3.pml: the code that introduce the intruder;
+NS3_result.txt: the verification result of NS3.pml;
+NS3_trail_output.txt: the output of simulate NS3 in guided option.
+After introduce the intruder, found there is error:1
+and the counter example shows in NS3_trail_output.txt
+Cut from NS3_trail_output.txt
+25:	proc  2 (Intruder) NS3.pml:143 (state 33)
+ 25:	proc  1 (Bob) NS3.pml:80 (state 9)
+ 25:	proc  0 (Alice) NS3.pml:36 (state 6)
 
-After verification ,we found that only PROP_A hold in NS6.pml.
-Cut from NS6_trail_output.txt
-#processes: 3
-		partnerA = agentI
-		partnerB = agentA
-		statusA = ok
-		statusB = ok
-		knows_nonceA = 1
-		knows_nonceB = 1
- 84:	proc  2 (Intruder) NS6.pml:177 (state 49)
-		Intruder(3):intercepted.key = 0
-		Intruder(3):intercepted.content1 = 0
-		Intruder(3):intercepted.content2 = 0
-		Intruder(3):data.key = keyB
-		Intruder(3):data.content1 = nonceB
-		Intruder(3):data.content2 = 0
- 84:	proc  1 (Bob) NS6.pml:111 (state 19) <valid end state>
-		Bob(2):data.key = keyB
-		Bob(2):data.content1 = nonceB
-		Bob(2):data.content2 = 0
-		Bob(2):messageBA.key = keyA
-		Bob(2):messageBA.content1 = nonceA
-		Bob(2):messageBA.content2 = nonceB
- 84:	proc  0 (Alice) NS6.pml:60 (state 21) <valid end state>
-		Alice(1):data.key = keyA
-		Alice(1):data.content1 = nonceA
-		Alice(1):data.content2 = nonceB
-		Alice(1):messageAB.key = keyI
-		Alice(1):messageAB.content1 = nonceB
-		Alice(1):messageAB.content2 = 0
-
-It’s a counter example to verify PROP_B. from the communication graph is easy to understand what happened. 
+And when execute in ispin. Get the communication graph which can help to analysis the counter example.
+The execution is pended in
+Line-143 for intruder (network ! msg(recpt,data);)
+Line-80 for Bob ((data.key==keyB)&&(data.content1==partnerB);)
+Line-36 for Alice (network ! msg1(partnerA, messageAB);)
+So the execution is , if intruder send message first. Then after Bob received it, will be blocked in checking the key or content1. And Alice will be blocked in sending message for reason that no receiver in the network. As showed in NS3_trail_output.txt
+partnerA = agentB
+partnerB = agentA
+statuA = err
+statuB = err
+the property can not be satisfied.
 
 
 ##############################################################################
+
+Task 3
+A: NS3.pml is the code after introducing Intruder. There's an error in verification and NS3.pml.trail is for replaying the error. NS3_outpur.pml and NS3.jpg show the process of how the error occured. We can see that in the begining, Intruder sent a msg1 to Bob and Bob received it. Thus, the msg1 sent by Alice can't be received by Bob and the progress of communication is blocked. That's the cause of this error. 
 
 Task 6
 A: NS6.pml is the code for task 6. The LTL formula I used are as below, 

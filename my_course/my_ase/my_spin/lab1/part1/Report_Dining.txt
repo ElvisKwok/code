@@ -10,10 +10,12 @@ problematic trace. Modify your solution to eliminate deadlocks.
 Answer: 
 1. Yes, deadlocks could be found in my model, invalid end state is raised when I run a verfier pan. Finally, all philosophers are blocked waiting to fetch the left fork. As a consequence, no body can get the left fork without releasing the right.
 2. Dining_1_trail_output.txt shows the counter example.
-3. Dining2.pml is my solution to eliminate deadlocks. 
+3. Dining_2.pml is my solution to eliminate deadlocks. As it's shown, I use "fork[id] == 0 && fork[(id+1)%NUM_PHIL] == 0" in a atomic block to make sure that the philosopher could only fetch the fork only if two fork near him are both avalable.
 
-b. Verify absence of deadlocks in your model using SPIN.
-Answer: Dining2_output.txt is the result of verifying Dining2.pml. We can see that there is 0 error, so deadlocks are absent in my model.  
+(b). Verify absence of deadlocks in your model using SPIN.
+Answer: Dining_2_output.txt is the result of verifying Dining_2.pml. We can see that there is 0 error, so there is no deadlocks in my model.  
 
 Q3. Verify property (1) with an LTL formula instead of assertions.
-Answer: Dining3.pml is the code for problem 3 and Dining3_output.txt is its verification result. My LTL formula is "ltl {[](fork[0]<=1 && fork[1]<=1 && fork[2]<=1 && fork[3]<=1)}".
+Answer: Instead of using assertions, my LTL formula is as follow: 
+    ltl {[](fork[0]<=1 && fork[1]<=1 && fork[2]<=1 && fork[3]<=1 && fork[4]<=1)}
+Dining_3.pml is for this question and verfication result is mark down in Dining_3_output.txt.
