@@ -1,0 +1,18 @@
+ltl PROP_B: [] ((! (((statusB==ok)) && ((partnerB==agentA)))) || (! (knows_nonceB)))
+Never claim moves to line 4	[(1)]
+spin: _spin_nvr.tmp:3, Error: assertion violated
+spin: text of failed assertion: assert(!(!((!(((statusB==ok)&&(partnerB==agentA)))||!(knows_nonceB)))))
+Never claim moves to line 3	[assert(!(!((!(((statusB==ok)&&(partnerB==agentA)))||!(knows_nonceB)))))]
+spin: trail ends after 78 steps
+#processes: 3
+		partnerA = agentI
+		partnerB = agentA
+		statusA = err
+		statusB = ok
+		knows_nonceA = 1
+		knows_nonceB = 1
+ 78:	proc  2 (Intruder:1) NS6.pml:169 (state 49)
+ 78:	proc  1 (Bob:1) NS6.pml:109 (state 17) <valid end state>
+ 78:	proc  0 (Alice:1) NS6.pml:67 (state 18)
+ 78:	proc  - (PROP_B:1) _spin_nvr.tmp:2 (state 6)
+3 processes created

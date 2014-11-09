@@ -9,8 +9,11 @@ chan network = [0] of {mtype, /* msg# */
 mtype partnerA, partnerB;
 mtype statusA = err;
 mtype statusB = err;
+bool knows_nonceA, knows_nonceB;
 
-ltl BOTH_ARE_OK {<>(statusA==ok && statusB==ok)}
+/* ltl PROP_AB {[]((statusA==ok && statusB==ok) -> (partnerA==agentB && partnerB==agentA))} */
+/* ltl PROP_A {[]((statusA==ok && partnerA==agentB) -> (!knows_nonceA))} */
+ltl PROP_B {[]((statusB==ok && partnerB==agentA) -> (!knows_nonceB))}
 
 /* Agent (A)lice */
 active proctype Alice() {
@@ -21,9 +24,12 @@ active proctype Alice() {
 	Crypt data; /* received encrypted message */
 
 	/* Initialization */
-	partnerA = agentB;
-	pkey = keyB;
-
+    if
+	    :: partnerA = agentB;
+	       pkey = keyB;
+        :: partnerA = agentI;
+           pkey = keyI;
+    fi;
 	/* Prepare the first message */
 	messageAB.key = pkey;
 	messageAB.content1 = agentA;
@@ -70,9 +76,12 @@ active proctype Bob() {
 
     
     /* inintialized */
-    pkey = keyA;
-    partnerB = agentA;
-    
+    if
+        :: pkey = keyA;
+           partnerB = agentA;
+        :: pkey = keyI;
+           partnerB = agentI;
+    fi;
     /* prepare to receive message from alice */
     network ? (msg1, agentB, data);
     
@@ -102,44 +111,66 @@ active proctype Bob() {
 active proctype Intruder() {
 	mtype msg, recpt;
 	Crypt data, intercepted;
+
+    knows_nonceA = false;
+    knows_nonceB = false;
+    mtype pnonceA, pnonceB;
+
 	do
 		:: network ? (msg, _, data) ->
-		if /* perhaps store the message */
-			::intercepted.key = data.key;
-			intercepted.content1 = data.content1;
-			intercepted.content2 = data.content2;
-			:: skip;
+		if 
+            /* sniff msg from Alice */
+            :: data.key == keyI ->
+               if
+                    :: msg == msg1 ->
+                       knows_nonceA = true;
+                       pnonceA = data.content2;
+                    :: msg == msg3 ->
+                       knows_nonceB = true;
+                       pnonceB = data.content1;
+               fi;
+            :: else ->
+               /* expected msg from Bob */
+			   intercepted.key = data.key;
+			   intercepted.content1 = data.content1;
+			   intercepted.content2 = data.content2;
 		fi;
 
-		:: /* Replay or send a message */
-		if /* choose message type */
-			:: msg = msg1;
-			:: msg = msg2;
-			:: msg = msg3;
-		fi;
-		if /* choose a recepient */
-			:: recpt = agentA;
-			:: recpt = agentB;
-		fi;
-		if /* replay intercepted message or assemble it */
-			:: data.key = intercepted.key;
-			data.content1 = intercepted.content1;
-			data.content2 = intercepted.content2;
-			:: if /* assemble content1 */
-				:: data.content1 = agentA;
-				:: data.content1 = agentB;
-				:: data.content1 = agentI;
-				:: data.content1 = nonceI;
-			fi;
-			if /* assemble key */
-				:: data.key = keyA;
-				:: data.key = keyB;
-				:: data.key = keyI;
-			fi;
-			data.content2 = nonceI;
-		fi;
+        ::     /* disguise to send a valid msg */
+        if
+            /* choose a msg to send according to sniffed nonce */
+            :: knows_nonceA && !knows_nonceB ->
+               msg = msg1;
+            :: knows_nonceA && knows_nonceB ->
+               msg = msg3;
+            :: else ->
+               msg = msg2;
+        fi;
+
+        if
+            /* choose a receiver accord to the msg */
+            :: msg == msg1 || msg == msg3 ->
+               recpt = agentB;
+            :: msg == msg2 ->
+               recpt = agentA;
+        fi;
+
+        if
+            /* the disguised msg content */
+            :: msg == msg1 ->
+               data.key = keyB;
+               data.content1 = agentA;
+               data.content2 = pnonceA;
+            :: msg == msg2 ->
+               data.key = keyA;
+               data.content1 = intercepted.content1;
+               data.content2 = intercepted.content2;
+            :: msg == msg3 ->
+               data.key = keyB;
+               data.content1 = pnonceB;
+               data.content2 = 0;
+        fi;
 
 		network ! msg (recpt, data);
 	od
 }
-

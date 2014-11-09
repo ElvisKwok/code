@@ -3,11 +3,29 @@ Task 2: SPIN.
 Answer: Implemented in NS2.pml and the verification result of NS2.pml is recorded in NS2_output.txt. As the verfication result shows, there is 0 error, indicating that both status are OK.
 
 Task 3:Introducing the attacker.
-Answer: NS3.pml is ther code that introduce the attacter. NS3_output.txt saves the verfication result of NS3.pml. NS3_trail_output.txt shows the trail.
+Answer: NS3.pml is ther code that introduce the attacter. NS3_output.txt saves the verfication result of NS3.pml excuting "./pan -a -N BOTH_ARE_OK". NS3_trail_output.txt shows the trail.
 There is a counterexample like this: 
     If intruder send message first. Then after Bob received it, will be blocked in checking the key or content1. And Alice will be blocked in sending message for reason that no receiver in the network. 
 
 Task 4: New assumptions on the attacker.
 Task 5: Extending the intruder.
 Task 6: Attack.
-Answer:
+Answer: See NS6.pml. 
+The LTL formula I used are as below:
+  (1) ltl PROP_AB {[]((statusA==ok && statusB==ok) -> (partnerA==agentB && partnerB==agentA))}
+  (2) ltl PROP_A {[]((statusA==ok && partnerA==agentB) -> (!knows_nonceA))}
+  (3) ltl PROP_B {[]((statusB==ok && partnerB==agentA) -> (!knows_nonceB))}
+After verification, I find that property (1) and (3) are violated. No error when verifying property (2). 
+NS6_output_AB.txt shows verification result for the property of ltl PROP_AB. 
+NS6_output_A.txt shows verification result for the property of ltl PROP_A.
+NS6_output_B.txt shows verification result for the property of ltl PROP_B.
+NS6_trail_output_AB.txt shows the trail for a counterexample of ltl PROP_AB. 
+NS6_trail_output_B.txt shows the trail for a counterexample of ltl PROP_B. 
+For example, here is couterexample explain in my words. Firstly, Alice sends msg1 to Intruder. So, nonceA is known by Intruder. Then Intruder disguises as Alice and cheats Bob to begin a communication. After getting the msg2 from Bob, Intruder send msg2 to Alice who helped him decrypt it and send nonceB back. Now, Intruder knows nonceB and send msg3 to Bob in the identity of Alice. Finally, both statusA=ok and statusB=ok are reached while partnerA=agentI and parnerB=agentA. 
+
+Task 7: Patching the protocol
+Answer: NS7.pml is my final correct model. 
+NS7_output_AB.txt shows verification resulti for the property of ltl PROP_AB.
+NS7_output_A.txt shows verification result for the property of ltl PROP_A.
+NS7_output_B.txt shows verification result for the property of ltl PROP_B.
+We can see that there's no error, so property (1)-(3) are satisfied. Because the sender of msg2 is defined after patching the protocol, so that Alice can confirm the sender of msg2.
