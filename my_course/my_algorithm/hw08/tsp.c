@@ -7,7 +7,7 @@
 #include <time.h>
 #include <math.h>
 
-#define N 3
+#define N 4
 #define COUNT_P (N-1)*(N-2) / 2
 
 struct point {
@@ -41,7 +41,7 @@ void init()
             if (i == j)
                 continue;
             distance[i][j] = sqrt(pow((point[i].x - point[j].x), 2) + pow((point[i].y - point[j].y), 2));
-            //printf("distance[%d][%d] = %lf ", i, j, distance[i][j]);
+            printf("distance[%d][%d] = %lf ", i, j, distance[i][j]);
         }
         printf("\n");
     }
@@ -79,13 +79,11 @@ void map(int a[N])
                 p[i][k] = tmp;
                 i++;
             }
-    /*
     for (i = 0; i < COUNT_P; i++) {
         for (j = 0; j < N; j++)
             printf("p[%d][%d] = %d\t", i, j, p[i][j]);
         printf("\n");
     }
-    */
  }
 
 
@@ -97,9 +95,9 @@ void tsp()
         if (get_dist(p[i]) < best_dist) {
             for (j = 0; j < N; j++) {
                 result[j] = p[i][j];
-                map(p[i]);
-                test++;
             }
+            map(p[i]);
+            test++;
             break;
          }
     }
