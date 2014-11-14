@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
     int i;
     init();
     tsp();
-    printf("\nThe best route is:");
+    printf("\nThe best route is: ");
     for (i = 0; i < N; i++)
         printf("%d->", result[i]);
     printf("%d\n", result[0]);

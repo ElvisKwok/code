@@ -5,6 +5,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include <math.h>
 
@@ -91,10 +92,15 @@ int rws(int a[COUNT_P][N])
 {
     int i, random;
     double sum[COUNT_P];
+    /* 
+    double p;
+    p = (double)rand() / RAND_MAX;
+    */
     sum[0] = get_dist(p[0]);
     for (i = 1; i < COUNT_P; i++)
         sum[i] = sum[i-1] + get_dist(p[i]);
     random = rand % (int)sum[COUNT_P-1];
+    
     for (i = 0; i < COUNT_P; i++)
         if(random <= sum[i])
             return i;
