@@ -7,7 +7,7 @@
 #include <time.h>
 #include <math.h>
 
-#define N 4
+#define N 3
 #define COUNT_P (N-1)*(N-2) / 2
 
 struct point {
@@ -31,7 +31,6 @@ void init()
 {
     srand((unsigned)time(NULL));
     int i, j;
-    /* struct point point[N]; */
     for (i = 0; i < N; i++){
         point[i].x = rand()%100;
         point[i].y = rand()%100;
@@ -42,7 +41,7 @@ void init()
             if (i == j)
                 continue;
             distance[i][j] = sqrt(pow((point[i].x - point[j].x), 2) + pow((point[i].y - point[j].y), 2));
-            printf("distance[%d][%d] = %lf ", i, j, distance[i][j]);
+            //printf("distance[%d][%d] = %lf ", i, j, distance[i][j]);
         }
         printf("\n");
     }
@@ -59,7 +58,10 @@ double get_dist(int a[N])
     int i;
     double dist;
     for (i = 1; i < N; i++)
-        dist += sqrt(pow((point[i].x - point[i-1].x), 2) + pow((point[i].y - point[i-1].y), 2));
+        //dist += sqrt(pow((point[a[i]].x - point[a[i-1]].x), 2) + pow((point[a[i]].y - point[a[i-1]].y), 2));
+        //dist += sqrt(pow((point[i].x - point[i-1].x), 2) + pow((point[i].y - point[i-1].y), 2));
+        dist += distance[a[i-1]][a[i]];
+    dist += distance[a[N-1]][a[0]];
     return dist;
 }
 
@@ -69,13 +71,21 @@ void map(int a[N])
     for (i = 0; i < COUNT_P; i++)
         for (j = 0; j < N; j++)
             p[i][j] = a[j];
-    for (i = 0; i < COUNT_P; i++)
+    for (i = 0; i < COUNT_P; )
         for (j = 1; j < N-1; j++)
             for (k = j+1; k < N; k++) {
                 tmp = p[i][j];
                 p[i][j] = p[i][k];
                 p[i][k] = tmp;
+                i++;
             }
+    /*
+    for (i = 0; i < COUNT_P; i++) {
+        for (j = 0; j < N; j++)
+            printf("p[%d][%d] = %d\t", i, j, p[i][j]);
+        printf("\n");
+    }
+    */
  }
 
 
