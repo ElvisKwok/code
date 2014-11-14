@@ -7,40 +7,52 @@
 #include <time.h>
 #include <math.h>
 
-#define N 20
+#define N 4
 #define COUNT_P (N-1)*(N-2) / 2
 
 struct point {
     double x;
     double y;
-};
+} point[N];
 
 double distance[N][N];
 int p[COUNT_P][N];
 int tmp[N];
 int result[N];
 double best_dist;
+int test = 0;
+
+void init();
+double get_dist(int a[N]);
+void map();
+void tsp();
 
 void init()
 {
     srand((unsigned)time(NULL));
     int i, j;
-    struct point point[N];
+    /* struct point point[N]; */
     for (i = 0; i < N; i++){
         point[i].x = rand()%100;
         point[i].y = rand()%100;
-        //printf("(%lf,%lf)\n", point[i].x, point[i].y);
+        printf("(%lf,%lf)\n", point[i].x, point[i].y);
     }
     for (i = 0; i < N; i++) {
         for (j = 0; j < N; j++) {
             if (i == j)
                 continue;
             distance[i][j] = sqrt(pow((point[i].x - point[j].x), 2) + pow((point[i].y - point[j].y), 2));
-            //printf("distance[%d][%d] = %lf ", i, j, distance[i][j]);
+            printf("distance[%d][%d] = %lf ", i, j, distance[i][j]);
         }
-        //printf("\n");
+        printf("\n");
     }
+
+    for (i = 0; i < N; i++)
+        result[i]  = i;
+    best_dist = get_dist(result);
+    map(result);
 }
+
 
 double get_dist(int a[N])
 {
@@ -53,22 +65,50 @@ double get_dist(int a[N])
 
 void map(int a[N])
 {
-    int i, j, k;
+    int i, j, k, tmp;
     for (i = 0; i < COUNT_P; i++)
-        for (
+        for (j = 0; j < N; j++)
+            p[i][j] = a[j];
+    for (i = 0; i < COUNT_P; i++)
+        for (j = 1; j < N-1; j++)
+            for (k = j+1; k < N; k++) {
+                tmp = p[i][j];
+                p[i][j] = p[i][k];
+                p[i][k] = tmp;
+            }
+ }
+
 
 void tsp() 
 {
-    int i;
-    for (i = 0; i < N; i++)
-        result[i] = tmp[i] = i;
-    best_dist = get_dist(tmp);
+    int i, j;
+    for (i = 0; i < COUNT_P; i++) {
+        printf("get_dist(p[%d]) = %lf\n", i, get_dist(p[i]));
+        if (get_dist(p[i]) < best_dist) {
+            for (j = 0; j < N; j++) {
+                result[j] = p[i][j];
+                map(p[i]);
+                test++;
+            }
+            break;
+         }
+    }
+    if (i < COUNT_P)
+        tsp();
+    else {
+        return;
+    }
+}
     
-
-} 
 
 int main(int argc, char *argv[])
 {
+    int i;
     init();
+    tsp();
+    printf("The best route is:");
+    for (i = 0; i < N; i++)
+        printf("%d ", result[i]);
+    printf("\ntest = %d\n", test);
     return 0;
 }
