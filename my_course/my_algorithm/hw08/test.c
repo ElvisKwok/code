@@ -1,6 +1,7 @@
 /*
  * Solve Traveling Saleman Problem(TSP) by local search.
  * In this program, there are 20 point, and the saleman start traveling at point 0.
+ * Furthermore, we improve this program using Roulette Wheel Selection(RWS)
  */
 
 #include <stdio.h>
