@@ -1,7 +1,7 @@
 /*
  * Solve Traveling Saleman Problem(TSP) by local search.
  * In this program, there are 20 point, and the saleman start traveling at point 0.
- * Bug: haven't implemented random selecting of p[COUNT_P[[N].
+ * Furthermore, we improve this program using Roulette Wheel Selection(RWS)
  */
 
 #include <stdio.h>
@@ -87,24 +87,34 @@ void map(int a[N])
     //}
  }
 
+int rws(int a[COUNT_P][N])
+{
+    int i, random;
+    double sum[COUNT_P];
+    sum[0] = get_dist(p[0]);
+    for (i = 1; i < COUNT_P; i++)
+        sum[i] = sum[i-1] + get_dist(p[i]);
+    random = rand % (int)sum[COUNT_P-1];
+    for (i = 0; i < COUNT_P; i++)
+        if(random <= sum[i])
+            return i;
+}
+
 
 void tsp() 
 {
-    int i, j, random_i, mark[N];
+    int i, j;
     double tmp;
     for (i = 0; i < COUNT_P; i++) {
-        while (mark[random_i = (rand() % N)] == 1)
-            random_i = (random_i + 1) % N;
-        mark[random_i] = 1;
-        tmp = get_dist(p[random_i]);
-        //usleep(1);
+        tmp = get_dist(p[i]);
+        usleep(1);
         //printf("get_dist(p[%d]) = %lf\n", i, tmp);
         if (tmp < best_dist) {
             best_dist = tmp;
             for (j = 0; j < N; j++) {
-                result[j] = p[random_i][j];
+                result[j] = p[i][j];
             }
-            map(p[random_i]);
+            map(p[i]);
             break;
          }
     }

@@ -8,7 +8,7 @@
 #include <time.h>
 #include <math.h>
 
-#define N 20
+#define N 5
 #define COUNT_P (N-1)*(N-2) / 2
 
 struct point {
@@ -90,11 +90,12 @@ void map(int a[N])
 
 void tsp() 
 {
-    int i, j, random_i, mark[N];
+    int i, j, random_i, mark[COUNT_P];
     double tmp;
     for (i = 0; i < COUNT_P; i++) {
-        while (mark[random_i = (rand() % N)] == 1)
-            random_i = (random_i + 1) % N;
+        random_i =  rand() % COUNT_P;
+        while (mark[random_i] == 1)
+            random_i = (random_i + 1) % COUNT_P;
         mark[random_i] = 1;
         tmp = get_dist(p[random_i]);
         //usleep(1);
@@ -105,6 +106,7 @@ void tsp()
                 result[j] = p[random_i][j];
             }
             map(p[random_i]);
+            printf("ok\n");
             break;
          }
     }
