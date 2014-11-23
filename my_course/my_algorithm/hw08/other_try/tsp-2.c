@@ -1,15 +1,14 @@
 /*
  * Solve Traveling Saleman Problem(TSP) by local search.
  * In this program, there are 20 point, and the saleman start traveling at point 0.
- * Furthermore, we improve this program using Roulette Wheel Selection(RWS)
+ * Bug: haven't implemented random selecting of p[COUNT_P[[N].
  */
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
 #include <math.h>
 
-#define N 20
+#define N 5
 #define COUNT_P (N-1)*(N-2) / 2
 
 struct point {
@@ -88,39 +87,26 @@ void map(int a[N])
     //}
  }
 
-int rws(int a[COUNT_P][N])
-{
-    int i, random;
-    double sum[COUNT_P];
-    /* 
-    double p;
-    p = (double)rand() / RAND_MAX;
-    */
-    sum[0] = get_dist(p[0]);
-    for (i = 1; i < COUNT_P; i++)
-        sum[i] = sum[i-1] + get_dist(p[i]);
-    random = rand % (int)sum[COUNT_P-1];
-    
-    for (i = 0; i < COUNT_P; i++)
-        if(random <= sum[i])
-            return i;
-}
-
 
 void tsp() 
 {
-    int i, j;
+    int i, j, random_i, mark[COUNT_P];
     double tmp;
     for (i = 0; i < COUNT_P; i++) {
-        tmp = get_dist(p[i]);
-        usleep(1);
+        random_i =  rand() % COUNT_P;
+        while (mark[random_i] == 1)
+            random_i = (random_i + 1) % COUNT_P;
+        mark[random_i] = 1;
+        tmp = get_dist(p[random_i]);
+        //usleep(1);
         //printf("get_dist(p[%d]) = %lf\n", i, tmp);
         if (tmp < best_dist) {
             best_dist = tmp;
             for (j = 0; j < N; j++) {
-                result[j] = p[i][j];
+                result[j] = p[random_i][j];
             }
-            map(p[i]);
+            map(p[random_i]);
+            printf("ok\n");
             break;
          }
     }
