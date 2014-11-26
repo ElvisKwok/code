@@ -1,0 +1,9 @@
+never m {    /* !(! (((P@cs)) && ((Q@cs)))) */
+accept_init:
+T0_init:
+	do
+	:: atomic { (! ((! (((P@cs)) && ((Q@cs)))))) -> assert(!(! ((! (((P@cs)) && ((Q@cs))))))) }
+	od;
+accept_all:
+	skip
+}

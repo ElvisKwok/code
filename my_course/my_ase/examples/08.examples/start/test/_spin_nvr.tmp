@@ -1,0 +1,18 @@
+never l {    /* !((<> (csp)) && (<> (csq))) */
+accept_init:
+T0_init:
+	do
+	:: (! ((csq))) -> goto accept_S2
+	:: (! ((csp))) -> goto accept_S5
+	od;
+accept_S2:
+T0_S2:
+	do
+	:: (! ((csq))) -> goto accept_S2
+	od;
+accept_S5:
+T0_S5:
+	do
+	:: (! ((csp))) -> goto accept_S5
+	od;
+}
