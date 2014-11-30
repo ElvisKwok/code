@@ -24,7 +24,7 @@
 #define POPULATION      20      /* 种群规模 */
 #define PC              0.9     /* 交配概率 */
 #define PM              0.01    /* 变异概率 */
-#define MAX_GA_ITER     1000    /* 终止条件：迭代次数 */
+#define MAX_GA_ITER     10000    /* 终止条件：迭代次数 */
 
 /*-----------------------------------------------变量声明----------------------------------------------*/
 struct point {
@@ -121,7 +121,7 @@ void init()
 double get_dist(int a[N])
 {
     int i;
-    double dist;
+    double dist = 0.0;
     for (i = 1; i < N; i++)
         dist += distance[a[i-1]][a[i]];
     dist += distance[a[N-1]][a[0]];
@@ -304,7 +304,7 @@ void init_group()
 int rws_ga(int a[POPULATION][N])
 {
     int i;
-    double random_p, prob[POPULATION], add_prob[POPULATION], sum, dist[POPULATION];
+    double random_p, prob[POPULATION], add_prob[POPULATION], sum = 0.0, dist[POPULATION];
     random_p = (double)rand() / RAND_MAX;
     for (i = 0; i < POPULATION; i++) {
         dist[i] = get_dist(a[i]);
@@ -321,6 +321,7 @@ int rws_ga(int a[POPULATION][N])
     for (i = 0; i < POPULATION; i++)
         if (random_p <= add_prob[i])
             return i;
+    return 0;
 }
 
 /* 计算并保存当前群落中的更优解 */
@@ -341,7 +342,7 @@ void best_ga(int a[POPULATION][N])
 void selection(int a[POPULATION][N])
 {
     best_ga(group);             /* 计算选择前的最优解 */
-    int i, j, selected;
+    int i, selected;
     for (i = 0; i < POPULATION; i++) {
         selected = rws_ga(group);
         assign_path(group[selected], group_survive[i]);
@@ -427,7 +428,6 @@ void tsp_ga()
 /*-----------------------------------------------main函数----------------------------------------------*/
 int main(int argc, char *argv[])
 {
-    int i;
     init();
     tsp_sa();
 
