@@ -40,7 +40,7 @@ void print_path(int tmp_path[N]);
 void assign_path(int from[N], int to[N]);
 void tsp_sa();
 
-/* rws 部分 */
+/* rws部分 */
 //void map();
 //int rws(int a[COUNT_P][N]);
 //void tsp_rws();
@@ -163,7 +163,7 @@ void tsp_sa()
     }
 }
 
-/* rws 部分 */
+/* rws部分 */
 //void map(int a[N])
 //{
 //    int i, j, k, tmp;
@@ -233,29 +233,112 @@ void tsp_sa()
 //    }
 //}
 
-#define population  20      /* 种群规模 */
-#define pc          0.9     /* 交配概率 */
-#define pm          0.01    /* 变异概率 */
-#define max_iter    1000    /* 终止条件：迭代次数 */
+#define POPULATION  20      /* 种群规模 */
+#define PC          0.9     /* 交配概率 */
+#define PM          0.01    /* 变异概率 */
+#define MAX_ITER    1000    /* 终止条件：迭代次数 */
 
 
 /* ga部分 */
-int tmp_path_ga[N];             /* ga方法的当前路径 */
-int best_path_ga[N];            /* ga方法的最优路径 */
-double tmp_dist_ga;             /* ga方法的当前路径的长度 */
-double best_dist_ga;            /* ga方法的最优路径的长度 */
+int tmp_path_ga[N];                 /* ga方法的当前路径 */
+int best_path_ga[N];                /* ga方法的最优路径 */
+double tmp_dist_ga;                 /* ga方法的当前路径的长度 */
+double best_dist_ga;                /* ga方法的最优路径的长度 */
+int group[POPULATION][N];           /* 选定的群体 */
+int group_survive[POPULATION][N];   /* 存活的种群 */
 
+void init_group();
+int rws(int a[POPULATION][N]);
+void assign_path(int from[N], int to[N]);
+void selection();
+void crossover();
+void tsp_ga();
 
-void adaptation()
+/* 初始化群体 */
+void init_group()
 {
+    int i, j, k, temp, flag;
+    for (i = 0; i < POPULATION; i++) {
+        /* 产生N-1个不同的数字 */
+        for (j = 1; j < N; ) {
+            temp = (rand() % (N-1)) + 1;
+            flag = 1;
+            for (k = 1; k < j; k++) {
+                if (group[i][k] == temp) {
+                    flag = 0;
+                    break;
+                }
+            }
+            if (flag == 1) {
+                group[i][j] = temp;
+                j++;
+            }
+        }
+    }
 }
 
-void selection()
+/* 选择的依据：适应度(轮盘赌) */
+int rws(int a[POPULATION][N])
 {
+    int i;
+    double random_p, prob[POPULATION], add_prob[POPULATION], sum, dist[POPULATION];
+    random_p = (double)rand() / RAND_MAX;
+    for (i = 0; i < POPULATION; i++) {
+        dist[i] = get_dist(p[i]);
+        sum += dist[i];
+    }
+
+    for (i = 0; i < POPULATION; i++)
+        prob[i] = (1 - (dist[i] / sum)) / (POPULATION - 1);
+
+    add_prob[0] = prob[0];
+    for (i = 1; i < POPULATION; i++)
+        add_prob[i] = add_prob[i-1] + prob[i];
+
+    for (i = 0; i < POPULATION; i++)
+        if (random_p <= add_prob[i])
+            return i;
 }
 
+/* 根据适应度选择存活的种群(群体=>种群) */
+void selection(int a[POPULATION][N])
+{
+    int i, j, selected;
+    for (i = 0; i < POPULATION; i++) {
+        selected = rws(group);
+        assign_path(group[selected], group_survive[i]);
+    }
+}
+
+/* 整数编码的常规交配法*/
+/* 种群group_survive => 新的群体group */
 void crossover()
 {
+    int i, j, t, k1, k2, k3;        /* k1为父代1搜索位置，k2为父代2搜索位置，k3为交配后的基因放置位置*/
+    int location = N/2;             /* 交配起始位置 */
+    for (i = 0; i < POPULATION/2; i++) {
+        /* POPULATION/2对个体(j, j+1)，两两交配 */
+        j = i * 2;
+        /* 前面部分直接复制 */
+        for (t = 0; t < location; t++) {
+            group[j][t] = survive[j][t];
+            group[j+1][t] = survive[j+1][t];
+        }
+        /* 产生子代1 */
+        for (k2 = 1, k3 = location; k2 < N && k3 < N; k3++) {
+            for (k1 = 1; k1 < location; k1++)
+                if (group_survive[j+1][k2] == group[j][k1])
+                    k2++;
+            group[j][k3] = group_survive[j+1][k2];
+        }
+        /* 产生子代2 */
+        for (k1 = 1, k3 = location; k1 < N && k3 < N; k3++) {
+            for (k2 = 1; k2 < location; k2++)
+                if (group_survive[j][k1] == group[j+1][k2])
+                    k1++;
+            group[j+1][k3] = group_survive[j][k1];
+        }
+    }
 }
 
 void mutation() 
@@ -279,7 +362,7 @@ int main(int argc, char *argv[])
     printf("模拟退火的最佳长度是：%lf\n", best_dist);
     printf("初始温度 = %lf, 温度衰减系数 = %lf\n", T_init, rate);
 
-/* rws 部分 */
+/* rws部分 */
 //    tsp_rws();
 //    printf("\n\n轮盘赌的最佳路径是:");
 //    for (i = 0; i < N; i++)

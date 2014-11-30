@@ -17,41 +17,7 @@ struct group  //染色体的结构
 //随机产生初试群
 void groupproduce()
 {
-    int i,j,t,k,flag;
-    for(i=0; i<num; i++) //初始化
-        for(j=0; j<cities; j++)
-            group[i].city[j]=-1;
-    srand((unsigned)time(NULL));
-    for(i=0; i<num; i++)
-    {
-        //产生10个不相同的数字
-        for(j=0; j<cities;)
-        {
-            t=rand()%cities;
-            flag=1;
-            for(k=0; k<j; k++)
-            {
-                if(group[i].city[k]==t)
-                {
-                    flag=0;
-                    break;
-                }
-            }
-            if(flag)
-            {
-                group[i].city[j]=t;
-                j++;
-            }
-        }
-    }
-    //打印种群基因
-    printf("初始的种群\n");
-    for(i=0; i<num; i++)
-    {
-        for(j=0; j<cities; j++)
-            printf("%4d",group[i].city[j]);
-        printf("\n");
-    }
+
 }
 //评价函数,找出最优染色体
 void pingjia()
