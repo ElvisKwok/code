@@ -109,7 +109,7 @@ int rws(int a[COUNT_P][N])
     double random_p, prob[COUNT_P], add_prob[COUNT_P], sum, dist[COUNT_P];
     random_p = (double)rand() / RAND_MAX;
     for (i = 0; i < COUNT_P; i++) {
-        dist[i] = get_dist(p[i]);
+        dist[i] = get_dist(a[i]);
         sum += dist[i];
     }
 
