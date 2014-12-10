@@ -15,7 +15,7 @@
 #define T_INIT          999999              /* 初始温度 */
 #define T_MIN           1                   /* 终止界限，当T<T_MIN时，停止搜索 */
 #define SA_ITER         20                  /* 每一个温度的迭代次数*/
-#define RATE_SA         0.90                /* 温度衰减系数 */
+#define RATE_SA         0.99                /* 温度衰减系数 */
 
 /* local_search部分 */
 //#define COUNT_P (N-1)*(N-2)/2
@@ -24,11 +24,9 @@
 #define POPULATION      20                  /* 种群规模 */
 #define PC              0.9                 /* 交配概率 */
 #define PM              0.01                /* 变异概率 */
-#define MAX_GA_ITER     10000                /* 终止条件：迭代次数 */
+#define MAX_GA_ITER     10000               /* 终止条件：迭代次数 */
 
 /* ga_sa_hybrid部分 */
-#define T_INIT          999999              /* 初始温度 */
-#define T_MIN           1                   /* 终止界限，当T<T_MIN时，停止搜索 */
 #define GA_SA_ITER      20                  /* 每一个温度的迭代次数*/
 #define RATE_GA_SA      0.90                /* 温度衰减系数 */
 
@@ -521,7 +519,10 @@ void tsp_ga_sa_hybrid()
 int main(int argc, char *argv[])
 {
     init();
+    time_t start1, start2, start3, end1, end2, end3;
+    time(&start1);
     tsp_sa();
+    time(&end1);
 
 /* rws部分 */
 //    tsp_rws();
@@ -531,8 +532,16 @@ int main(int argc, char *argv[])
 //    printf("%d\n", best_path_rws[0]);
 //    printf("轮盘赌的最佳长度是：%lf\n", best_dist_rws);
 
+    time(&start2);
     tsp_ga();
-    tsp_ga_sa_hybrid();
+    time(&end2);
 
+    time(&start3);
+    tsp_ga_sa_hybrid();
+    time(&end3);
+
+    printf("模拟退火：\t%f sec(s)\n", difftime(end1, start1));
+    printf("遗传算法：\t%f sec(s)\n", difftime(end2, start2));
+    printf("遗传算法改进：\t%f sec(s)\n", difftime(end3, start3));
     return 0;
 }
