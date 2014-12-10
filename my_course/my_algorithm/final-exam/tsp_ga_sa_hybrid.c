@@ -9,22 +9,28 @@
 #include <math.h>
 
 /*-----------------------------------------------常量声明----------------------------------------------*/
-#define N 20
+#define N               20
 
 /* sa部分 */
-#define T_init          999999  /* 初始温度 */
-#define T_min           1       /* 终止界限，当T<T_min时，停止搜索 */
-#define iter_times      20      /* 每一个温度的迭代次数*/
-#define rate            0.99    /* 温度衰减系数 */
+#define T_INIT          999999              /* 初始温度 */
+#define T_MIN           1                   /* 终止界限，当T<T_MIN时，停止搜索 */
+#define SA_ITER         20                  /* 每一个温度的迭代次数*/
+#define RATE_SA         0.90                /* 温度衰减系数 */
 
 /* local_search部分 */
 //#define COUNT_P (N-1)*(N-2)/2
 
 /* ga部分 */
-#define POPULATION      20      /* 种群规模 */
-#define PC              0.9     /* 交配概率 */
-#define PM              0.01    /* 变异概率 */
-#define MAX_GA_ITER     1000    /* 终止条件：迭代次数 */
+#define POPULATION      20                  /* 种群规模 */
+#define PC              0.9                 /* 交配概率 */
+#define PM              0.01                /* 变异概率 */
+#define MAX_GA_ITER     10000                /* 终止条件：迭代次数 */
+
+/* ga_sa_hybrid部分 */
+#define T_INIT          999999              /* 初始温度 */
+#define T_MIN           1                   /* 终止界限，当T<T_MIN时，停止搜索 */
+#define GA_SA_ITER      20                  /* 每一个温度的迭代次数*/
+#define RATE_GA_SA      0.90                /* 温度衰减系数 */
 
 /*-----------------------------------------------变量声明----------------------------------------------*/
 struct point {
@@ -32,26 +38,31 @@ struct point {
     double y;
 } point[N];
 
-double distance[N][N];          /* 保存欧式距离 */
+double distance[N][N];                      /* 保存欧式距离 */
 
 /* sa部分 */
-int tmp_path_sa[N];                /* 当前路径*/
-int best_path_sa[N];               /* 最优路径 */
-double tmp_dist_sa;                /* 当前路径的长度 */
-double best_dist_sa;               /* 最优路径的长度 */
+int tmp_path_sa[N];                         /* 当前路径*/
+int best_path_sa[N];                        /* 最优路径 */
+double tmp_dist_sa;                         /* 当前路径的长度 */
+double best_dist_sa;                        /* 最优路径的长度 */
 
 /* rws部分 */
-//int p[COUNT_P][N];              /* 保存映射 */
-//int tmp_path_rws[N];            /* rws方法的当前路径 */
-//int best_path_rws[N];           /* rws方法的最优路径 */
-//double tmp_dist_rws;            /* rws方法的当前路径的长度 */
-//double best_dist_rws;           /* rws方法的最优路径的长度 */
+//int p[COUNT_P][N];                        /* 保存映射 */
+//int tmp_path_rws[N];                      /* rws方法的当前路径 */
+//int best_path_rws[N];                     /* rws方法的最优路径 */
+//double tmp_dist_rws;                      /* rws方法的当前路径的长度 */
+//double best_dist_rws;                     /* rws方法的最优路径的长度 */
 
 /* ga部分 */
-int best_path_ga[N];                /* ga方法的最优路径 */
-double best_dist_ga;                /* ga方法的最优路径的长度 */
-int group[POPULATION][N];           /* 选定的群体 */
-int group_survive[POPULATION][N];   /* 选择后存活的种群 */
+int best_path_ga[N];                        /* ga方法的最优路径 */
+double best_dist_ga;                        /* ga方法的最优路径的长度 */
+int group[POPULATION][N];                   /* 选定的群体 */
+int group_survive[POPULATION][N];           /* 选择后存活的种群 */
+
+/* ga_sa_hybrid部分 */
+int best_path_ga_sa[N];                     /* ga_sa_hybrid方法的最优路径 */
+double best_dist_ga_sa;                     /* ga_sa_hybrid方法的最优路径的长度 */
+int group_ga_sa[POPULATION][N];             /* 选定的群体 */
 
 /*-----------------------------------------------函数声明----------------------------------------------*/
 void init();
@@ -63,22 +74,28 @@ void print_path(int tmp_path_sa[N]);
 void assign_path(int from[N], int to[N]);
 void tsp_sa();
 
-/* rws部分 */
-//void map();
-//int rws(int a[COUNT_P][N]);
-//void tsp_rws();
-
 /* ga部分 */
 void init_group(int a[POPULATION][N], double *dist);
-double get_dist(int a[N]);
+//double get_dist(int a[N]);
 int rws_ga(int a[POPULATION][N]);
-void assign_path(int from[N], int to[N]);
+//void assign_path(int from[N], int to[N]);
 void best_ga(int a[POPULATION][N], double *best_dist, int best_path[N]);
 void selection(int a[POPULATION][N], int survive[POPULATION][N], double *best_dist, int best_path[N]);
 void crossover(int from[POPULATION][N], int to[POPULATION][N], double *best_dist, int best_path[N]);
 void mutation(int a[POPULATION][N], double *best_dist, int best_path[N]);
 void tsp_ga();
 
+/* ga_sa_hybrid部分 */
+//void selection(int a[POPULATION][N], int survive[POPULATION][N], double *best_dist, int best_path[N]);
+//void crossover(int from[POPULATION][N], int to[POPULATION][N], double *best_dist, int best_path[N]);
+//void mutation(int a[POPULATION][N], double *best_dist, int best_path[N]);
+void sel_cros_mut(int from[POPULATION][N], double *best_dist, int best_path[N]);
+//double get_dist(int a[N]);
+double avg_dist(int a[POPULATION][N]);
+void assign_group(int from[POPULATION][N], int to[POPULATION][N]);
+void tsp_ga_sa_hybrid();
+
+/*-----------------------------------------------函数实现----------------------------------------------*/
 void init()
 {
     srand((unsigned)time(NULL));
@@ -166,13 +183,13 @@ void assign_path(int from[N], int to[N])
 void tsp_sa()
 {
     int i;
-    double T = T_init;
+    double T = T_INIT;
     double cur_dist, delta, rand_prob, accept_prob;
     int cur_path[N];
     assign_path(best_path_sa, cur_path);
     cur_dist = best_dist_sa;
-    while ( T > T_min) {
-        for (i = 0; i < iter_times; i++) {          /* 每一温度下的迭代次数iter_times */
+    while ( T > T_MIN) {
+        for (i = 0; i < SA_ITER; i++) {          /* 每一温度下的迭代次数SA_ITER */
             newpath(tmp_path_sa);
             tmp_dist_sa = get_dist(tmp_path_sa);
 //            print_path(tmp_path_sa);                   /* 打印当前路径、路径长度 */
@@ -194,14 +211,14 @@ void tsp_sa()
             best_dist_sa = cur_dist;
             assign_path(cur_path, best_path_sa);
         }
-        T = T * rate;                               /* 降低温度 */
+        T = T * RATE_SA;                               /* 降低温度 */
     }
     printf("\n\n模拟退火的最佳路径是：");
     for (i = 0; i < N; i++)
         printf("%d->", best_path_sa[i]);
     printf("%d\n", best_path_sa[0]);
     printf("模拟退火的最佳长度是：%lf\n", best_dist_sa);
-    printf("初始温度 = %d, 温度衰减系数 = %lf\n", T_init, rate);
+    printf("初始温度 = %d, 温度衰减系数 = %lf\n", T_INIT, RATE_SA);
 }
 
 /*-----------------------------------------------rws部分----------------------------------------------*/
@@ -426,6 +443,79 @@ void tsp_ga()
     printf("迭代次数是：%d\n", MAX_GA_ITER);
 }
 
+/*-----------------------------------------------ga_sa_hybrid部分----------------------------------------------*/
+/* 一次选择、交配和变异操作 */
+void sel_cros_mut(int from[POPULATION][N], double *best_dist, int best_path[N])
+{
+    int temp_survive[POPULATION][N];
+    selection(from, temp_survive, &best_dist_ga_sa, best_path_ga_sa);
+    crossover(temp_survive, from, &best_dist_ga, best_path_ga_sa);
+    mutation(from, &best_dist_ga_sa, best_path_ga_sa);
+}
+
+/* 计算种群的平均长度 */
+double avg_dist(int a[POPULATION][N])
+{
+    int i;
+    double sum = 0;
+    for (i = 0; i < POPULATION; i++) 
+        sum += get_dist(a[i]);
+    return sum / POPULATION;
+}
+
+/* 种群复制 */
+void assign_group(int from[POPULATION][N], int to[POPULATION][N])
+{
+    int i, j;
+    for (i = 0; i < POPULATION; i++) 
+        for (j = 0; j < N; j++) 
+            to[i][j] = from[i][j];
+}
+
+/* 结合遗传算法&&模拟退火解决tsp问题 */
+void tsp_ga_sa_hybrid()
+{
+    init_group(group_ga_sa, &best_dist_ga_sa);
+
+    int i, tmp_group[POPULATION][N], cur_group[POPULATION][N];
+    double T = T_INIT;
+    double cur_avg, tmp_avg, best_avg, delta, rand_prob, accept_prob;
+    assign_group(group_ga_sa, cur_group);
+    assign_group(group_ga_sa, tmp_group);
+    cur_avg = best_avg = avg_dist(group_ga_sa);
+    while (T > T_MIN) {
+        for (i = 0; i < GA_SA_ITER; i++) {
+            sel_cros_mut(tmp_group, &best_dist_ga_sa, best_path_ga_sa);      /* 遗传一代, 暂存起来 */
+            tmp_avg = avg_dist(tmp_group);
+            delta = tmp_avg - cur_avg;
+            if (delta < 0) {                                /* 遇到“更优种群“（平均长度较短） */
+                assign_group(tmp_group, cur_group);
+                cur_avg = tmp_avg;
+            }
+            else {                                          /* 否则，按照metropolis准则接受“差种群”(平均长度较长) */
+                rand_prob = (double)rand() / RAND_MAX;      /* Random(0, 1) */
+                accept_prob = exp((-delta) / T);
+                if (accept_prob < 1 && accept_prob > rand_prob) {
+                    assign_group(tmp_group, cur_group);
+                    cur_avg = tmp_avg;
+                }
+            }
+        }
+        if (cur_avg < best_avg) { 
+            best_avg = cur_avg;
+            assign_group(cur_group, group_ga_sa);
+        }
+        T = T * RATE_GA_SA;                                 /* 降温 */
+    }
+    printf("\n\n遗传算法改进后的最佳路径是：");
+    for (i = 0; i < N; i++)
+        printf("%d->", best_path_ga_sa[i]);
+    printf("%d\n", best_path_ga_sa[0]);
+    printf("遗传算法改进后的最佳长度是：%lf\n", best_dist_ga_sa);
+    printf("初始温度 = %d, 温度衰减系数 = %lf\n", T_INIT, RATE_GA_SA);
+}
+
+
 
 /*-----------------------------------------------main函数----------------------------------------------*/
 int main(int argc, char *argv[])
@@ -442,6 +532,7 @@ int main(int argc, char *argv[])
 //    printf("轮盘赌的最佳长度是：%lf\n", best_dist_rws);
 
     tsp_ga();
+    tsp_ga_sa_hybrid();
 
     return 0;
 }
