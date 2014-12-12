@@ -12,23 +12,23 @@
 #define N               20
 
 /* sa部分 */
-#define T_INIT          999999              /* 初始温度 */
+#define T_INIT          100000              /* 初始温度 */
 #define T_MIN           1                   /* 终止界限，当T<T_MIN时，停止搜索 */
-#define SA_ITER         20                  /* 每一个温度的迭代次数*/
-#define RATE_SA         0.99                /* 温度衰减系数 */
+#define SA_ITER         10                  /* 每一个温度的迭代次数*/
+#define RATE_SA         0.90                /* 温度衰减系数 */
 
 /* local_search部分 */
 //#define COUNT_P (N-1)*(N-2)/2
 
 /* ga部分 */
-#define POPULATION      20                  /* 种群规模 */
+#define POPULATION      10                  /* 种群规模 */
 #define PC              0.9                 /* 交配概率 */
 #define PM              0.01                /* 变异概率 */
-#define MAX_GA_ITER     10000               /* 终止条件：迭代次数 */
+#define MAX_GA_ITER     1000               /* 终止条件：迭代次数 */
 
 /* ga_sa_hybrid部分 */
-#define GA_SA_ITER      20                  /* 每一个温度的迭代次数*/
-#define RATE_GA_SA      0.90                /* 温度衰减系数 */
+#define GA_SA_ITER      5                  /* 每一个温度的迭代次数*/
+#define RATE_GA_SA      0.99               /* 温度衰减系数 */
 
 /*-----------------------------------------------变量声明----------------------------------------------*/
 struct point {
@@ -211,12 +211,12 @@ void tsp_sa()
         }
         T = T * RATE_SA;                               /* 降低温度 */
     }
-    printf("\n\n模拟退火的最佳路径是：");
+    printf("\n\n【模拟退火】\n最佳路径是：");
     for (i = 0; i < N; i++)
         printf("%d->", best_path_sa[i]);
     printf("%d\n", best_path_sa[0]);
-    printf("模拟退火的最佳长度是：%lf\n", best_dist_sa);
-    printf("初始温度 = %d, 温度衰减系数 = %lf\n", T_INIT, RATE_SA);
+    printf("最佳长度是：%lf\n", best_dist_sa);
+//    printf("初始温度 = %d, 温度衰减系数 = %lf\n", T_INIT, RATE_SA);
 }
 
 /*-----------------------------------------------rws部分----------------------------------------------*/
@@ -433,12 +433,12 @@ void tsp_ga()
         crossover(group_survive, group, &best_dist_ga, best_path_ga);
         mutation(group, &best_dist_ga, best_path_ga);
     }
-    printf("\n\n遗传算法的最佳路径是：");
+    printf("\n\n【遗传算法】\n最佳路径是：");
     for (i = 0; i < N; i++)
         printf("%d->", best_path_ga[i]);
     printf("%d\n", best_path_ga[0]);
-    printf("遗传算法的最佳长度是：%lf\n", best_dist_ga);
-    printf("迭代次数是：%d\n", MAX_GA_ITER);
+    printf("最佳长度是：%lf\n", best_dist_ga);
+//    printf("迭代次数是：%d\n", MAX_GA_ITER);
 }
 
 /*-----------------------------------------------ga_sa_hybrid部分----------------------------------------------*/
@@ -447,7 +447,7 @@ void sel_cros_mut(int from[POPULATION][N], double *best_dist, int best_path[N])
 {
     int temp_survive[POPULATION][N];
     selection(from, temp_survive, &best_dist_ga_sa, best_path_ga_sa);
-    crossover(temp_survive, from, &best_dist_ga, best_path_ga_sa);
+    crossover(temp_survive, from, &best_dist_ga_sa, best_path_ga_sa);
     mutation(from, &best_dist_ga_sa, best_path_ga_sa);
 }
 
@@ -483,6 +483,7 @@ void tsp_ga_sa_hybrid()
     cur_avg = best_avg = avg_dist(group_ga_sa);
     while (T > T_MIN) {
         for (i = 0; i < GA_SA_ITER; i++) {
+            assign_group(group_ga_sa, cur_group);
             sel_cros_mut(tmp_group, &best_dist_ga_sa, best_path_ga_sa);      /* 遗传一代, 暂存起来 */
             tmp_avg = avg_dist(tmp_group);
             delta = tmp_avg - cur_avg;
@@ -505,12 +506,12 @@ void tsp_ga_sa_hybrid()
         }
         T = T * RATE_GA_SA;                                 /* 降温 */
     }
-    printf("\n\n遗传算法改进后的最佳路径是：");
+    printf("\n\n【遗传算法改进】\n最佳路径是：");
     for (i = 0; i < N; i++)
         printf("%d->", best_path_ga_sa[i]);
     printf("%d\n", best_path_ga_sa[0]);
-    printf("遗传算法改进后的最佳长度是：%lf\n", best_dist_ga_sa);
-    printf("初始温度 = %d, 温度衰减系数 = %lf\n", T_INIT, RATE_GA_SA);
+    printf("最佳长度是：%lf\n", best_dist_ga_sa);
+//    printf("初始温度 = %d, 温度衰减系数 = %lf\n", T_INIT, RATE_GA_SA);
 }
 
 
@@ -520,9 +521,9 @@ int main(int argc, char *argv[])
 {
     init();
     time_t start1, start2, start3, end1, end2, end3;
-    time(&start1);
+//    time(&start1);
     tsp_sa();
-    time(&end1);
+//    time(&end1);
 
 /* rws部分 */
 //    tsp_rws();
@@ -532,16 +533,22 @@ int main(int argc, char *argv[])
 //    printf("%d\n", best_path_rws[0]);
 //    printf("轮盘赌的最佳长度是：%lf\n", best_dist_rws);
 
-    time(&start2);
+//    time(&start2);
     tsp_ga();
-    time(&end2);
+//    time(&end2);
 
-    time(&start3);
+//    time(&start3);
     tsp_ga_sa_hybrid();
-    time(&end3);
+//    time(&end3);
+    
+    printf("%lf\t%lf\t%lf\n", best_dist_ga_sa, best_dist_ga, best_dist_sa);
+    if (best_dist_ga_sa < best_dist_ga)
+        printf("g\n");
+    if (best_dist_ga_sa < best_dist_sa)
+        printf("s\n");
 
-    printf("模拟退火：\t%f sec(s)\n", difftime(end1, start1));
-    printf("遗传算法：\t%f sec(s)\n", difftime(end2, start2));
-    printf("遗传算法改进：\t%f sec(s)\n", difftime(end3, start3));
+    //    printf("模拟退火：\t%f sec(s)\n", difftime(end1, start1));
+    //    printf("遗传算法：\t%f sec(s)\n", difftime(end2, start2));
+    //    printf("遗传算法改进：\t%f sec(s)\n", difftime(end3, start3));
     return 0;
 }

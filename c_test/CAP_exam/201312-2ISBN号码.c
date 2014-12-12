@@ -23,7 +23,9 @@ void ISBN(char *str)
 int main(int argc, char *argv[]) 
 {
     char str[13];
-    gets(str);
+    int i;
+    for (i = 0; i < 13; i++)
+        scanf("%c", &str[i]);
     ISBN(str);
     return 0;
 }
