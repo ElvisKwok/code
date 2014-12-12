@@ -24,11 +24,11 @@
 #define POPULATION      10                  /* 种群规模 */
 #define PC              0.9                 /* 交配概率 */
 #define PM              0.01                /* 变异概率 */
-#define MAX_GA_ITER     1000               /* 终止条件：迭代次数 */
+#define MAX_GA_ITER     5000                /* 终止条件：迭代次数 */
 
 /* ga_sa_hybrid部分 */
-#define GA_SA_ITER      5                  /* 每一个温度的迭代次数*/
-#define RATE_GA_SA      0.99               /* 温度衰减系数 */
+#define GA_SA_ITER      1                   /* 每一个温度的迭代次数*/
+#define RATE_GA_SA      0.999               /* 温度衰减系数 */
 
 /*-----------------------------------------------变量声明----------------------------------------------*/
 struct point {
@@ -541,12 +541,12 @@ int main(int argc, char *argv[])
     tsp_ga_sa_hybrid();
 //    time(&end3);
     
-    printf("%lf\t%lf\t%lf\n", best_dist_ga_sa, best_dist_ga, best_dist_sa);
+    //printf("%lf\t%lf\t%lf\n", best_dist_ga_sa, best_dist_ga, best_dist_sa);
     if (best_dist_ga_sa < best_dist_ga)
         printf("g\n");
     if (best_dist_ga_sa < best_dist_sa)
         printf("s\n");
-
+    printf("\n");
     //    printf("模拟退火：\t%f sec(s)\n", difftime(end1, start1));
     //    printf("遗传算法：\t%f sec(s)\n", difftime(end2, start2));
     //    printf("遗传算法改进：\t%f sec(s)\n", difftime(end3, start3));
