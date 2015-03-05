@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/elvis/Desktop/test'
+let g:netrw_dirhist_2='/Users/elvis/Library/Internet Plug-Ins/aliedit.plugin'
+let g:netrw_dirhist_3='/Users/elvis/.vim'
+let g:netrw_dirhist_4='/Users/elvis/.Trash'
+let g:netrw_dirhist_5='/Users/elvis'
+let g:netrw_dirhist_6='/Users/elvis/Desktop/code/my_git/git_test2/_layouts'
+let g:netrw_dirhist_7='/Users/elvis/Desktop/code/my_git/blog/beiyuu.github.com_backup/_layouts'
+let g:netrw_dirhist_8='/Users/elvis/Desktop/code/my_git/blog/ElvisKwok.github.io/_posts/blog'
