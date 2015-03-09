@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8 
 
-def hello():
-    print "hello world!"
+#import fileinput, random
+#fortunes = list(fileinput.input())
+#print random.choice(fortunes)
 
-def test():
-    hello()
-
-if __name__ == '__main__':
-    test()
+import fileinput
+print fileinput.input()
