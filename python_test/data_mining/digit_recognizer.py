@@ -71,7 +71,7 @@ def saveResult(result, csvName):
 from sklearn.neighbors import KNeighborsClassifier
 def knnClassify(trainData, trainLabel, testData):
     knnClf = KNeighborsClassifier(n_neighbors=5) # default: k=5
-    knnClf.fit(trainData,ravel(trainLabel))
+    knnClf.fit(trainData,ravel(trainLabel)) # numpy.ravel将数组展平，变为一行
     testLabel = knnClf.predict(testData)
     saveResult(testLabel, 'sklearn_knn_Result.csv')
     return testLabel
