@@ -11,7 +11,7 @@ def toInt(array):
     newArray = zeros((m,n))
     for i in xrange(m):
         for j in xrange(n):
-            newArray[i,j] = int(array[i,j])
+            newArray[i,j] = int(array[i,j]) # array[i,j]是矩阵i行j列
     return newArray
 
 def nomalizing(array):
@@ -55,7 +55,7 @@ def loadTestResult():
             l.append(line)      # 28001*2
     l.remove(l[0])
     label = array(l)
-    return nomalizing(toInt(label[:,1])) # 1*28000
+    return toInt(label[:,1]) # 1*28000
 
 # result是结果列表
 # csvName是存放结果的csv文件名
@@ -84,6 +84,7 @@ def svcClassify(trainData, trainLabel, testData):
     svcClf.fit(trainData, ravel(trainLabel))
     testLabel = svcClf.predict(testData)
     saveResult(testLabel, 'sklearn_SVC_C=5.0_Result.csv')
+    return testLabel
 
 # 调用scikit的朴素贝叶斯算法包，GaussianNB和MultinomialNB
 from sklearn.naive_bayes import GaussianNB # nb for 高斯分布的数据
@@ -109,15 +110,15 @@ def digitRecogition():
     testData = loadTestData()
 
     result1 = knnClassify(trainData, trainLabel, testData)
-    #result2 = svcClassify(trainData, trainLabel, testData)
-    #result3 = GaussianNBClassify(trainData, trainLabel, testData)
-    #result4 = MultinomialNBClassify(trainData, trainLabel, testData)
+    result2 = svcClassify(trainData, trainLabel, testData)
+    result3 = GaussianNBClassify(trainData, trainLabel, testData)
+    result4 = MultinomialNBClassify(trainData, trainLabel, testData)
 
     resultGiven = loadTestResult()  # benchmark
     m, n = shape(testData)
     different = 0
     for i in xrange(m):
-        if result1[i] != resultGiven[0,i]:
+        if result2[i] != resultGiven[0,i]:
             different += 1
     print different
 
