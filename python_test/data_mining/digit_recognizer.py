@@ -62,9 +62,12 @@ def loadTestResult():
 def saveResult(result, csvName):
     with open(csvName, 'wb') as myFile: 
         myWriter = csv.writer(myFile)
-        for i in result:
+        myWriter.writerow(['ImageId', 'Label'])
+        ind = range(len(result))
+        for i,val in zip(ind, result):
             tmp = []
-            tmp.append(i)
+            tmp.append(i+1)
+            tmp.append(int(float(val)))
             myWriter.writerow(tmp)
 
 # 调用scikit的knn算法包
