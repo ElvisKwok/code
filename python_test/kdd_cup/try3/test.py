@@ -15,7 +15,7 @@ def toInt(array):
 
 def loadTrainData():
     l = []
-    with open('enrollment_train_num_log_sum_event_specific.csv') as file:
+    with open('enrollment_train_num_log_sum_time_delta.csv') as file:
         lines = csv.reader(file)
         for line in lines:
             l.append(line)      # 42001*785
@@ -38,7 +38,7 @@ def loadTrainData():
 
 def loadTestData():
     l = []
-    with open('enrollment_test_num_log_sum_event_specific.csv') as file:
+    with open('enrollment_test_num_log_sum_time_delta.csv') as file:
         lines = csv.reader(file)
         for line in lines:
             l.append(line)      # 42001*785
@@ -121,9 +121,9 @@ def kdd():
     testData, test_enrollment_id = loadTestData()
 
     #result1 = knnClassify(test_enrollment_id, trainData, trainLabel, testData)
-    result2 = svcClassify(test_enrollment_id, trainData, trainLabel, testData)
+    #result2 = svcClassify(test_enrollment_id, trainData, trainLabel, testData)
     #result3 = GaussianNBClassify(test_enrollment_id, trainData, trainLabel, testData)
-    #result4 = MultinomialNBClassify(test_enrollment_id, trainData, trainLabel, testData)
+    result4 = MultinomialNBClassify(test_enrollment_id, trainData, trainLabel, testData)
     #result5 = RandomForestClassify(test_enrollment_id, trainData, trainLabel, testData)
 
 kdd()
