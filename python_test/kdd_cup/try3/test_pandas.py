@@ -2,52 +2,21 @@
 # coding: utf-8
 
 from numpy import *
+import pandas as pd
 import csv
 
-def toInt(array):
-    array = mat(array)
-    m, n = shape(array)
-    newArray = zeros((m,n))
-    for i in xrange(m):
-        for j in xrange(n):
-            newArray[i,j] = int(array[i,j])
-    return newArray
-
 def loadTrainData():
-    l = []
-    with open('enrollment_train_num_log_sum_time_delta.csv') as file:
-        lines = csv.reader(file)
-        for line in lines:
-            l.append(line)      # 42001*785
-    l.remove(l[0])
-    l = array(l)
-    enrollment_id = l[:,0]          # extract first column，transpose to a row 1*42000
-    data = l[:,1:]          # extract the rest column
-
-    truth = []
-    with open('truth_train.csv') as file2:
-        lines = csv.reader(file2)
-        for line in lines:
-            truth.append(line)      # 42001*785
-    truth = array(truth)
-    label = truth[:,1:]          # extract the rest column
-
-    return toInt(data), label 
-    # label 1*420000; data 42000*784
-
+    feature_raw=pd.read_csv('enrollment_train_num_log_sum_time_delta.csv',header=0) #header=0,将第0行作为header
+    feature = feature_raw.values[:,1:]
+    label_raw=pd.read_csv('truth_train.csv', header=None)
+    label = label_raw.values[:,1:]
+    return feature, label
 
 def loadTestData():
-    l = []
-    with open('enrollment_test_num_log_sum_time_delta.csv') as file:
-        lines = csv.reader(file)
-        for line in lines:
-            l.append(line)      # 42001*785
-    l.remove(l[0])
-    l = array(l)
-    enrollment_id = l[:,0]          # extract first column，transpose to a row 1*42000
-    data = l[:,1:]          # extract the rest column
-    return toInt(data), enrollment_id
-    # label 1*420000; data 42000*784
+    feature_raw=pd.read_csv('enrollment_test_num_log_sum_time_delta.csv',header=0)
+    feature = feature_raw.values[:,1:]
+    enrollment_id = feature_raw.values[:,0]
+    return feature, enrollment_id
 
 # result是结果列表
 # csvName是存放结果的csv文件名
@@ -55,17 +24,12 @@ def saveResult(enrollment_id, result, csvName):
     with open(csvName, 'wb') as myFile: 
         myWriter = csv.writer(myFile)
         myWriter.writerows(zip(enrollment_id, result))
-#        for i, j in zip(enrollment_id, result):
-#            tmp = []
-#            tmp.append(i)
-#            tmp.append(j)
-#            myWriter.writerow(tmp)
-
 
 # 调用scikit的knn算法包
 from sklearn.neighbors import KNeighborsClassifier
 def knnClassify(enrollment_id, trainData, trainLabel, testData):
     knnClf = KNeighborsClassifier(n_neighbors=5) # default: k=5
+    #knnClf.fit(trainData,trainLabel) 
     knnClf.fit(trainData,ravel(trainLabel)) # numpy.ravel将数组展平，变为一行
     testLabel = knnClf.predict(testData)
     saveResult(enrollment_id, testLabel, 'sklearn_knn_Result.csv')
@@ -76,7 +40,7 @@ from sklearn import svm
 def svcClassify(enrollment_id, trainData, trainLabel, testData):
     svcClf = svm.SVC(C=1.0) # default C=1.0, kernel='rbf'
     # provided kernel: 'linear', 'poly', 'rbf', 'sigmoid', 'precomputed'
-    svcClf.fit(trainData, ravel(trainLabel))
+    svcClf.fit(trainData, trainLabel)
     testLabel = svcClf.predict(testData)
     saveResult(enrollment_id, testLabel, 'sklearn_SVC_C=5.0_Result.csv')
     return testLabel
@@ -85,7 +49,7 @@ def svcClassify(enrollment_id, trainData, trainLabel, testData):
 from sklearn.naive_bayes import GaussianNB # nb for 高斯分布的数据
 def GaussianNBClassify(enrollment_id, trainData, trainLabel, testData):
     nbClf = GaussianNB()
-    nbClf.fit(trainData, ravel(trainLabel))
+    nbClf.fit(trainData, trainLabel)
     testLabel = nbClf.predict(testData)
     saveResult(enrollment_id, testLabel, 'sklearn_GaussianNB_Result.csv')
     return testLabel
@@ -103,7 +67,7 @@ def MultinomialNBClassify(enrollment_id, trainData, trainLabel, testData):
 from sklearn.ensemble import RandomForestClassifier
 def RandomForestClassify(enrollment_id, trainData, trainLabel, testData):
     clf = RandomForestClassifier(n_estimators=10)
-    clf.fit(trainData, ravel(trainLabel))
+    clf.fit(trainData, trainLabel)
     testLabel = clf.predict(testData)
     saveResult(enrollment_id, testLabel, 'sklearn_RandomForest_Result.csv')
     return testLabel
@@ -115,7 +79,7 @@ def kdd():
     #result1 = knnClassify(test_enrollment_id, trainData, trainLabel, testData)
     #result2 = svcClassify(test_enrollment_id, trainData, trainLabel, testData)
     #result3 = GaussianNBClassify(test_enrollment_id, trainData, trainLabel, testData)
-    #result4 = MultinomialNBClassify(test_enrollment_id, trainData, trainLabel, testData)
-    result5 = RandomForestClassify(test_enrollment_id, trainData, trainLabel, testData)
+    result4 = MultinomialNBClassify(test_enrollment_id, trainData, trainLabel, testData)
+    #result5 = RandomForestClassify(test_enrollment_id, trainData, trainLabel, testData)
 
 kdd()
