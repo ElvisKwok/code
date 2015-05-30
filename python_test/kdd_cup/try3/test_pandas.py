@@ -6,14 +6,14 @@ import pandas as pd
 import csv
 
 def loadTrainData():
-    feature_raw=pd.read_csv('enrollment_train_num_log_sum_time_delta.csv',header=0) #header=0,将第0行作为header
+    feature_raw=pd.read_csv('enrollment_train_num_log_sum_time_delta_aver_source.csv',header=0) #header=0,将第0行作为header
     feature = feature_raw.values[:,1:]
     label_raw=pd.read_csv('truth_train.csv', header=None)
     label = label_raw.values[:,1:]
     return feature, label
 
 def loadTestData():
-    feature_raw=pd.read_csv('enrollment_test_num_log_sum_time_delta.csv',header=0)
+    feature_raw=pd.read_csv('enrollment_test_num_log_sum_time_delta_aver_source.csv',header=0)
     feature = feature_raw.values[:,1:]
     enrollment_id = feature_raw.values[:,0]
     return feature, enrollment_id
@@ -40,7 +40,7 @@ from sklearn import svm
 def svcClassify(enrollment_id, trainData, trainLabel, testData):
     svcClf = svm.SVC(C=1.0) # default C=1.0, kernel='rbf'
     # provided kernel: 'linear', 'poly', 'rbf', 'sigmoid', 'precomputed'
-    svcClf.fit(trainData, trainLabel)
+    svcClf.fit(trainData, ravel(trainLabel))
     testLabel = svcClf.predict(testData)
     saveResult(enrollment_id, testLabel, 'sklearn_SVC_C=5.0_Result.csv')
     return testLabel
@@ -49,7 +49,7 @@ def svcClassify(enrollment_id, trainData, trainLabel, testData):
 from sklearn.naive_bayes import GaussianNB # nb for 高斯分布的数据
 def GaussianNBClassify(enrollment_id, trainData, trainLabel, testData):
     nbClf = GaussianNB()
-    nbClf.fit(trainData, trainLabel)
+    nbClf.fit(trainData, ravel(trainLabel))
     testLabel = nbClf.predict(testData)
     saveResult(enrollment_id, testLabel, 'sklearn_GaussianNB_Result.csv')
     return testLabel
@@ -67,7 +67,7 @@ def MultinomialNBClassify(enrollment_id, trainData, trainLabel, testData):
 from sklearn.ensemble import RandomForestClassifier
 def RandomForestClassify(enrollment_id, trainData, trainLabel, testData):
     clf = RandomForestClassifier(n_estimators=10)
-    clf.fit(trainData, trainLabel)
+    clf.fit(trainData, ravel(trainLabel))
     testLabel = clf.predict(testData)
     saveResult(enrollment_id, testLabel, 'sklearn_RandomForest_Result.csv')
     return testLabel
