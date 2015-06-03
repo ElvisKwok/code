@@ -1,625 +1,605 @@
-激活Internet连接 (服务器和已建立连接的)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
-tcp        0      0 127.0.0.1:5940          0.0.0.0:*               LISTEN      1647/teamviewerd
-tcp        0      0 127.0.0.1:53            0.0.0.0:*               LISTEN      1605/dnsmasq    
-tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      839/cupsd       
-tcp        0      0 172.18.219.26:34053     183.60.90.116:80        ESTABLISHED 29152/firefox   
-tcp        0      1 172.18.219.26:53387     183.232.22.49:80        FIN_WAIT1   -               
-tcp        0      1 172.18.219.26:53588     183.232.22.49:80        FIN_WAIT1   -               
-tcp        0      1 172.18.219.26:36259     183.232.22.34:80        FIN_WAIT1   -               
-tcp        0      0 172.18.219.26:44438     42.121.125.247:80       ESTABLISHED 29152/firefox   
-tcp        0      1 172.18.219.26:55085     111.13.100.99:80        FIN_WAIT1   -               
-tcp        0      0 172.18.219.26:56454     122.224.51.144:80       TIME_WAIT   -               
-tcp        0      0 172.18.219.26:53795     23.33.55.145:80         TIME_WAIT   -               
-tcp        0      1 172.18.219.26:52876     61.135.185.179:80       FIN_WAIT1   -               
-tcp        0      0 172.18.219.26:44428     42.121.125.247:80       ESTABLISHED 29152/firefox   
-tcp        0      0 172.18.219.26:51409     223.82.136.250:80       TIME_WAIT   -               
-tcp        0      1 172.18.219.26:57541     123.125.114.59:80       FIN_WAIT1   -               
-tcp        0      1 172.18.219.26:53400     183.232.22.49:80        FIN_WAIT1   -               
-tcp        0      1 172.18.219.26:57536     123.125.114.59:80       FIN_WAIT1   -               
-tcp        0      0 172.18.219.26:45187     91.189.89.22:443        ESTABLISHED 2181/python     
-tcp        0      0 127.0.0.1:41255         127.0.0.1:5940          ESTABLISHED 1826/c:\TeamViewer\
-tcp        0      0 172.18.219.26:34184     183.232.31.48:80        ESTABLISHED 29152/firefox   
-tcp        0      1 172.18.219.26:54677     111.13.101.76:80        FIN_WAIT1   -               
-tcp        0      0 172.18.219.26:56769     222.186.57.24:80        TIME_WAIT   -               
-tcp        0      1 172.18.219.26:47054     111.13.101.74:80        FIN_WAIT1   -               
-tcp        0      0 172.18.219.26:56459     122.224.51.144:80       TIME_WAIT   -               
-tcp        0      1 172.18.219.26:53395     183.232.22.49:80        FIN_WAIT1   -               
-tcp        0      0 172.18.219.26:34183     183.232.31.48:80        ESTABLISHED 29152/firefox   
-tcp        0      1 172.18.219.26:33797     183.232.22.40:80        FIN_WAIT1   -               
-tcp        0      0 172.18.219.26:44427     42.121.125.247:80       ESTABLISHED 29152/firefox   
-tcp        0      0 172.18.219.26:44437     42.121.125.247:80       ESTABLISHED 29152/firefox   
-tcp        0      1 172.18.219.26:53343     183.232.22.49:80        FIN_WAIT1   -               
-tcp        0      1 172.18.219.26:41721     111.13.100.67:80        FIN_WAIT1   -               
-tcp        0      1 172.18.219.26:37617     123.125.112.115:80      FIN_WAIT1   -               
-tcp        0      1 172.18.219.26:53582     183.232.22.49:80        FIN_WAIT1   -               
-tcp        0      0 127.0.0.1:5940          127.0.0.1:41255         ESTABLISHED 1647/teamviewerd
-tcp        0      0 172.18.219.26:34052     183.60.90.116:80        ESTABLISHED 29152/firefox   
-tcp        0      0 172.18.219.26:56455     122.224.51.144:80       TIME_WAIT   -               
-tcp        0      1 172.18.219.26:57533     123.125.114.59:80       FIN_WAIT1   -               
-tcp        0      0 172.18.219.26:51317     223.82.136.250:80       TIME_WAIT   -               
-tcp        0      0 172.18.219.26:57163     64.95.97.21:5938        ESTABLISHED 1647/teamviewerd
-tcp        0      0 172.18.219.26:56461     122.224.51.144:80       TIME_WAIT   -               
-tcp        0      0 172.18.219.26:56460     122.224.51.144:80       TIME_WAIT   -               
-tcp        0      1 172.18.219.26:33798     183.232.22.40:80        FIN_WAIT1   -               
-tcp        1      0 172.18.219.26:60243     91.189.94.25:80         CLOSE_WAIT  2077/ubuntu-geoip-p
-tcp        0      0 172.18.219.26:56456     122.224.51.144:80       TIME_WAIT   -               
-tcp        0      0 172.18.219.26:53797     23.33.55.145:80         TIME_WAIT   -               
-tcp        0      1 172.18.219.26:53549     183.232.22.49:80        FIN_WAIT1   -               
-tcp6       0      0 ::1:631                 :::*                    LISTEN      839/cupsd       
-udp        0      0 0.0.0.0:5353            0.0.0.0:*                           789/avahi-daemon: r
-udp        0      0 0.0.0.0:32063           0.0.0.0:*                           1605/dnsmasq    
-udp        0      0 127.0.0.1:53            0.0.0.0:*                           1605/dnsmasq    
-udp        0      0 0.0.0.0:68              0.0.0.0:*                           1399/dhclient   
-udp        0      0 0.0.0.0:59720           0.0.0.0:*                           789/avahi-daemon: r
-udp6       0      0 :::5353                 :::*                                789/avahi-daemon: r
-udp6       0      0 :::59804                :::*                                789/avahi-daemon: r
-活跃的UNIX域套接字 (服务器和已建立连接的)
-Proto RefCnt Flags       Type       State         I-Node   PID/Program name    路径
-unix  2      [ ACC ]     流        LISTENING     11763    1766/gnome-session  @/tmp/.ICE-unix/1766
-unix  17     [ ]         数据报                10260    555/rsyslogd        /dev/log
-unix  2      [ ACC ]     流        LISTENING     10630    1139/X              @/tmp/.X11-unix/X0
-unix  2      [ ACC ]     SEQPACKET  LISTENING     9508     511/udevd           /run/udev/control
-unix  2      [ ACC ]     流        LISTENING     552      1142/pulseaudio     /var/run/pulse/native
-unix  2      [ ACC ]     流        LISTENING     554      1142/pulseaudio     /var/run/pulse/dbus-socket
-unix  2      [ ACC ]     流        LISTENING     9532     587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  2      [ ACC ]     流        LISTENING     10631    1139/X              /tmp/.X11-unix/X0
-unix  2      [ ACC ]     流        LISTENING     12736    1755/gnome-keyring- /tmp/keyring-36MhCu/control
-unix  2      [ ACC ]     流        LISTENING     14051    1805/ssh-agent      /tmp/ssh-byZyuXzF1766/agent.1766
-unix  2      [ ACC ]     流        LISTENING     11764    1766/gnome-session  /tmp/.ICE-unix/1766
-unix  2      [ ACC ]     流        LISTENING     12813    1755/gnome-keyring- /tmp/keyring-36MhCu/gpg
-unix  2      [ ACC ]     流        LISTENING     11791    1755/gnome-keyring- /tmp/keyring-36MhCu/ssh
-unix  2      [ ACC ]     流        LISTENING     14082    1755/gnome-keyring- /tmp/keyring-36MhCu/pkcs11
-unix  2      [ ACC ]     流        LISTENING     10595    1124/acpid          /var/run/acpid.socket
-unix  2      [ ACC ]     流        LISTENING     8626     1/init              @/com/ubuntu/upstart
-unix  2      [ ACC ]     流        LISTENING     12882    1893/wineserver     socket
-unix  2      [ ACC ]     流        LISTENING     372      789/avahi-daemon: r /var/run/avahi-daemon/socket
-unix  2      [ ACC ]     流        LISTENING     14827    2092/ibus-daemon    @/tmp/dbus-nhp4DenU
-unix  2      [ ACC ]     流        LISTENING     293750   839/cupsd           /var/run/cups/cups.sock
-unix  2      [ ACC ]     流        LISTENING     388      792/bluetoothd      /var/run/sdp
-unix  2      [ ACC ]     流        LISTENING     913      1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  2      [ ACC ]     流        LISTENING     11270    792/bluetoothd      @/org/bluez/audio
-unix  3      [ ]         流        已连接     11838    1826/c:\TeamViewer\ @00014
-unix  3      [ ]         流        已连接     470812   2092/ibus-daemon    @/tmp/dbus-nhp4DenU
-unix  3      [ ]         SEQPACKET  已连接     417555   29152/firefox       
-unix  3      [ ]         流        已连接     14442    1931/nm-applet      
-unix  3      [ ]         流        已连接     12235    2181/python         
-unix  3      [ ]         流        已连接     921      1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     270833   23625/evince        
-unix  2      [ ]         数据报                434097   29530/mount.ntfs    
-unix  3      [ ]         流        已连接     16669    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14745    1979/TVGuiSlave.64  
-unix  3      [ ]         流        已连接     14106    1832/gvfsd          
-unix  2      [ ]         数据报                716      1399/dhclient       
-unix  3      [ ]         流        已连接     16616    2092/ibus-daemon    @/tmp/dbus-nhp4DenU
-unix  3      [ ]         流        已连接     15378    1893/wineserver     
-unix  3      [ ]         流        已连接     854      587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     16632    2113/notify-osd     
-unix  3      [ ]         流        已连接     929      1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14121    1834/gvfs-fuse-daem 
-unix  3      [ ]         流        已连接     12610    921/colord          
-unix  3      [ ]         流        已连接     468642   1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     11918    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     11909    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     15504    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14445    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     17874    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     10805    1407/upowerd        
-unix  3      [ ]         流        已连接     12879    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     470904   1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     273620   1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     16622    2092/ibus-daemon    @/tmp/dbus-nhp4DenU
-unix  3      [ ]         流        已连接     446      919/NetworkManager  
-unix  3      [ ]         流        已连接     966      1919/polkit-gnome-a 
-unix  3      [ ]         流        已连接     12991    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     1022     1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     39468    1766/gnome-session  
-unix  3      [ ]         流        已连接     14879    2128/unity-music-da 
-unix  3      [ ]         流        已连接     421954   29152/firefox       
-unix  3      [ ]         流        已连接     15225    2367/deja-dup-monit 
-unix  3      [ ]         流        已连接     14444    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12930    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     11415    1143/whoopsie       
-unix  3      [ ]         流        已连接     262523   23315/evince        
-unix  3      [ ]         流        已连接     16670    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     992      1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     274861   2092/ibus-daemon    @/tmp/dbus-nhp4DenU
-unix  3      [ ]         流        已连接     14554    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     973      1931/nm-applet      
-unix  3      [ ]         流        已连接     9493     1/init              @/com/ubuntu/upstart
-unix  3      [ ]         流        已连接     273611   23625/evince        
-unix  3      [ ]         流        已连接     533      1034/console-kit-da 
-unix  3      [ ]         流        已连接     11788    1755/gnome-keyring- 
-unix  3      [ ]         流        已连接     12758    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     9903     587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     15623    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     16614    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     11926    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     11928    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12958    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     965      1919/polkit-gnome-a 
-unix  3      [ ]         流        已连接     468641   30109/gnome-termina 
-unix  3      [ ]         流        已连接     14861    2095/python         
-unix  3      [ ]         流        已连接     11983    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     12236    2181/python         
-unix  3      [ ]         流        已连接     14882    2131/unity-files-da 
-unix  3      [ ]         流        已连接     15780    2259/at-spi-bus-lau 
-unix  3      [ ]         流        已连接     14559    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     14793    2044/indicator-prin 
-unix  3      [ ]         流        已连接     9906     587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     11300    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     12098    2069/geoclue-master 
-unix  3      [ ]         流        已连接     16526    1142/pulseaudio     /var/run/pulse/native
-unix  3      [ ]         流        已连接     961      1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     471158   1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     13013    1979/TVGuiSlave.64  
-unix  3      [ ]         流        已连接     14431    1927/gvfs-gdu-volum 
-unix  3      [ ]         流        已连接     270818   1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     15724    839/cupsd           
-unix  3      [ ]         流        已连接     15552    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     10624    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     464583   1142/pulseaudio     /var/run/pulse/native
-unix  3      [ ]         流        已连接     9774     839/cupsd           
-unix  3      [ ]         流        已连接     273623   1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     421154   29152/firefox       
-unix  3      [ ]         流        已连接     15543    2038/indicator-mess 
-unix  3      [ ]         流        已连接     294370   24480/dbus          
-unix  3      [ ]         流        已连接     16548    2044/indicator-prin 
-unix  3      [ ]         流        已连接     12102    2069/geoclue-master 
-unix  3      [ ]         数据报                2040     511/udevd           
-unix  3      [ ]         流        已连接     971      1923/bluetooth-appl 
-unix  3      [ ]         流        已连接     12177    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12150    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     11914    1931/nm-applet      
-unix  3      [ ]         流        已连接     11761    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     11968    1921/nautilus       
-unix  3      [ ]         流        已连接     962      587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     9534     587/dbus-daemon     
-unix  3      [ ]         流        已连接     417541   29152/firefox       
-unix  3      [ ]         流        已连接     273600   1766/gnome-session  @/tmp/.ICE-unix/1766
-unix  3      [ ]         流        已连接     16545    2077/ubuntu-geoip-p 
-unix  3      [ ]         流        已连接     1020     1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     14897    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12153    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     11871    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     9572     587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         数据报                2041     511/udevd           
-unix  3      [ ]         流        已连接     467884   30144/plugin-contai 
-unix  3      [ ]         流        已连接     12993    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     14437    1923/bluetooth-appl 
-unix  3      [ ]         流        已连接     11804    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     11967    1921/nautilus       
-unix  3      [ ]         流        已连接     11904    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     15704    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12223    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     11047    1647/teamviewerd    
-unix  3      [ ]         流        已连接     421152   2092/ibus-daemon    @/tmp/dbus-nhp4DenU
-unix  3      [ ]         流        已连接     18688    2367/deja-dup-monit 
-unix  3      [ ]         流        已连接     14791    2077/ubuntu-geoip-p 
-unix  3      [ ]         流        已连接     14896    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12154    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     9780     924/polkitd         
-unix  3      [ ]         流        已连接     10676    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     467753   30116/gnome-pty-hel 
-unix  3      [ ]         流        已连接     14440    1931/nm-applet      
-unix  3      [ ]         流        已连接     12929    1918/gnome-fallback 
-unix  2      [ ]         数据报                524      1124/acpid          
-unix  3      [ ]         流        已连接     12086    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     11418    1124/acpid          /var/run/acpid.socket
-unix  3      [ ]         流        已连接     420167   1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14474    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12945    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     270829   23625/evince        
-unix  3      [ ]         流        已连接     273605   23625/evince        
-unix  3      [ ]         流        已连接     262535   1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     14786    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     375      587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     14350    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     15549    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  2      [ ]         数据报                377      792/bluetoothd      
-unix  3      [ ]         流        已连接     420160   587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     11872    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     15609    2097/ibus-x11       
-unix  3      [ ]         流        已连接     12077    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     12761    1766/gnome-session  
-unix  3      [ ]         流        已连接     14478    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12854    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     14974    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     14832    2092/ibus-daemon    @/tmp/dbus-nhp4DenU
-unix  3      [ ]         流        已连接     11388    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     9202     1/init              @/com/ubuntu/upstart
-unix  3      [ ]         流        已连接     11842    1883/compiz         
-unix  3      [ ]         流        已连接     14762    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12928    1918/gnome-fallback 
-unix  3      [ ]         流        已连接     9535     587/dbus-daemon     
-unix  3      [ ]         流        已连接     16529    2031/indicator-date 
-unix  3      [ ]         流        已连接     930      1766/gnome-session  
-unix  3      [ ]         流        已连接     259902   23315/evince        
-unix  3      [ ]         流        已连接     906      1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     15377    1966/C:\windows\sys 
-unix  3      [ ]         流        已连接     14341    1909/gconfd-2       
-unix  2      [ ]         流        已连接     469914   2044/indicator-prin 
-unix  3      [ ]         流        已连接     421148   1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14831    2093/ibus-gconf     
-unix  3      [ ]         流        已连接     11975    1952/gvfsd-trash    @/dbus-vfs-daemon/socket-YX4thV9H
-unix  3      [ ]         流        已连接     16728    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     11572    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     12241    2201/telepathy-indi 
-unix  3      [ ]         流        已连接     14957    2201/telepathy-indi 
-unix  3      [ ]         流        已连接     14773    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     381      587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     270820   1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     262532   1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     16723    2207/mission-contro 
-unix  3      [ ]         流        已连接     14781    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12081    2017/unity-panel-se 
-unix  3      [ ]         流        已连接     12947    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12257    2220/gnome-screensa 
-unix  3      [ ]         流        已连接     15503    2019/hud-service    
-unix  3      [ ]         流        已连接     11930    1921/nautilus       
-unix  3      [ ]         流        已连接     11903    1933/udisks-daemon  
-unix  3      [ ]         流        已连接     259897   1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14783    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     926      1822/gnome-settings 
-unix  3      [ ]         流        已连接     16275    2367/deja-dup-monit 
-unix  3      [ ]         流        已连接     12268    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     15382    1893/wineserver     
-unix  3      [ ]         流        已连接     11717    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     39955    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     16527    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     369      791/avahi-daemon: c 
-unix  3      [ ]         流        已连接     14908    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     15628    2121/gdu-notificati 
-unix  2      [ ]         数据报                11705    1556/lightdm        
-unix  3      [ ]         流        已连接     12559    1605/dnsmasq        
-unix  3      [ ]         流        已连接     11806    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     421153   1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12018    1883/compiz         
-unix  3      [ ]         流        已连接     11931    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12242    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     11916    1931/nm-applet      
-unix  3      [ ]         流        已连接     11793    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  2      [ ]         数据报                16727    2212/goa-daemon     
-unix  3      [ ]         流        已连接     11960    1958/gvfsd-burn     
-unix  3      [ ]         流        已连接     1009     1952/gvfsd-trash    
-unix  3      [ ]         流        已连接     14337    1142/pulseaudio     /var/run/pulse/native
-unix  3      [ ]         流        已连接     15539    2033/indicator-soun 
-unix  3      [ ]         流        已连接     12017    1883/compiz         
-unix  3      [ ]         流        已连接     469966   30109/gnome-termina 
-unix  3      [ ]         流        已连接     16014    2039/indicator-sess 
-unix  3      [ ]         流        已连接     12135    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     16456    2009/gtk-window-dec 
-unix  3      [ ]         流        已连接     12243    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     15685    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     16668    2121/gdu-notificati 
-unix  3      [ ]         流        已连接     447      587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     16528    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     1015     1952/gvfsd-trash    @/dbus-vfs-daemon/socket-FsxzghiE
-unix  3      [ ]         流        已连接     11569    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     11448    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     16697    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14342    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12239    2201/telepathy-indi 
-unix  3      [ ]         流        已连接     15640    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     16458    2009/gtk-window-dec 
-unix  3      [ ]         流        已连接     420154   29152/firefox       
-unix  3      [ ]         流        已连接     262531   23315/evince        
-unix  3      [ ]         流        已连接     12091    2044/indicator-prin 
-unix  3      [ ]         流        已连接     12082    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12953    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     10481    896/modem-manager   
-unix  3      [ ]         流        已连接     12240    2201/telepathy-indi 
-unix  3      [ ]         流        已连接     12188    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     16629    2095/python         
-unix  3      [ ]         流        已连接     11462    1202/accounts-daemo 
-unix  3      [ ]         流        已连接     273077   23625/evince        
-unix  3      [ ]         流        已连接     16687    2172/cat            
-unix  3      [ ]         流        已连接     11939    1883/compiz         
-unix  3      [ ]         流        已连接     1016     1952/gvfsd-trash    @/dbus-vfs-daemon/socket-9EQo5SVk
-unix  3      [ ]         流        已连接     12097    2044/indicator-prin 
-unix  3      [ ]         流        已连接     15542    2031/indicator-date 
-unix  3      [ ]         流        已连接     14490    1961/bamfdaemon     
-unix  3      [ ]         流        已连接     10482    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     469968   1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     16698    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14771    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12054    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     262537   23315/evince        
-unix  3      [ ]         流        已连接     16797    2220/gnome-screensa 
-unix  3      [ ]         流        已连接     1008     1952/gvfsd-trash    
-unix  3      [ ]         流        已连接     448      587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     270830   1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     14979    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     257964   1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     16597    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     421962   1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     978      1927/gvfs-gdu-volum 
-unix  3      [ ]         流        已连接     467737   1766/gnome-session  @/tmp/.ICE-unix/1766
-unix  3      [ ]         流        已连接     15444    1826/c:\TeamViewer\ 
-unix  2      [ ]         数据报                365      789/avahi-daemon: r 
-unix  3      [ ]         流        已连接     16671    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     11728    921/colord          
-unix  3      [ ]         流        已连接     469967   30109/gnome-termina 
-unix  3      [ ]         流        已连接     12107    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14083    1822/gnome-settings 
-unix  3      [ ]         流        已连接     15634    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     11829    1883/compiz         
-unix  3      [ ]         流        已连接     16958    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12134    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12974    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     15667    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     16517    2019/hud-service    
-unix  3      [ ]         流        已连接     467739   30109/gnome-termina 
-unix  3      [ ]         流        已连接     14539    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14409    1919/polkit-gnome-a 
-unix  3      [ ]         流        已连接     953      1893/wineserver     
-unix  3      [ ]         流        已连接     259906   1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     12103    2077/ubuntu-geoip-p 
-unix  3      [ ]         流        已连接     270817   23625/evince        
-unix  3      [ ]         流        已连接     294371   587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     14864    2095/python         
-unix  3      [ ]         流        已连接     12973    1883/compiz         
-unix  3      [ ]         流        已连接     11795    1822/gnome-settings 
-unix  3      [ ]         流        已连接     11907    1933/udisks-daemon  
-unix  3      [ ]         流        已连接     11848    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     467738   30109/gnome-termina 
-unix  3      [ ]         流        已连接     259589   23292/evinced       
-unix  3      [ ]         流        已连接     14761    2017/unity-panel-se 
-unix  3      [ ]         流        已连接     11936    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14443    1931/nm-applet      
-unix  3      [ ]         流        已连接     12234    2181/python         
-unix  3      [ ]         流        已连接     11762    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14780    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     18685    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12968    1921/nautilus       
-unix  3      [ ]         流        已连接     15376    1826/c:\TeamViewer\ 
-unix  3      [ ]         流        已连接     11937    1883/compiz         
-unix  3      [ ]         流        已连接     12104    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14558    1979/TVGuiSlave.64  
-unix  3      [ ]         流        已连接     12009    1971/gvfsd-metadata 
-unix  3      [ ]         流        已连接     970      1923/bluetooth-appl 
-unix  3      [ ]         流        已连接     14978    2220/gnome-screensa 
-unix  3      [ ]         流        已连接     15375    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     9885     1044/lightdm        
-unix  3      [ ]         流        已连接     20590    2430/dconf-service  
-unix  3      [ ]         流        已连接     15445    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     16674    2125/unity-applicat 
-unix  3      [ ]         流        已连接     15612    2105/ibus-engine-pi 
-unix  3      [ ]         流        已连接     14450    1921/nautilus       
-unix  3      [ ]         流        已连接     10672    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     261794   23315/evince        
-unix  2      [ ]         数据报                53210    1755/gnome-keyring- 
-unix  3      [ ]         流        已连接     14746    1766/gnome-session  @/tmp/.ICE-unix/1766
-unix  3      [ ]         流        已连接     15381    1966/C:\windows\sys 
-unix  3      [ ]         流        已连接     14451    1921/nautilus       
-unix  3      [ ]         流        已连接     12957    1921/nautilus       
-unix  3      [ ]         流        已连接     959      1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     16682    2166/zeitgeist-data 
-unix  3      [ ]         流        已连接     951      587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     14064    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14910    1755/gnome-keyring- /tmp/keyring-36MhCu/pkcs11
-unix  3      [ ]         流        已连接     12178    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     15620    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     169      506/upstart-udev-br 
-unix  3      [ ]         流        已连接     12972    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     374      789/avahi-daemon: r 
-unix  3      [ ]         流        已连接     14909    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12175    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     15536    2033/indicator-soun 
-unix  3      [ ]         流        已连接     14122    1834/gvfs-fuse-daem 
-unix  3      [ ]         流        已连接     12853    1822/gnome-settings 
-unix  2      [ ]         数据报                261342   23276/mount.ntfs    
-unix  3      [ ]         流        已连接     467881   30144/plugin-contai 
-unix  3      [ ]         流        已连接     12221    2166/zeitgeist-data 
-unix  3      [ ]         流        已连接     13014    1826/c:\TeamViewer\ 
-unix  3      [ ]         流        已连接     11900    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     420159   29152/firefox       
-unix  3      [ ]         流        已连接     11982    1961/bamfdaemon     
-unix  3      [ ]         流        已连接     14870    2113/notify-osd     
-unix  3      [ ]         流        已连接     11303    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     470902   29152/firefox       
-unix  3      [ ]         流        已连接     16546    1755/gnome-keyring- /tmp/keyring-36MhCu/pkcs11
-unix  3      [ ]         流        已连接     469965   30109/gnome-termina 
-unix  3      [ ]         流        已连接     14977    2220/gnome-screensa 
-unix  3      [ ]         流        已连接     15633    2128/unity-music-da 
-unix  3      [ ]         流        已连接     14061    1755/gnome-keyring- 
-unix  3      [ ]         流        已连接     14887    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12099    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     11869    1918/gnome-fallback 
-unix  3      [ ]         流        已连接     12976    1952/gvfsd-trash    @/dbus-vfs-daemon/socket-D4EUnVia
-unix  3      [ ]         流        已连接     16807    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     12934    1919/polkit-gnome-a 
-unix  3      [ ]         流        已连接     14491    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     464582   29152/firefox       
-unix  3      [ ]         流        已连接     417536   1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     14553    1883/compiz         
-unix  3      [ ]         流        已连接     11940    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     12176    2131/unity-files-da 
-unix  3      [ ]         流        已连接     14871    2113/notify-osd     
-unix  3      [ ]         流        已连接     11409    1034/console-kit-da 
-unix  3      [ ]         流        已连接     9773     919/NetworkManager  
-unix  3      [ ]         流        已连接     15642    2164/zeitgeist-fts  
-unix  3      [ ]         流        已连接     11796    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     972      1923/bluetooth-appl 
-unix  3      [ ]         流        已连接     952      1915/C:\windows\sys 
-unix  3      [ ]         流        已连接     14792    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     11969    1958/gvfsd-burn     @/dbus-vfs-daemon/socket-VBmKISUE
-unix  2      [ ]         数据报                11893    924/polkitd         
-unix  3      [ ]         流        已连接     14872    2113/notify-osd     
-unix  3      [ ]         流        已连接     14062    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     9571     1/init              
-unix  3      [ ]         流        已连接     1023     1921/nautilus       
-unix  3      [ ]         流        已连接     14452    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     963      1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     15608    2097/ibus-x11       
-unix  3      [ ]         流        已连接     11970    1958/gvfsd-burn     @/dbus-vfs-daemon/socket-OyOTbiEC
-unix  3      [ ]         流        已连接     37003    2164/zeitgeist-fts  
-unix  3      [ ]         流        已连接     12226    2130/python         
-unix  3      [ ]         流        已连接     12109    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  2      [ ]         数据报                10513    587/dbus-daemon     
-unix  3      [ ]         流        已连接     16276    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     11961    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     1019     1883/compiz         
-unix  3      [ ]         流        已连接     12222    2125/unity-applicat 
-unix  2      [ ]         数据报                9770     919/NetworkManager  
-unix  3      [ ]         流        已连接     15641    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     15619    1921/nautilus       
-unix  3      [ ]         流        已连接     467882   30144/plugin-contai 
-unix  3      [ ]         流        已连接     14438    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     467752   30109/gnome-termina 
-unix  3      [ ]         流        已连接     11917    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12935    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     15548    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     16459    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14345    1909/gconfd-2       
-unix  2      [ ]         数据报                11678    1605/dnsmasq        
-unix  3      [ ]         流        已连接     12950    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14056    1766/gnome-session  
-unix  3      [ ]         流        已连接     273603   23625/evince        
-unix  3      [ ]         流        已连接     12108    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     16519    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14084    1822/gnome-settings 
-unix  3      [ ]         流        已连接     12970    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     470808   1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     12757    1808/dbus-launch    
-unix  3      [ ]         流        已连接     868      1556/lightdm        
-unix  3      [ ]         流        已连接     15625    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     11839    1883/compiz         
-unix  3      [ ]         流        已连接     11921    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     417538   29152/firefox       
-unix  3      [ ]         流        已连接     16530    2039/indicator-sess 
-unix  3      [ ]         流        已连接     470903   30144/plugin-contai 
-unix  3      [ ]         流        已连接     270821   1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14785    2031/indicator-date 
-unix  3      [ ]         流        已连接     14477    1883/compiz         
-unix  3      [ ]         流        已连接     9776     587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     14976    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     262157   1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12946    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     13881    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     257959   1766/gnome-session  @/tmp/.ICE-unix/1766
-unix  3      [ ]         流        已连接     11935    1883/compiz         
-unix  3      [ ]         流        已连接     14776    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     16531    2039/indicator-sess 
-unix  3      [ ]         流        已连接     14555    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     931      1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     35793    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14958    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     16518    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12076    2017/unity-panel-se 
-unix  3      [ ]         流        已连接     954      1766/gnome-session  @/tmp/.ICE-unix/1766
-unix  3      [ ]         流        已连接     10609    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     12256    2220/gnome-screensa 
-unix  3      [ ]         流        已连接     14790    2038/indicator-mess 
-unix  3      [ ]         流        已连接     15691    2212/goa-daemon     
-unix  3      [ ]         流        已连接     14782    2038/indicator-mess 
-unix  3      [ ]         流        已连接     14481    1883/compiz         
-unix  3      [ ]         流        已连接     12612    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     15627    2121/gdu-notificati 
-unix  3      [ ]         流        已连接     14351    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     11447    1044/lightdm        
-unix  3      [ ]         流        已连接     15012    2152/zeitgeist-daem 
-unix  3      [ ]         流        已连接     14960    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     16611    2093/ibus-gconf     
-unix  3      [ ]         流        已连接     12080    2017/unity-panel-se 
-unix  3      [ ]         流        已连接     11046    1647/teamviewerd    
-unix  3      [ ]         流        已连接     9667     792/bluetoothd      
-unix  3      [ ]         流        已连接     259898   1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     15374    1961/bamfdaemon     
-unix  3      [ ]         流        已连接     273607   23625/evince        
-unix  3      [ ]         流        已连接     14965    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     11925    1945/gvfs-afc-volum 
-unix  3      [ ]         流        已连接     914      1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14961    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12988    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     11417    1139/X              
-unix  3      [ ]         流        已连接     471157   29152/firefox       
-unix  3      [ ]         流        已连接     14772    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         SEQPACKET  已连接     417556   29152/firefox       
-unix  3      [ ]         流        已连接     273604   1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     15621    2092/ibus-daemon    @/tmp/dbus-nhp4DenU
-unix  3      [ ]         流        已连接     14784    2038/indicator-mess 
-unix  3      [ ]         流        已连接     14482    1883/compiz         
-unix  3      [ ]         流        已连接     958      1918/gnome-fallback 
-unix  3      [ ]         流        已连接     14053    1809/dbus-daemon    
-unix  3      [ ]         流        已连接     1021     1822/gnome-settings 
-unix  3      [ ]         流        已连接     18686    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14763    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12948    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     417535   29152/firefox       
-unix  3      [ ]         流        已连接     927      587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     16539    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     11938    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     12751    1808/dbus-launch    
-unix  3      [ ]         流        已连接     417537   29152/firefox       
-unix  3      [ ]         流        已连接     14552    1952/gvfsd-trash    @/dbus-vfs-daemon/socket-WU51wVpO
-unix  3      [ ]         流        已连接     14463    1921/nautilus       
-unix  3      [ ]         流        已连接     14768    2040/indicator-appl 
-unix  3      [ ]         流        已连接     368      789/avahi-daemon: r 
-unix  3      [ ]         流        已连接     14971    2212/goa-daemon     
-unix  3      [ ]         流        已连接     16630    1883/compiz         
-unix  3      [ ]         流        已连接     12133    2097/ibus-x11       
-unix  3      [ ]         流        已连接     11894    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     15430    1883/compiz         
-unix  3      [ ]         流        已连接     14057    1766/gnome-session  
-unix  2      [ ]         数据报                548      1142/pulseaudio     
-unix  3      [ ]         流        已连接     262534   23315/evince        
-unix  3      [ ]         流        已连接     14767    2040/indicator-appl 
-unix  3      [ ]         流        已连接     421955   29152/firefox       
-unix  3      [ ]         流        已连接     16015    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     14834    2092/ibus-daemon    @/tmp/dbus-nhp4DenU
-unix  3      [ ]         流        已连接     11834    1822/gnome-settings 
-unix  3      [ ]         流        已连接     470807   1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     14886    2152/zeitgeist-daem 
-unix  3      [ ]         流        已连接     16612    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     11920    1942/gvfs-gphoto2-v 
-unix  3      [ ]         流        已连接     14551    1952/gvfsd-trash    @/dbus-vfs-daemon/socket-JPQymz4h
-unix  3      [ ]         流        已连接     11670    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     14464    1921/nautilus       
-unix  3      [ ]         流        已连接     14430    1927/gvfs-gdu-volum 
-unix  3      [ ]         流        已连接     14779    2031/indicator-date 
-unix  3      [ ]         流        已连接     14052    1809/dbus-daemon    
-unix  3      [ ]         流        已连接     274862   23625/evince        
-unix  3      [ ]         流        已连接     262524   1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     947      1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     16683    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     15528    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     12906    1883/compiz         
-unix  3      [ ]         流        已连接     15684    2207/mission-contro 
-unix  3      [ ]         流        已连接     15460    2009/gtk-window-dec 
-unix  3      [ ]         流        已连接     1024     1921/nautilus       
-unix  2      [ ]         数据报                10480    896/modem-manager   
-unix  3      [ ]         流        已连接     259900   23315/evince        
-unix  3      [ ]         流        已连接     15682    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     14892    2152/zeitgeist-daem 
-unix  3      [ ]         流        已连接     14857    1961/bamfdaemon     
-unix  3      [ ]         流        已连接     15645    2130/python         
-unix  3      [ ]         流        已连接     14465    1921/nautilus       
-unix  3      [ ]         流        已连接     15646    2130/python         
-unix  3      [ ]         流        已连接     15546    2044/indicator-prin 
-unix  3      [ ]         流        已连接     11976    1952/gvfsd-trash    @/dbus-vfs-daemon/socket-8LsYcCV3
-unix  3      [ ]         流        已连接     11835    1822/gnome-settings 
-unix  3      [ ]         流        已连接     11465    1202/accounts-daemo 
-unix  3      [ ]         流        已连接     12975    1952/gvfsd-trash    @/dbus-vfs-daemon/socket-cNkGHeMM
-unix  3      [ ]         流        已连接     11719    587/dbus-daemon     /var/run/dbus/system_bus_socket
-unix  3      [ ]         流        已连接     9781     921/colord          
-unix  3      [ ]         流        已连接     257963   23315/evince        
-unix  3      [ ]         流        已连接     12092    1139/X              @/tmp/.X11-unix/X0
-unix  3      [ ]         流        已连接     14764    2017/unity-panel-se 
-unix  3      [ ]         流        已连接     16457    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     257970   2092/ibus-daemon    @/tmp/dbus-nhp4DenU
-unix  3      [ ]         流        已连接     556      1142/pulseaudio     
-unix  3      [ ]         流        已连接     14346    1893/wineserver     socket
-unix  3      [ ]         流        已连接     16686    2164/zeitgeist-fts  
-unix  3      [ ]         流        已连接     15624    2121/gdu-notificati 
-unix  3      [ ]         流        已连接     405      859/upstart-socket- 
-unix  3      [ ]         流        已连接     12084    2033/indicator-soun 
-unix  3      [ ]         流        已连接     14406    1918/gnome-fallback 
-unix  3      [ ]         流        已连接     15666    2179/unity-musicsto 
-unix  3      [ ]         流        已连接     15622    2092/ibus-daemon    @/tmp/dbus-nhp4DenU
-unix  3      [ ]         流        已连接     14473    1883/compiz         
-unix  3      [ ]         流        已连接     10804    1407/upowerd        
-unix  3      [ ]         流        已连接     257962   23315/evince        
-unix  3      [ ]         流        已连接     14969    2207/mission-contro 
-unix  3      [ ]         流        已连接     15703    1809/dbus-daemon    @/tmp/dbus-eotaCjgrsg
-unix  3      [ ]         流        已连接     11908    587/dbus-daemon     /var/run/dbus/system_bus_socket
+/etc/apache2
+/etc/apache2/apache2.conf
+/etc/apache2/conf.d
+/etc/apache2/envvars
+/etc/apache2/httpd.conf
+/etc/apache2/magic
+/etc/apache2/mods-available
+/etc/apache2/mods-enabled
+/etc/apache2/ports.conf
+/etc/apache2/sites-available
+/etc/apache2/sites-enabled
+/etc/apache2/conf.d/charset
+/etc/apache2/conf.d/localized-error-pages
+/etc/apache2/conf.d/other-vhosts-access-log
+/etc/apache2/conf.d/security
+/etc/apache2/mods-available/actions.conf
+/etc/apache2/mods-available/actions.load
+/etc/apache2/mods-available/alias.conf
+/etc/apache2/mods-available/alias.load
+/etc/apache2/mods-available/asis.load
+/etc/apache2/mods-available/auth_basic.load
+/etc/apache2/mods-available/auth_digest.load
+/etc/apache2/mods-available/authn_alias.load
+/etc/apache2/mods-available/authn_anon.load
+/etc/apache2/mods-available/authn_dbd.load
+/etc/apache2/mods-available/authn_dbm.load
+/etc/apache2/mods-available/authn_default.load
+/etc/apache2/mods-available/authn_file.load
+/etc/apache2/mods-available/authnz_ldap.load
+/etc/apache2/mods-available/authz_dbm.load
+/etc/apache2/mods-available/authz_default.load
+/etc/apache2/mods-available/authz_groupfile.load
+/etc/apache2/mods-available/authz_host.load
+/etc/apache2/mods-available/authz_owner.load
+/etc/apache2/mods-available/authz_user.load
+/etc/apache2/mods-available/autoindex.conf
+/etc/apache2/mods-available/autoindex.load
+/etc/apache2/mods-available/cache.load
+/etc/apache2/mods-available/cern_meta.load
+/etc/apache2/mods-available/cgi.load
+/etc/apache2/mods-available/cgid.conf
+/etc/apache2/mods-available/cgid.load
+/etc/apache2/mods-available/charset_lite.load
+/etc/apache2/mods-available/dav.load
+/etc/apache2/mods-available/dav_fs.conf
+/etc/apache2/mods-available/dav_fs.load
+/etc/apache2/mods-available/dav_lock.load
+/etc/apache2/mods-available/dbd.load
+/etc/apache2/mods-available/deflate.conf
+/etc/apache2/mods-available/deflate.load
+/etc/apache2/mods-available/dir.conf
+/etc/apache2/mods-available/dir.load
+/etc/apache2/mods-available/disk_cache.conf
+/etc/apache2/mods-available/disk_cache.load
+/etc/apache2/mods-available/dump_io.load
+/etc/apache2/mods-available/env.load
+/etc/apache2/mods-available/expires.load
+/etc/apache2/mods-available/ext_filter.load
+/etc/apache2/mods-available/file_cache.load
+/etc/apache2/mods-available/filter.load
+/etc/apache2/mods-available/headers.load
+/etc/apache2/mods-available/ident.load
+/etc/apache2/mods-available/imagemap.load
+/etc/apache2/mods-available/include.load
+/etc/apache2/mods-available/info.conf
+/etc/apache2/mods-available/info.load
+/etc/apache2/mods-available/ldap.conf
+/etc/apache2/mods-available/ldap.load
+/etc/apache2/mods-available/log_forensic.load
+/etc/apache2/mods-available/mem_cache.conf
+/etc/apache2/mods-available/mem_cache.load
+/etc/apache2/mods-available/mime.conf
+/etc/apache2/mods-available/mime.load
+/etc/apache2/mods-available/mime_magic.conf
+/etc/apache2/mods-available/mime_magic.load
+/etc/apache2/mods-available/negotiation.conf
+/etc/apache2/mods-available/negotiation.load
+/etc/apache2/mods-available/php5.conf
+/etc/apache2/mods-available/php5.load
+/etc/apache2/mods-available/proxy.conf
+/etc/apache2/mods-available/proxy.load
+/etc/apache2/mods-available/proxy_ajp.load
+/etc/apache2/mods-available/proxy_balancer.conf
+/etc/apache2/mods-available/proxy_balancer.load
+/etc/apache2/mods-available/proxy_connect.load
+/etc/apache2/mods-available/proxy_ftp.conf
+/etc/apache2/mods-available/proxy_ftp.load
+/etc/apache2/mods-available/proxy_http.load
+/etc/apache2/mods-available/proxy_scgi.load
+/etc/apache2/mods-available/reqtimeout.conf
+/etc/apache2/mods-available/reqtimeout.load
+/etc/apache2/mods-available/rewrite.load
+/etc/apache2/mods-available/setenvif.conf
+/etc/apache2/mods-available/setenvif.load
+/etc/apache2/mods-available/speling.load
+/etc/apache2/mods-available/ssl.conf
+/etc/apache2/mods-available/ssl.load
+/etc/apache2/mods-available/status.conf
+/etc/apache2/mods-available/status.load
+/etc/apache2/mods-available/substitute.load
+/etc/apache2/mods-available/suexec.load
+/etc/apache2/mods-available/unique_id.load
+/etc/apache2/mods-available/userdir.conf
+/etc/apache2/mods-available/userdir.load
+/etc/apache2/mods-available/usertrack.load
+/etc/apache2/mods-available/version.load
+/etc/apache2/mods-available/vhost_alias.load
+/etc/apache2/mods-enabled/alias.conf
+/etc/apache2/mods-enabled/alias.load
+/etc/apache2/mods-enabled/auth_basic.load
+/etc/apache2/mods-enabled/authn_file.load
+/etc/apache2/mods-enabled/authz_default.load
+/etc/apache2/mods-enabled/authz_groupfile.load
+/etc/apache2/mods-enabled/authz_host.load
+/etc/apache2/mods-enabled/authz_user.load
+/etc/apache2/mods-enabled/autoindex.conf
+/etc/apache2/mods-enabled/autoindex.load
+/etc/apache2/mods-enabled/cgi.load
+/etc/apache2/mods-enabled/deflate.conf
+/etc/apache2/mods-enabled/deflate.load
+/etc/apache2/mods-enabled/dir.conf
+/etc/apache2/mods-enabled/dir.load
+/etc/apache2/mods-enabled/env.load
+/etc/apache2/mods-enabled/mime.conf
+/etc/apache2/mods-enabled/mime.load
+/etc/apache2/mods-enabled/negotiation.conf
+/etc/apache2/mods-enabled/negotiation.load
+/etc/apache2/mods-enabled/php5.conf
+/etc/apache2/mods-enabled/php5.load
+/etc/apache2/mods-enabled/reqtimeout.conf
+/etc/apache2/mods-enabled/reqtimeout.load
+/etc/apache2/mods-enabled/setenvif.conf
+/etc/apache2/mods-enabled/setenvif.load
+/etc/apache2/mods-enabled/status.conf
+/etc/apache2/mods-enabled/status.load
+/etc/apache2/sites-available/default
+/etc/apache2/sites-available/default-ssl
+/etc/apache2/sites-enabled/000-default
+/etc/apparmor.d/abstractions/apache2-common
+/etc/bash_completion.d/apache2.2-common
+/etc/bash_completion.d/apache2ctl
+/etc/cron.daily/apache2
+/etc/default/apache2
+/etc/init.d/apache2
+/etc/logrotate.d/apache2
+/etc/php5/apache2
+/etc/php5/apache2/conf.d
+/etc/php5/apache2/php.ini
+/etc/rc0.d/K09apache2
+/etc/rc1.d/K09apache2
+/etc/rc2.d/S91apache2
+/etc/rc3.d/S91apache2
+/etc/rc4.d/S91apache2
+/etc/rc5.d/S91apache2
+/etc/rc6.d/K09apache2
+/etc/ufw/applications.d/apache2.2-common
+/usr/lib/apache2
+/usr/lib/apache2/modules
+/usr/lib/apache2/mpm-event
+/usr/lib/apache2/mpm-itk
+/usr/lib/apache2/mpm-prefork
+/usr/lib/apache2/mpm-worker
+/usr/lib/apache2/modules/httpd.exp
+/usr/lib/apache2/modules/libphp5.so
+/usr/lib/apache2/modules/mod_actions.so
+/usr/lib/apache2/modules/mod_alias.so
+/usr/lib/apache2/modules/mod_asis.so
+/usr/lib/apache2/modules/mod_auth_basic.so
+/usr/lib/apache2/modules/mod_auth_digest.so
+/usr/lib/apache2/modules/mod_authn_alias.so
+/usr/lib/apache2/modules/mod_authn_anon.so
+/usr/lib/apache2/modules/mod_authn_dbd.so
+/usr/lib/apache2/modules/mod_authn_dbm.so
+/usr/lib/apache2/modules/mod_authn_default.so
+/usr/lib/apache2/modules/mod_authn_file.so
+/usr/lib/apache2/modules/mod_authnz_ldap.so
+/usr/lib/apache2/modules/mod_authz_dbm.so
+/usr/lib/apache2/modules/mod_authz_default.so
+/usr/lib/apache2/modules/mod_authz_groupfile.so
+/usr/lib/apache2/modules/mod_authz_host.so
+/usr/lib/apache2/modules/mod_authz_owner.so
+/usr/lib/apache2/modules/mod_authz_user.so
+/usr/lib/apache2/modules/mod_autoindex.so
+/usr/lib/apache2/modules/mod_cache.so
+/usr/lib/apache2/modules/mod_cern_meta.so
+/usr/lib/apache2/modules/mod_cgi.so
+/usr/lib/apache2/modules/mod_cgid.so
+/usr/lib/apache2/modules/mod_charset_lite.so
+/usr/lib/apache2/modules/mod_dav.so
+/usr/lib/apache2/modules/mod_dav_fs.so
+/usr/lib/apache2/modules/mod_dav_lock.so
+/usr/lib/apache2/modules/mod_dbd.so
+/usr/lib/apache2/modules/mod_deflate.so
+/usr/lib/apache2/modules/mod_dir.so
+/usr/lib/apache2/modules/mod_disk_cache.so
+/usr/lib/apache2/modules/mod_dumpio.so
+/usr/lib/apache2/modules/mod_env.so
+/usr/lib/apache2/modules/mod_expires.so
+/usr/lib/apache2/modules/mod_ext_filter.so
+/usr/lib/apache2/modules/mod_file_cache.so
+/usr/lib/apache2/modules/mod_filter.so
+/usr/lib/apache2/modules/mod_headers.so
+/usr/lib/apache2/modules/mod_ident.so
+/usr/lib/apache2/modules/mod_imagemap.so
+/usr/lib/apache2/modules/mod_include.so
+/usr/lib/apache2/modules/mod_info.so
+/usr/lib/apache2/modules/mod_ldap.so
+/usr/lib/apache2/modules/mod_log_forensic.so
+/usr/lib/apache2/modules/mod_mem_cache.so
+/usr/lib/apache2/modules/mod_mime.so
+/usr/lib/apache2/modules/mod_mime_magic.so
+/usr/lib/apache2/modules/mod_negotiation.so
+/usr/lib/apache2/modules/mod_proxy.so
+/usr/lib/apache2/modules/mod_proxy_ajp.so
+/usr/lib/apache2/modules/mod_proxy_balancer.so
+/usr/lib/apache2/modules/mod_proxy_connect.so
+/usr/lib/apache2/modules/mod_proxy_ftp.so
+/usr/lib/apache2/modules/mod_proxy_http.so
+/usr/lib/apache2/modules/mod_proxy_scgi.so
+/usr/lib/apache2/modules/mod_reqtimeout.so
+/usr/lib/apache2/modules/mod_rewrite.so
+/usr/lib/apache2/modules/mod_setenvif.so
+/usr/lib/apache2/modules/mod_speling.so
+/usr/lib/apache2/modules/mod_ssl.so
+/usr/lib/apache2/modules/mod_status.so
+/usr/lib/apache2/modules/mod_substitute.so
+/usr/lib/apache2/modules/mod_suexec.so
+/usr/lib/apache2/modules/mod_unique_id.so
+/usr/lib/apache2/modules/mod_userdir.so
+/usr/lib/apache2/modules/mod_usertrack.so
+/usr/lib/apache2/modules/mod_version.so
+/usr/lib/apache2/modules/mod_vhost_alias.so
+/usr/lib/apache2/mpm-event/apache2
+/usr/lib/apache2/mpm-itk/apache2
+/usr/lib/apache2/mpm-prefork/apache2
+/usr/lib/apache2/mpm-worker/apache2
+/usr/sbin/apache2
+/usr/sbin/apache2ctl
+/usr/sbin/apachectl
+/usr/share/apache2
+/usr/share/apache2/ask-for-passphrase
+/usr/share/apache2/build
+/usr/share/apache2/default-site
+/usr/share/apache2/error
+/usr/share/apache2/icons
+/usr/share/apache2/build/envvars-std
+/usr/share/apache2/default-site/index.html
+/usr/share/apache2/error/HTTP_BAD_GATEWAY.html.var
+/usr/share/apache2/error/HTTP_BAD_REQUEST.html.var
+/usr/share/apache2/error/HTTP_FORBIDDEN.html.var
+/usr/share/apache2/error/HTTP_GONE.html.var
+/usr/share/apache2/error/HTTP_INTERNAL_SERVER_ERROR.html.var
+/usr/share/apache2/error/HTTP_LENGTH_REQUIRED.html.var
+/usr/share/apache2/error/HTTP_METHOD_NOT_ALLOWED.html.var
+/usr/share/apache2/error/HTTP_NOT_FOUND.html.var
+/usr/share/apache2/error/HTTP_NOT_IMPLEMENTED.html.var
+/usr/share/apache2/error/HTTP_PRECONDITION_FAILED.html.var
+/usr/share/apache2/error/HTTP_REQUEST_ENTITY_TOO_LARGE.html.var
+/usr/share/apache2/error/HTTP_REQUEST_TIME_OUT.html.var
+/usr/share/apache2/error/HTTP_REQUEST_URI_TOO_LARGE.html.var
+/usr/share/apache2/error/HTTP_SERVICE_UNAVAILABLE.html.var
+/usr/share/apache2/error/HTTP_UNAUTHORIZED.html.var
+/usr/share/apache2/error/HTTP_UNSUPPORTED_MEDIA_TYPE.html.var
+/usr/share/apache2/error/HTTP_VARIANT_ALSO_VARIES.html.var
+/usr/share/apache2/error/README
+/usr/share/apache2/error/contact.html.var
+/usr/share/apache2/error/include
+/usr/share/apache2/error/include/bottom.html
+/usr/share/apache2/error/include/spacer.html
+/usr/share/apache2/error/include/top.html
+/usr/share/apache2/icons/README
+/usr/share/apache2/icons/README.html
+/usr/share/apache2/icons/a.gif
+/usr/share/apache2/icons/a.png
+/usr/share/apache2/icons/alert.black.gif
+/usr/share/apache2/icons/alert.black.png
+/usr/share/apache2/icons/alert.red.gif
+/usr/share/apache2/icons/alert.red.png
+/usr/share/apache2/icons/apache_pb.gif
+/usr/share/apache2/icons/apache_pb.png
+/usr/share/apache2/icons/apache_pb2.gif
+/usr/share/apache2/icons/apache_pb2.png
+/usr/share/apache2/icons/apache_pb2_ani.gif
+/usr/share/apache2/icons/back.gif
+/usr/share/apache2/icons/back.png
+/usr/share/apache2/icons/ball.gray.gif
+/usr/share/apache2/icons/ball.gray.png
+/usr/share/apache2/icons/ball.red.gif
+/usr/share/apache2/icons/ball.red.png
+/usr/share/apache2/icons/binary.gif
+/usr/share/apache2/icons/binary.png
+/usr/share/apache2/icons/binhex.gif
+/usr/share/apache2/icons/binhex.png
+/usr/share/apache2/icons/blank.gif
+/usr/share/apache2/icons/blank.png
+/usr/share/apache2/icons/bomb.gif
+/usr/share/apache2/icons/bomb.png
+/usr/share/apache2/icons/box1.gif
+/usr/share/apache2/icons/box1.png
+/usr/share/apache2/icons/box2.gif
+/usr/share/apache2/icons/box2.png
+/usr/share/apache2/icons/broken.gif
+/usr/share/apache2/icons/broken.png
+/usr/share/apache2/icons/burst.gif
+/usr/share/apache2/icons/burst.png
+/usr/share/apache2/icons/c.gif
+/usr/share/apache2/icons/c.png
+/usr/share/apache2/icons/comp.blue.gif
+/usr/share/apache2/icons/comp.blue.png
+/usr/share/apache2/icons/comp.gray.gif
+/usr/share/apache2/icons/comp.gray.png
+/usr/share/apache2/icons/compressed.gif
+/usr/share/apache2/icons/compressed.png
+/usr/share/apache2/icons/continued.gif
+/usr/share/apache2/icons/continued.png
+/usr/share/apache2/icons/dir.gif
+/usr/share/apache2/icons/dir.png
+/usr/share/apache2/icons/diskimg.gif
+/usr/share/apache2/icons/diskimg.png
+/usr/share/apache2/icons/down.gif
+/usr/share/apache2/icons/down.png
+/usr/share/apache2/icons/dvi.gif
+/usr/share/apache2/icons/dvi.png
+/usr/share/apache2/icons/f.gif
+/usr/share/apache2/icons/f.png
+/usr/share/apache2/icons/folder.gif
+/usr/share/apache2/icons/folder.open.gif
+/usr/share/apache2/icons/folder.open.png
+/usr/share/apache2/icons/folder.png
+/usr/share/apache2/icons/folder.sec.gif
+/usr/share/apache2/icons/folder.sec.png
+/usr/share/apache2/icons/forward.gif
+/usr/share/apache2/icons/forward.png
+/usr/share/apache2/icons/generic.gif
+/usr/share/apache2/icons/generic.png
+/usr/share/apache2/icons/generic.red.gif
+/usr/share/apache2/icons/generic.red.png
+/usr/share/apache2/icons/generic.sec.gif
+/usr/share/apache2/icons/generic.sec.png
+/usr/share/apache2/icons/hand.right.gif
+/usr/share/apache2/icons/hand.right.png
+/usr/share/apache2/icons/hand.up.gif
+/usr/share/apache2/icons/hand.up.png
+/usr/share/apache2/icons/icon.sheet.gif
+/usr/share/apache2/icons/icon.sheet.png
+/usr/share/apache2/icons/image1.gif
+/usr/share/apache2/icons/image1.png
+/usr/share/apache2/icons/image2.gif
+/usr/share/apache2/icons/image2.png
+/usr/share/apache2/icons/image3.gif
+/usr/share/apache2/icons/image3.png
+/usr/share/apache2/icons/index.gif
+/usr/share/apache2/icons/index.png
+/usr/share/apache2/icons/layout.gif
+/usr/share/apache2/icons/layout.png
+/usr/share/apache2/icons/left.gif
+/usr/share/apache2/icons/left.png
+/usr/share/apache2/icons/link.gif
+/usr/share/apache2/icons/link.png
+/usr/share/apache2/icons/movie.gif
+/usr/share/apache2/icons/movie.png
+/usr/share/apache2/icons/odf6odb-20x22.png
+/usr/share/apache2/icons/odf6odc-20x22.png
+/usr/share/apache2/icons/odf6odf-20x22.png
+/usr/share/apache2/icons/odf6odg-20x22.png
+/usr/share/apache2/icons/odf6odi-20x22.png
+/usr/share/apache2/icons/odf6odm-20x22.png
+/usr/share/apache2/icons/odf6odp-20x22.png
+/usr/share/apache2/icons/odf6ods-20x22.png
+/usr/share/apache2/icons/odf6odt-20x22.png
+/usr/share/apache2/icons/odf6otc-20x22.png
+/usr/share/apache2/icons/odf6otf-20x22.png
+/usr/share/apache2/icons/odf6otg-20x22.png
+/usr/share/apache2/icons/odf6oth-20x22.png
+/usr/share/apache2/icons/odf6oti-20x22.png
+/usr/share/apache2/icons/odf6otp-20x22.png
+/usr/share/apache2/icons/odf6ots-20x22.png
+/usr/share/apache2/icons/odf6ott-20x22.png
+/usr/share/apache2/icons/p.gif
+/usr/share/apache2/icons/p.png
+/usr/share/apache2/icons/patch.gif
+/usr/share/apache2/icons/patch.png
+/usr/share/apache2/icons/pdf.gif
+/usr/share/apache2/icons/pdf.png
+/usr/share/apache2/icons/pie0.gif
+/usr/share/apache2/icons/pie0.png
+/usr/share/apache2/icons/pie1.gif
+/usr/share/apache2/icons/pie1.png
+/usr/share/apache2/icons/pie2.gif
+/usr/share/apache2/icons/pie2.png
+/usr/share/apache2/icons/pie3.gif
+/usr/share/apache2/icons/pie3.png
+/usr/share/apache2/icons/pie4.gif
+/usr/share/apache2/icons/pie4.png
+/usr/share/apache2/icons/pie5.gif
+/usr/share/apache2/icons/pie5.png
+/usr/share/apache2/icons/pie6.gif
+/usr/share/apache2/icons/pie6.png
+/usr/share/apache2/icons/pie7.gif
+/usr/share/apache2/icons/pie7.png
+/usr/share/apache2/icons/pie8.gif
+/usr/share/apache2/icons/pie8.png
+/usr/share/apache2/icons/portal.gif
+/usr/share/apache2/icons/portal.png
+/usr/share/apache2/icons/ps.gif
+/usr/share/apache2/icons/ps.png
+/usr/share/apache2/icons/quill.gif
+/usr/share/apache2/icons/quill.png
+/usr/share/apache2/icons/right.gif
+/usr/share/apache2/icons/right.png
+/usr/share/apache2/icons/screw1.gif
+/usr/share/apache2/icons/screw1.png
+/usr/share/apache2/icons/screw2.gif
+/usr/share/apache2/icons/screw2.png
+/usr/share/apache2/icons/script.gif
+/usr/share/apache2/icons/script.png
+/usr/share/apache2/icons/small
+/usr/share/apache2/icons/sound1.gif
+/usr/share/apache2/icons/sound1.png
+/usr/share/apache2/icons/sound2.gif
+/usr/share/apache2/icons/sound2.png
+/usr/share/apache2/icons/sphere1.gif
+/usr/share/apache2/icons/sphere1.png
+/usr/share/apache2/icons/sphere2.gif
+/usr/share/apache2/icons/sphere2.png
+/usr/share/apache2/icons/tar.gif
+/usr/share/apache2/icons/tar.png
+/usr/share/apache2/icons/tex.gif
+/usr/share/apache2/icons/tex.png
+/usr/share/apache2/icons/text.gif
+/usr/share/apache2/icons/text.png
+/usr/share/apache2/icons/transfer.gif
+/usr/share/apache2/icons/transfer.png
+/usr/share/apache2/icons/unknown.gif
+/usr/share/apache2/icons/unknown.png
+/usr/share/apache2/icons/up.gif
+/usr/share/apache2/icons/up.png
+/usr/share/apache2/icons/uu.gif
+/usr/share/apache2/icons/uu.png
+/usr/share/apache2/icons/uuencoded.gif
+/usr/share/apache2/icons/uuencoded.png
+/usr/share/apache2/icons/world1.gif
+/usr/share/apache2/icons/world1.png
+/usr/share/apache2/icons/world2.gif
+/usr/share/apache2/icons/world2.png
+/usr/share/apache2/icons/small/back.gif
+/usr/share/apache2/icons/small/back.png
+/usr/share/apache2/icons/small/binary.gif
+/usr/share/apache2/icons/small/binary.png
+/usr/share/apache2/icons/small/binhex.gif
+/usr/share/apache2/icons/small/binhex.png
+/usr/share/apache2/icons/small/blank.gif
+/usr/share/apache2/icons/small/blank.png
+/usr/share/apache2/icons/small/broken.gif
+/usr/share/apache2/icons/small/broken.png
+/usr/share/apache2/icons/small/burst.gif
+/usr/share/apache2/icons/small/burst.png
+/usr/share/apache2/icons/small/comp1.gif
+/usr/share/apache2/icons/small/comp1.png
+/usr/share/apache2/icons/small/comp2.gif
+/usr/share/apache2/icons/small/comp2.png
+/usr/share/apache2/icons/small/compressed.gif
+/usr/share/apache2/icons/small/compressed.png
+/usr/share/apache2/icons/small/continued.gif
+/usr/share/apache2/icons/small/continued.png
+/usr/share/apache2/icons/small/dir.gif
+/usr/share/apache2/icons/small/dir.png
+/usr/share/apache2/icons/small/dir2.gif
+/usr/share/apache2/icons/small/dir2.png
+/usr/share/apache2/icons/small/doc.gif
+/usr/share/apache2/icons/small/doc.png
+/usr/share/apache2/icons/small/forward.gif
+/usr/share/apache2/icons/small/forward.png
+/usr/share/apache2/icons/small/generic.gif
+/usr/share/apache2/icons/small/generic.png
+/usr/share/apache2/icons/small/generic2.gif
+/usr/share/apache2/icons/small/generic2.png
+/usr/share/apache2/icons/small/generic3.gif
+/usr/share/apache2/icons/small/generic3.png
+/usr/share/apache2/icons/small/image.gif
+/usr/share/apache2/icons/small/image.png
+/usr/share/apache2/icons/small/image2.gif
+/usr/share/apache2/icons/small/image2.png
+/usr/share/apache2/icons/small/index.gif
+/usr/share/apache2/icons/small/index.png
+/usr/share/apache2/icons/small/key.gif
+/usr/share/apache2/icons/small/key.png
+/usr/share/apache2/icons/small/movie.gif
+/usr/share/apache2/icons/small/movie.png
+/usr/share/apache2/icons/small/patch.gif
+/usr/share/apache2/icons/small/patch.png
+/usr/share/apache2/icons/small/ps.gif
+/usr/share/apache2/icons/small/ps.png
+/usr/share/apache2/icons/small/rainbow.gif
+/usr/share/apache2/icons/small/rainbow.png
+/usr/share/apache2/icons/small/sound.gif
+/usr/share/apache2/icons/small/sound.png
+/usr/share/apache2/icons/small/sound2.gif
+/usr/share/apache2/icons/small/sound2.png
+/usr/share/apache2/icons/small/tar.gif
+/usr/share/apache2/icons/small/tar.png
+/usr/share/apache2/icons/small/text.gif
+/usr/share/apache2/icons/small/text.png
+/usr/share/apache2/icons/small/transfer.gif
+/usr/share/apache2/icons/small/transfer.png
+/usr/share/apache2/icons/small/unknown.gif
+/usr/share/apache2/icons/small/unknown.png
+/usr/share/apache2/icons/small/uu.gif
+/usr/share/apache2/icons/small/uu.png
+/usr/share/apport/package-hooks/apache2.py
+/usr/share/bug/apache2
+/usr/share/bug/apache2-mpm-prefork
+/usr/share/bug/apache2.2-common
+/usr/share/bug/apache2/control
+/usr/share/bug/apache2/script
+/usr/share/bug/apache2-mpm-prefork/script
+/usr/share/bug/apache2.2-common/control
+/usr/share/bug/apache2.2-common/script
+/usr/share/doc/apache2
+/usr/share/doc/apache2-mpm-prefork
+/usr/share/doc/apache2-utils
+/usr/share/doc/apache2.2-bin
+/usr/share/doc/apache2.2-common
+/usr/share/doc/libapache2-mod-php5
+/usr/share/doc/apache2-utils/changelog.Debian.gz
+/usr/share/doc/apache2-utils/copyright
+/usr/share/doc/apache2.2-bin/README.backtrace
+/usr/share/doc/apache2.2-bin/changelog.Debian.gz
+/usr/share/doc/apache2.2-bin/copyright
+/usr/share/doc/apache2.2-common/NEWS.Debian.gz
+/usr/share/doc/apache2.2-common/README.Debian.gz
+/usr/share/doc/apache2.2-common/README.backtrace
+/usr/share/doc/apache2.2-common/README.mpm-itk.gz
+/usr/share/doc/apache2.2-common/README.multiple-instances
+/usr/share/doc/apache2.2-common/changelog.Debian.gz
+/usr/share/doc/apache2.2-common/copyright
+/usr/share/doc/apache2.2-common/examples
+/usr/share/doc/apache2.2-common/examples/apache2
+/usr/share/doc/apache2.2-common/examples/apache2.monit
+/usr/share/doc/apache2.2-common/examples/secondary-init-script
+/usr/share/doc/apache2.2-common/examples/setup-instance
+/usr/share/doc/apache2.2-common/examples/apache2/apache2.conf.gz
+/usr/share/doc/apache2.2-common/examples/apache2/extra
+/usr/share/doc/apache2.2-common/examples/apache2/magic.gz
+/usr/share/doc/apache2.2-common/examples/apache2/mime.types.gz
+/usr/share/doc/apache2.2-common/examples/apache2/extra/httpd-autoindex.conf
+/usr/share/doc/apache2.2-common/examples/apache2/extra/httpd-dav.conf
+/usr/share/doc/apache2.2-common/examples/apache2/extra/httpd-default.conf
+/usr/share/doc/apache2.2-common/examples/apache2/extra/httpd-info.conf
+/usr/share/doc/apache2.2-common/examples/apache2/extra/httpd-languages.conf.gz
+/usr/share/doc/apache2.2-common/examples/apache2/extra/httpd-manual.conf
+/usr/share/doc/apache2.2-common/examples/apache2/extra/httpd-mpm.conf
+/usr/share/doc/apache2.2-common/examples/apache2/extra/httpd-multilang-errordoc.conf
+/usr/share/doc/apache2.2-common/examples/apache2/extra/httpd-ssl.conf.gz
+/usr/share/doc/apache2.2-common/examples/apache2/extra/httpd-userdir.conf
+/usr/share/doc/apache2.2-common/examples/apache2/extra/httpd-vhosts.conf
+/usr/share/lintian/overrides/apache2-mpm-prefork
+/usr/share/lintian/overrides/apache2.2-common
+/usr/share/lintian/overrides/libapache2-mod-php5
+/usr/share/man/man8/apache2.8.gz
+/usr/share/man/man8/apache2ctl.8.gz
+/usr/share/man/man8/apachectl.8.gz
+/usr/share/vim/vim73/syntax/apache.vim
+/usr/share/vim/vim73/syntax/apachestyle.vim
+/usr/share/yelp-xsl/js/jquery.syntax.brush.apache.js
+/var/cache/apache2
+/var/cache/apache2/mod_disk_cache
+/var/cache/apt/archives/apache2-mpm-prefork_2.2.22-1ubuntu1.9_amd64.deb
+/var/cache/apt/archives/apache2-mpm-worker_2.2.22-1ubuntu1.9_amd64.deb
+/var/cache/apt/archives/apache2-utils_2.2.22-1ubuntu1.9_amd64.deb
+/var/cache/apt/archives/apache2.2-bin_2.2.22-1ubuntu1.9_amd64.deb
+/var/cache/apt/archives/apache2.2-common_2.2.22-1ubuntu1.9_amd64.deb
+/var/cache/apt/archives/apache2_2.2.22-1ubuntu1.9_amd64.deb
+/var/cache/apt/archives/libapache2-mod-php5_5.3.10-1ubuntu3.18_amd64.deb
+/var/lib/dpkg/info/apache2-mpm-prefork.list
+/var/lib/dpkg/info/apache2-mpm-prefork.md5sums
+/var/lib/dpkg/info/apache2-mpm-prefork.postinst
+/var/lib/dpkg/info/apache2-mpm-prefork.preinst
+/var/lib/dpkg/info/apache2-mpm-prefork.prerm
+/var/lib/dpkg/info/apache2-utils.list
+/var/lib/dpkg/info/apache2-utils.md5sums
+/var/lib/dpkg/info/apache2.2-bin.list
+/var/lib/dpkg/info/apache2.2-bin.md5sums
+/var/lib/dpkg/info/apache2.2-common.conffiles
+/var/lib/dpkg/info/apache2.2-common.list
+/var/lib/dpkg/info/apache2.2-common.md5sums
+/var/lib/dpkg/info/apache2.2-common.postinst
+/var/lib/dpkg/info/apache2.2-common.postrm
+/var/lib/dpkg/info/apache2.2-common.preinst
+/var/lib/dpkg/info/apache2.list
+/var/lib/dpkg/info/apache2.md5sums
+/var/lib/dpkg/info/apache2.postinst
+/var/lib/dpkg/info/libapache2-mod-php5.conffiles
+/var/lib/dpkg/info/libapache2-mod-php5.list
+/var/lib/dpkg/info/libapache2-mod-php5.md5sums
+/var/lib/dpkg/info/libapache2-mod-php5.postinst
+/var/lib/dpkg/info/libapache2-mod-php5.postrm
+/var/lib/dpkg/info/libapache2-mod-php5.prerm
+/var/lib/dpkg/info/libapache2-mod-php5.triggers
+/var/lib/gems/1.9.1/gems/pygments.rb-0.6.2/vendor/pygments-main/tests/examplefiles/apache2.conf
+/var/lib/update-rc.d/apache2
+/var/log/apache2
+/var/log/apache2/access.log
+/var/log/apache2/error.log
+/var/log/apache2/other_vhosts_access.log
