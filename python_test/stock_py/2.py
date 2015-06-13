@@ -3,7 +3,7 @@
 
 import urllib
 
-debug=True
+#debug=True
 debug=False
 
 def ToGB(str):
