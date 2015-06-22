@@ -116,12 +116,21 @@ def RandomForestClassify_Proba(enrollment_id, trainData, trainLabel, testData):
 # LogisticRegression 
 from sklearn.linear_model import LogisticRegression
 def LogisticRegressionClassify_Proba(enrollment_id, trainData, trainLabel, testData):
-    clf = LogisticRegression()
+    clf = LogisticRegression(solver='newton-cg', max_iter=1000)
     clf.fit(trainData, ravel(trainLabel))
     testLabel = clf.predict_proba(testData)[:,1]
     saveResult(enrollment_id, testLabel, 'Proba_sklearn_LogisticRegression.csv')
     return testLabel
 
+# LDA 
+from sklearn.lda import LDA
+def LDAClassify_Proba(enrollment_id, trainData, trainLabel, testData):
+    clf = LDA(solver='lsqr')
+    #clf = LDA()
+    clf.fit(trainData, ravel(trainLabel))
+    testLabel = clf.predict_proba(testData)[:,1]
+    saveResult(enrollment_id, testLabel, 'Proba_sklearn_LDA.csv')
+    return testLabel
 
 def kdd():
     trainData, trainLabel = loadTrainData()
@@ -132,10 +141,13 @@ def kdd():
     #result3 = GaussianNBClassify(test_enrollment_id, trainData, trainLabel, testData)
     #result4 = MultinomialNBClassify(test_enrollment_id, trainData, trainLabel, testData)
     #result5 = RandomForestClassify(test_enrollment_id, trainData, trainLabel, testData)
-    result6 = RandomForestClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
-    #result7 = LogisticRegressionClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
+    #result6 = RandomForestClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
+    result7 = LogisticRegressionClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
     #result8 = knnClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
     #result9 = GaussianNBClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
     #result10 = BernoulliNBClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
+    #result11 = MultinomialNBClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
+    #result12 = LDAClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
+    #result13 = GaussianProcessClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
 
 kdd()
