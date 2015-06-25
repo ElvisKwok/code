@@ -107,7 +107,7 @@ def RandomForestClassify(enrollment_id, trainData, trainLabel, testData):
 # 随机森林prob
 from sklearn.ensemble import RandomForestClassifier
 def RandomForestClassify_Proba(enrollment_id, trainData, trainLabel, testData):
-    clf = RandomForestClassifier(n_estimators=100) # default: 10
+    clf = RandomForestClassifier(n_estimators=1000) # default: 10
     clf.fit(trainData, ravel(trainLabel))
     testLabel = clf.predict_proba(testData)[:,1]
     saveResult(enrollment_id, testLabel, 'Proba_sklearn_RandomForest_Result.csv')
@@ -141,8 +141,8 @@ def kdd():
     #result3 = GaussianNBClassify(test_enrollment_id, trainData, trainLabel, testData)
     #result4 = MultinomialNBClassify(test_enrollment_id, trainData, trainLabel, testData)
     #result5 = RandomForestClassify(test_enrollment_id, trainData, trainLabel, testData)
-    #result6 = RandomForestClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
-    result7 = LogisticRegressionClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
+    result6 = RandomForestClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
+    #result7 = LogisticRegressionClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
     #result8 = knnClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
     #result9 = GaussianNBClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
     #result10 = BernoulliNBClassify_Proba(test_enrollment_id, trainData, trainLabel, testData)
