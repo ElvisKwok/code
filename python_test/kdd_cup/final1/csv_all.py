@@ -18,26 +18,34 @@ def save(output_file, attr_all):
         for lst in attr_all:
             writer.writerow([lst[0], lst[3], lst[4], lst[5], lst[6], lst[7]])
 
+#def string_to_int(input_file_1, attr_all):
+#    "将username, course_id转化为唯一的int值"
+#    with open(input_file_1) as file_enrollment_train:
+#        file_enrollment_train.readline()
+#        reader = csv.reader(file_enrollment_train)
+#        l1 = []
+#        l2 = []
+#        for a, b, c in reader:
+#            l1.append(b)
+#            l2.append(c)
+#        s1 = set(l1)
+#        s2 = set(l2)
+#        l1 = list(s1)
+#        l2 = list(s2)
+#        file_enrollment_train.close()
+#        file2 = open(input_file_1)
+#        file2.readline()
+#        reader = csv.reader(file2)
+#        for a, b, c in reader:
+#            attr_all.append([int(a), l1.index(b), l2.index(c)])
+
 def string_to_int(input_file_1, attr_all):
-    "将username, course_id转化为唯一的int值"
+    "将enrollment_id转化为int, username, course_id还是保持回string以便与date.csv匹配"
     with open(input_file_1) as file_enrollment_train:
         file_enrollment_train.readline()
         reader = csv.reader(file_enrollment_train)
-        l1 = []
-        l2 = []
         for a, b, c in reader:
-            l1.append(b)
-            l2.append(c)
-        s1 = set(l1)
-        s2 = set(l2)
-        l1 = list(s1)
-        l2 = list(s2)
-        file_enrollment_train.close()
-        file2 = open(input_file_1)
-        file2.readline()
-        reader = csv.reader(file2)
-        for a, b, c in reader:
-            attr_all.append([int(a), l1.index(b), l2.index(c)])
+            attr_all.append([int(a), b, c])
 
 def log_sum(input_file_2, attr_all):
     "统计每个enrollment_id执行相关log操作的个数"
