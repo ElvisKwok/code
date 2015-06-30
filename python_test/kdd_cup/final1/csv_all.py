@@ -9,10 +9,14 @@ import time
 train_attr_all = []
 test_attr_all  = []
 
-def save(attr_all):
+def save(output_file, attr_all):
     with open(output_file, "wb") as file_save:
         writer = csv.writer(file_save)
-        writer.writerows(attr_all)
+        #writer.writerow(['enrollment_id', 'username', 'course_id', 'log_sum', 'time_delta', 'course_sum_each_user', 'user_sum_each_course', 'course_not_quit_ratio'])
+        #writer.writerows(attr_all)
+        writer.writerow(['enrollment_id', 'log_sum', 'time_delta', 'course_sum_each_user', 'user_sum_each_course', 'course_not_quit_ratio'])
+        for lst in attr_all:
+            writer.writerow([lst[0], lst[3], lst[4], lst[5], lst[6], lst[7]])
 
 def string_to_int(input_file_1, attr_all):
     "将username, course_id转化为唯一的int值"
@@ -153,7 +157,7 @@ def get_train_attr_all():
     course_sum_each_user(train_attr_all)
     user_sum_each_course(train_attr_all)
     course_not_quit_ratio_dic = course_not_quit_ratio(input_file_3, train_attr_all)
-    save(train_attr_all)
+    save(output_file, train_attr_all)
     return course_not_quit_ratio_dic
 
 def get_test_attr_all(course_not_quit_ratio_dic):
@@ -166,7 +170,7 @@ def get_test_attr_all(course_not_quit_ratio_dic):
     course_sum_each_user(test_attr_all)
     user_sum_each_course(test_attr_all)
     test_course_not_quit_ratio(course_not_quit_ratio_dic, test_attr_all)
-    save(test_attr_all)
+    save(output_file, test_attr_all)
 
 if __name__ == '__main__':
     course_not_quit_ratio_dic = get_train_attr_all()
