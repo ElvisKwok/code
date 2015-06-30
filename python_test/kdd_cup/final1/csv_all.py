@@ -14,7 +14,7 @@ def save(attr_all):
         writer = csv.writer(file_save)
         writer.writerows(attr_all)
 
-def string_to_int(attr_all):
+def string_to_int(input_file_1, attr_all):
     "将username, course_id转化为唯一的int值"
     with open(input_file_1) as file_enrollment_train:
         file_enrollment_train.readline()
@@ -35,7 +35,7 @@ def string_to_int(attr_all):
         for a, b, c in reader:
             attr_all.append([int(a), l1.index(b), l2.index(c)])
 
-def log_sum(attr_all):
+def log_sum(input_file_2, attr_all):
     "统计每个enrollment_id执行相关log操作的个数"
     with open(input_file_2) as file_log_train:
         file_log_train.readline()
@@ -52,7 +52,7 @@ def log_sum(attr_all):
             id = enrollment_id[i]
             attr_all[i].append(dic[id])
 
-def time_delta(attr_all):
+def time_delta(input_file_2, attr_all):
     "统计每个enrollment_id第一个log到最后一个log的时间跨度"
     with open(input_file_2) as file_log_train:
         file_log_train.readline()
@@ -107,7 +107,7 @@ def user_sum_each_course(attr_all):
         course = lst[2]
         lst.append(course_dic[course])
 
-def course_not_quit_ratio(attr_all):
+def course_not_quit_ratio(input_file_3, attr_all):
     "所有课程中，统计每门课没有drop out的比例"
     with open(input_file_3) as file_label:
         reader = csv.reader(file_label)
@@ -115,7 +115,6 @@ def course_not_quit_ratio(attr_all):
         for enrollment_id, label in reader:
             label_dic[int(enrollment_id)] = int(label)
         course_not_quit_dic = {}
-        for user, course, l in hstack((feature, label)): # hstack: 数组组合(横向)
         for lst in attr_all:
             enrollment_id = lst[0]
             course = lst[2]
@@ -143,27 +142,27 @@ def test_course_not_quit_ratio(course_not_quit_ratio_dic, attr_all):
         course_not_quit_ratio = course_not_quit_ratio_dic[course]
         lst.append(course_not_quit_ratio)
 
-def get_train_attr_all()
+def get_train_attr_all():
     input_file_1 = "train/enrollment_train.csv"
     input_file_2 = "train/log_train.csv"
     input_file_3 = "train/truth_train.csv"
     output_file = "train_attr_all.csv"
-    string_to_int(train_attr_all)
-    log_sum(train_attr_all)
-    time_delta(train_attr_all)
+    string_to_int(input_file_1, train_attr_all)
+    log_sum(input_file_2, train_attr_all)
+    time_delta(input_file_2, train_attr_all)
     course_sum_each_user(train_attr_all)
     user_sum_each_course(train_attr_all)
-    course_not_quit_ratio_dic = course_not_quit_ratio(train_attr_all)
+    course_not_quit_ratio_dic = course_not_quit_ratio(input_file_3, train_attr_all)
     save(train_attr_all)
     return course_not_quit_ratio_dic
 
-def get_test_attr_all(course_not_quit_ratio_dic)
+def get_test_attr_all(course_not_quit_ratio_dic):
     input_file_1 = "test/enrollment_test.csv"
     input_file_2 = "test/log_test.csv"
     output_file = "test_attr_all.csv"
-    string_to_int(test_attr_all)
-    log_sum(test_attr_all)
-    time_delta(test_attr_all)
+    string_to_int(input_file_1, test_attr_all)
+    log_sum(input_file_2, test_attr_all)
+    time_delta(input_file_2, test_attr_all)
     course_sum_each_user(test_attr_all)
     user_sum_each_course(test_attr_all)
     test_course_not_quit_ratio(course_not_quit_ratio_dic, test_attr_all)
