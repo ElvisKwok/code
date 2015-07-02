@@ -6,14 +6,16 @@ import pandas as pd
 import csv
 
 def loadTrainData():
-    feature_raw=pd.read_csv('enrollment_train_reduce_event_weighted.csv',header=0) #header=0,将第0行作为header
+    feature_raw=pd.read_csv('combine_train_1.csv',header=0) #header=0,将第0行作为header
+    #feature_raw=pd.read_csv('train_attr_all_active.csv',header=0) #header=0,将第0行作为header
     feature = feature_raw.values[:,1:]
     label_raw=pd.read_csv('truth_train.csv', header=None)
     label = label_raw.values[:,1:]
     return feature, label
 
 def loadTestData():
-    feature_raw=pd.read_csv('enrollment_test_reduce_event_weighted.csv',header=0)
+    feature_raw=pd.read_csv('combine_test_1.csv',header=0)
+    #feature_raw=pd.read_csv('test_attr_all_active.csv',header=0)
     feature = feature_raw.values[:,1:]
     enrollment_id = feature_raw.values[:,0]
     return feature, enrollment_id
