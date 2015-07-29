@@ -1,0 +1,5 @@
+Outline:
+1. Problem description
+2. Feature extracting
+3. Tools & Algorithm
+4. Result
