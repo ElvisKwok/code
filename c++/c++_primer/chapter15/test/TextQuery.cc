@@ -38,8 +38,8 @@ set<TextQuery::line_no> TextQuery::run_query(const string &query_word) const
 string TextQuery::cleanup_str(const string &word)
 {
     string ret;
-    for (string::const_iterator it = word.begin(); it != word.end(); ++it)
-        if (!ispunct(*it))
+    for (string:const_iterator it = word.begin(); it != word.end(); ++it)
+        if (!spunct(*it))
             ret += tolower(*it);
     return ret;
 }
