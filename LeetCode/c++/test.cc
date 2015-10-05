@@ -22,17 +22,14 @@ public:
             l1 = l1->next;
             l2 = l2->next;
         }
-        ListNode *remain = new ListNode(0);
+        ListNode *remain;
         if (l1 != NULL)
             remain = l1;
-        if (l2 != NULL)         // can not use "else" here, input ([5], [5]) cause segment fault
+        else
             remain = l2;
         if (carry_bit == 1)
             remain->val += 1;
-        if ((l1 == NULL) && (l2 == NULL) && (carry_bit == 1))
-            p->next = new ListNode(remain->val);
-        while ((remain != NULL) && ((l1 != NULL) || (l2 != NULL))) {
-        //while ((remain != NULL) && ((l1 != NULL) || (l2 != NULL))) {
+        while (remain != NULL) {
             p->next = new ListNode(remain->val);
             p = p->next;
             remain = remain->next;
@@ -44,13 +41,12 @@ public:
 
 int main()
 {
-      ListNode *l1 = new ListNode(1), *l2 = new ListNode(9), *result;
-//    ListNode *l1 = new ListNode(2), *l2 = new ListNode(5), *result;
-//      l1->next = new ListNode(4);
-//    l1->next->next = new ListNode(3);
-      l2->next = new ListNode(9);
-//    l2->next->next = new ListNode(4);
-//    l2->next->next->next = new ListNode(9);
+    ListNode *l1 = new ListNode(2), *l2 = new ListNode(5), *result;
+    l1->next = new ListNode(4);
+    l1->next->next = new ListNode(3);
+    l2->next = new ListNode(6);
+    l2->next->next = new ListNode(4);
+    l2->next->next->next = new ListNode(9);
     Solution test;
     result = test.addTwoNumbers(l1, l2);
     while (result->next != NULL) {
