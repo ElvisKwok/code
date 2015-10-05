@@ -22,7 +22,7 @@ public:
             
             ListNode *node = new ListNode(sum%10);
             *t = node;
-            t = (&node->next);
+            t = &(node->next);
             
             carry = sum/10;
         }
