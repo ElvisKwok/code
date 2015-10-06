@@ -11,7 +11,22 @@ class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         ListNode *head = new ListNode(0), *p = head;
-        int bit_sum = 0, carry_bit = 0;
+        int bit_sum = 0, carry_bit = 0, x = 0, y = 0;
+        while (l1 != NULL || l2 != NULL) {
+            x = getValueAndMoveNext(l1);
+            y = getValueAndMoveNext(l2);
+            bit_sum = x + y + carry_bit;
+            carry_bit = bit_sum / 10;
+            p->next = new ListNode(bit_sum%10);
+            p = p->next;
+        }
+        if (carry_bit == 1) 
+            p->next = new ListNode(carry_bit);
+          
+        return head->next;
+
+/* bug when input ([1], [9]->[9]->[9] */
+/*
         while (l1 != NULL && l2 != NULL) {
             bit_sum = l1->val + l2->val + carry_bit;
             carry_bit = bit_sum / 10;
@@ -37,7 +52,16 @@ public:
             p = p->next;
             remain = remain->next;
         }
-        return head->next;
+*/ 
+    }
+private:
+    int getValueAndMoveNext(ListNode* &l) {
+        int x = 0;
+        if (l != NULL) {
+            x = l->val;
+            l = l->next;
+        }
+        return x;
     }
 };
 
@@ -49,7 +73,7 @@ int main()
 //      l1->next = new ListNode(4);
 //    l1->next->next = new ListNode(3);
       l2->next = new ListNode(9);
-//    l2->next->next = new ListNode(4);
+      l2->next->next = new ListNode(9);
 //    l2->next->next->next = new ListNode(9);
     Solution test;
     result = test.addTwoNumbers(l1, l2);

@@ -1,20 +1,21 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <tr1/unordered_map>
 using namespace std;
-using std::tr1::unordered_map;
 
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
+    vector<int> twoSum(vector<int> &numbers, int target) {
         unordered_map<int, int> m;
         vector<int> result;
-        for (size_t i = 0; i < nums.size(); ++i) {
-            if (m.find(nums[i]) == m.end())
-                m[target-nums[i]] = i;
-            else {
-                result.push_back(m[nums[i]]+1);
+        for(int i=0; i<numbers.size(); i++){
+            // not found the second one
+            if (m.find(numbers[i])==m.end() ) { 
+                // store the first one poisition into the second one's key
+                m[target - numbers[i]] = i; 
+            }else { 
+                // found the second one
+                result.push_back(m[numbers[i]]+1);
                 result.push_back(i+1);
                 break;
             }
