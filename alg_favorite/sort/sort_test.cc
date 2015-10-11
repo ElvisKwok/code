@@ -28,63 +28,59 @@ void printVector(const vector<Type> &vec)
 //    }
 //}
 
-int main()
+void test(string func_name)
 {
     srand((unsigned)time(NULL));
     vector<int> ivec(SIZE);
-    cout << "Unsorted Numbers: " << endl;
-    for (int i = 0; i < SIZE; ++i)
-        ivec[i] = rand() % (10 * SIZE);
-    printVector(ivec);
-    cout << "Insert Sorted Numbers: " << endl;
-    insertSort(ivec, 0, ivec.size()-1);
-    printVector(ivec);
-    cout << "*************************************************************" << endl;
+    clock_t start_time, end_time;
 
     cout << "Unsorted Numbers: " << endl;
     for (int i = 0; i < SIZE; ++i)
         ivec[i] = rand() % (10 * SIZE);
     printVector(ivec);
-    cout << "Bubble Sorted Numbers: " << endl;
-    bubbleSort(ivec, 0, ivec.size()-1);
+    cout << "[" << func_name << "] result: " << endl;
+    start_time = clock();
+    switch (func_name[2]) {
+        case 's':
+            insertSort(ivec, 0, ivec.size()-1);
+            break;
+        case 'e':
+            shellSort(ivec, 0, ivec.size()-1);
+            break;
+        case 'b':
+            bubbleSort(ivec, 0, ivec.size()-1);
+            break;
+        case 'i':
+            quickSort(ivec, 0, ivec.size()-1);
+            break;
+        case 'l':
+            selectSort(ivec, 0, ivec.size()-1);
+            break;
+        case 'a':
+            heapSort(ivec, 0, ivec.size()-1);
+            break;
+        case 'u':
+            countingSort(ivec, 0, ivec.size()-1);
+            break;
+        default:
+            ;
+    }
+    end_time = clock();
+    cout << "time: " << static_cast<double>(end_time-start_time)/CLOCKS_PER_SEC*1000 << "ms" << endl;
     printVector(ivec);
     cout << "*************************************************************" << endl;
+}
 
-    cout << "Unsorted Numbers: " << endl;
-    for (int i = 0; i < SIZE; ++i)
-        ivec[i] = rand() % (10 * SIZE);
-    printVector(ivec);
-    cout << "Quick Sorted Numbers: " << endl;
-    quickSort(ivec, 0, ivec.size()-1);
-    printVector(ivec);
-    cout << "*************************************************************" << endl;
-
-    cout << "Unsorted Numbers: " << endl;
-    for (int i = 0; i < SIZE; ++i)
-        ivec[i] = rand() % (10 * SIZE);
-    printVector(ivec);
-    cout << "Select Sorted Numbers: " << endl;
-    selectSort(ivec, 0, ivec.size()-1);
-    printVector(ivec);
-    cout << "*************************************************************" << endl;
-
-    cout << "Unsorted Numbers: " << endl;
-    for (int i = 0; i < SIZE; ++i)
-        ivec[i] = rand() % (10 * SIZE);
-    printVector(ivec);
-    cout << "Heap Sorted Numbers: " << endl;
-    heapSort(ivec, 0, ivec.size()-1);
-    printVector(ivec);
-    cout << "*************************************************************" << endl;
-
-    cout << "Unsorted Numbers: " << endl;
-    for (int i = 0; i < SIZE; ++i)
-        ivec[i] = rand() % (10 * SIZE);
-    printVector(ivec);
-    cout << "Merge Sorted Numbers: " << endl;
-    mergeSort(ivec, 0, ivec.size()-1);
-    printVector(ivec);
-    cout << endl;
+int main()
+{
+    test("insertSort");
+    test("shellSort");
+    test("bubbleSort");
+    test("quickSort");
+    test("selectSort");
+    test("heapSort");
+    test("mergeSort");
+    test("countingSort");
 
     return 0;
 }
