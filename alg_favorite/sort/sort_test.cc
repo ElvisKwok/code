@@ -16,17 +16,17 @@ void printVector(const vector<Type> &vec)
     cout << endl;
 }
 
-//template <typename Type>
-//void insertSort(vector<Type> &vec, int left, int right) 
-//{
-//    for (int p = left+1; p <= right; ++p) {
-//        Type tmp = vec[p];
-//        int j;
-//        for (j = p; (j > left) && (tmp < vec[j-1]); --j)
-//            vec[j] = vec[j-1];
-//        vec[j] = tmp;
-//    }
-//}
+template <typename Type>
+bool result_correct(vector<Type> &vec) 
+{
+    int size = vec.size();
+    for (int i = 1; i < size; ++i)
+        if (vec[i] >= vec[i-1])
+            continue;
+        else
+            return false;
+    return true;
+}
 
 void test(string func_name)
 {
@@ -59,6 +59,9 @@ void test(string func_name)
         case 'a':
             heapSort(ivec, 0, ivec.size()-1);
             break;
+        case 'r':
+            mergeSort(ivec, 0, ivec.size()-1);
+            break;
         case 'u':
             countingSort(ivec, 0, ivec.size()-1);
             break;
@@ -68,6 +71,7 @@ void test(string func_name)
     end_time = clock();
     cout << "time: " << static_cast<double>(end_time-start_time)/CLOCKS_PER_SEC*1000 << "ms" << endl;
     printVector(ivec);
+    cout << "result correct?\t" << result_correct(ivec) << endl;
     cout << "*************************************************************" << endl;
 }
 
@@ -81,6 +85,5 @@ int main()
     test("heapSort");
     test("mergeSort");
     test("countingSort");
-
     return 0;
 }

@@ -375,7 +375,7 @@ void countingSort(vector<Type> &vec, int left, int right)
 
     for (int i = left; i <= right; ++i)
         ++counting_tmp[vec[i]];                 // 第j元素包含等于j的元素个数
-    for (int i = 1; i < max_val; ++i)
+    for (int i = 1; i <= max_val; ++i)          // i<=max_val (size为max_val+1)
         counting_tmp[i] += counting_tmp[i-1];   // 包含<=j的元素个数
     for (int i = right; i >= left; --i) {
         output_tmp[counting_tmp[vec[i]]] = vec[i];
