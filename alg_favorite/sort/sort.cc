@@ -10,8 +10,9 @@
  * 9. radixSort
  * 10. bucketSort
  */
-
+//#include <algorithm>    // swap
 using std::vector;
+using std::swap;
 
 // 严版1
 template <typename Type>
@@ -370,7 +371,7 @@ void countingSort(vector<Type> &vec, int left, int right)
     for (int i = left+1; i <= right; ++i)
         if (vec[i] > max_val)
             max_val = vec[i];
-    vector<int> counting_tmp(max_val);
+    vector<int> counting_tmp(max_val+1);        // 注意：这里的size要设为max_val+1，否则会溢出
 
     for (int i = left; i <= right; ++i)
         ++counting_tmp[vec[i]];                 // 第j元素包含等于j的元素个数
