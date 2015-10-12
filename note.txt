@@ -1,0 +1,2 @@
+检查内存出错的工具
+$ valgrind --tool=memcheck --db-attach=yes ./a.out

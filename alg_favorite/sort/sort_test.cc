@@ -77,13 +77,15 @@ void test(string func_name)
 
 int main()
 {
-    test("insertSort");
-    test("shellSort");
-    test("bubbleSort");
-    test("quickSort");
-    test("selectSort");
-    test("heapSort");
-    test("mergeSort");
-    test("countingSort");
+    for (long i = 0; i < 1; ++i) {
+        test("insertSort");
+        test("shellSort");
+        test("bubbleSort");
+        test("quickSort");
+        test("selectSort");
+        test("heapSort");
+        test("mergeSort");
+        test("countingSort");
+    }
     return 0;
 }

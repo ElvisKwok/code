@@ -371,15 +371,20 @@ void countingSort(vector<Type> &vec, int left, int right)
     for (int i = left+1; i <= right; ++i)
         if (vec[i] > max_val)
             max_val = vec[i];
-    vector<int> counting_tmp(max_val+1);        // 注意：这里的size要设为max_val+1，否则会溢出
+    vector<Type> counting_tmp(max_val+1);        // 注意：这里的size要设为max_val+1，否则会溢出
 
     for (int i = left; i <= right; ++i)
         ++counting_tmp[vec[i]];                 // 第j元素包含等于j的元素个数
     for (int i = 1; i <= max_val; ++i)          // i<=max_val (size为max_val+1)
         counting_tmp[i] += counting_tmp[i-1];   // 包含<=j的元素个数
+    /* 注意：这里countint_tmp[max_val]的值为vec长度（这只是其中一个例子）
+     * 但是output_tmp和vec最后一个元素下标应该是vec长度-1（其他值的下标也要对应前移）
+     * 又例如：最小的那个值如只出现一次，而它的counting_tmp的值却是1，所以要-1，放到0下标位置
+     * 所以，在下面的for循环要先逐个--counting_tmp[vec[i]]
+     */
     for (int i = right; i >= left; --i) {
+        --counting_tmp[vec[i]];     // 这里有两个作用：1. 下标迁移；2. 保证排序稳定性（相同元素）
         output_tmp[counting_tmp[vec[i]]] = vec[i];
-        --counting_tmp[vec[i]];
     }
 
     for (int i = left; i <= right; ++i)
