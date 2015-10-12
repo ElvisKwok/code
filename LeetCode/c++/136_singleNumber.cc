@@ -4,7 +4,8 @@ using namespace std;
 
 class Solution {
 public:
-    Type funcName(vector<int>& nums, ... ) {
+    int singleNumber(vector<int>& nums) {
+
     
     }
 };
