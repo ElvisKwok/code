@@ -1,3 +1,0 @@
-int main() {
-    I add it from mac.
-}
