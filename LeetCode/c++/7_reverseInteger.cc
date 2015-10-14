@@ -36,9 +36,10 @@
  **********************************************************************************/
 
 /* my wrong answer occured:
- * input:       1534236469, 8463847412 
+ * input:       1534236469, 
  * output:      1056389759, -.......
  * expected:    0         , 0
+ * Do not need to think about input like 8463847412 BECAUSE type int as a passing parameter
  */
 
 
@@ -62,6 +63,8 @@ public:
                 return 0;
             base = base*10 + bit;
         }
+        cout << "MAX_INT % 10 == " << MAX_INT % 10  << endl;
+        cout << "MIN_INT % 10 == " << MIN_INT % 10  << endl;
         return base;
     }
 };
@@ -70,7 +73,9 @@ public:
 int main(int argc, char **argv)
 {
     Solution s;
-    cout << "max_int: " << ((-1u)>>1) << endl;
+    int MAX_INT = (-1u)>>1, MIN_INT = (-MAX_INT-1);
+    cout << "MAX_INT: " << MAX_INT << endl;
+    cout << "MIN_INT: " << MIN_INT << endl;
     cout << s.reverse(atoi(argv[1])) << endl; 
     return 0;
 }
