@@ -25,7 +25,50 @@ using namespace std;
 class Solution {
 public:
     bool isValid(string s) {
+        vector<char> stack;
+        int i = 0, j=-1;
+        char test_char;
+        while (i < s.size()) {  
+            if (s[i]=='{' || s[i]=='[' || s[i]=='(') {
+                stack.push_back(s[i]);
+                ++j;
+            }
+            else if (s[i]=='}' || s[i]==']' || s[i]==')') {
+                if (s[i] == '}') test_char = '{';
+                else if (s[i] == ']') test_char = '[';
+                else test_char = '(';
 
+                if (!stack.empty()) {
+                    if (stack[j] == test_char) {
+                        stack.pop_back();
+                        --j;
+                    }
+                    else
+                        return false;
+                }
+                else return false;  // stack empty;
+            } // else if
+            else return false;      // undefined char
+            ++i;
+        } // while
+        return stack.empty();       // return false if e.g: "(({"
+    }
+    // soulmachine version
+    bool isValid(string s) {
+        string left  = "([{";
+        string rignt = ")]}";
+        stack<char> stk;
+        for (auto c : s) {
+            if (left.find(c) != string::npos)
+                stk.push(c);
+            else {
+                if (stk.empty() || stk.top()!=left[right.find(c)])
+                    return false;
+                else
+                    stk.pop();
+            }
+        }
+        return stk.empty();
     }
 };
 

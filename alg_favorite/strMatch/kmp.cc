@@ -89,7 +89,7 @@ int main()
 {
     char s[] = "BBC ABCDAB ABCDABCDABDE", p[] = "ABCDABD";
     int *next = (int *)malloc(strlen(p)*sizeof(int));
-    GetNext(p, next);
+    GetNextval(p, next);
     for (int i = 0; i < 7; ++i) 
         printf("%d ", next[i]);
     puts("");
