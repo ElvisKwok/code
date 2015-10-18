@@ -11,9 +11,10 @@ public:
 
 int main(int argc, char **argv)
 {
+    Solution s;
+
     if (argc < 2)
         return 0;
-    Solution s;
 
     return 0;
 }
