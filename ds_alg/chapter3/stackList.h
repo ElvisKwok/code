@@ -1,4 +1,4 @@
-#ifndef _Stack_H
+#ifndef _StackList_H
 
 struct Node;
 typedef struct Node *PtrToNode;
@@ -12,7 +12,7 @@ void Push(ElementType X, Stack S);
 void Pop(Stack S);
 void MakeEmpty(Stack S);
 
-#endif      /* _Stack_H */
+#endif      /* _StackList_H */
 
 /* This stack implementation is a linked list with a header */
 struct Node {

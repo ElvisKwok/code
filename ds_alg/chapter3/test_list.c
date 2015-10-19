@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 typedef int ElementType;
-#include "link_list.h"
+#include "linkList.h"
 
 
 int main() 

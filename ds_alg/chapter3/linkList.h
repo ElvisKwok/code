@@ -1,4 +1,4 @@
-#ifndef _List_H
+#ifndef _LinkList_H
 
 struct Node;
 typedef struct Node *PtrToNode;
@@ -18,7 +18,7 @@ void DeleteList(List L);
 //Position Advance(Position P);
 //ElementType Retrieve(Position P);
 
-#endif      /* _List_H */
+#endif      /* _LinkList_H */
 
 struct Node {
     ElementType Element;

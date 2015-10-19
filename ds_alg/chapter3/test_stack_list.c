@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 typedef int ElementType;
-#include "stack_list.h"
+#include "stackList.h"
 
 
 int main() 
@@ -12,7 +13,7 @@ int main()
     printf("[IsEmpty]IsEmpty? The answer is: %d\n", IsEmpty(S));
     
     /* test: push num 0-9 */
-    printf("[Push]Push num 0-9");
+    printf("[Push]Push num 0-9\n");
     for (i = 0; i < 10; i++)
         Push(i, S);
 
