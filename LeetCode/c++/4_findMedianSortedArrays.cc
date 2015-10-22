@@ -32,6 +32,11 @@ public:
         while (left1 < right1 && left2 < right2) {
             mid1 = (left1 + right1) / 2;
             mid2 = (left2 + right2) / 2;
+            if (left1+1==right1 && left2+1==right2) { // [1,2], [1,2]
+                int mid_value1 = nums1[left1] <= nums2[left2] ? nums2[left2]: nums1[left1];
+                int mid_value2 = nums1[right1] <= nums2[right2] ? nums1[right1]: nums2[right2];
+                return (mid_value1 + mid_value2)/2.0;
+            }
             if (nums1[mid1] == nums2[mid2])
                 return (double)nums1[mid1];
             else if (nums1[mid1] > nums2[mid2]) {

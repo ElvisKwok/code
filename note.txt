@@ -1,5 +1,11 @@
+[coding]
 检查内存出错的工具
 $ valgrind --tool=memcheck --db-attach=yes ./a.out
 
+[vim]
 vim 鼠标copy & paste(source inside of vim)
 select area => push button 'y' => using mouse middle key to paste to *anywhere*.
+
+[about Ubuntu]
+set default display manager(lightdm(unity)/gdm(gnome))
+$ sudo dpkg-reconfigure gdm
