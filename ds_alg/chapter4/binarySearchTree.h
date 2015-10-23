@@ -6,7 +6,7 @@ struct TreeNode;
 typedef struct TreeNode *Position;
 typedef struct TreeNode *SearchTree;
 
-SearchTree Create();
+SearchTree Create(ElementType X);
 SearchTree MakeEmpty(SearchTree T);
 Position Find(ElementType X, SearchTree T);
 Position FindMin(SearchTree T);
@@ -24,9 +24,10 @@ struct TreeNode
     SearchTree Right;
 };
 
-SearchTree Create()
+SearchTree Create(ElementType X)
 {
     SearchTree T = malloc(sizeof(struct TreeNode));
+    T->Element = X;
     T->Left = T->Right = NULL;
     return T;
 }
@@ -85,9 +86,9 @@ SearchTree Insert(ElementType X, SearchTree T)
         }
     }
     else if (X < T->Element)
-        Insert(X, T->Left);
+        T->Left = Insert(X, T->Left);
     else if (X > T->Element)
-        Insert(X, T->Right);
+        T->Right = Insert(X, T->Right);
     // the last else situation is X is already in this T, do nothing
 
     return T;

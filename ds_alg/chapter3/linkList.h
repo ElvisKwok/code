@@ -77,7 +77,7 @@ Position FindPrevious(ElementType X, List L)
 void Insert(ElementType X, List L, Position P)
 {
     Position TmpCell;
-    TmpCell = malloc(sizeof(struct Node));
+    TmpCell = (struct Node*)malloc(sizeof(struct Node));
     if (TmpCell == NULL)
         exit(1);
     TmpCell->Element = X;
