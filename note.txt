@@ -2,6 +2,9 @@
 检查内存出错的工具
 $ valgrind --tool=memcheck --db-attach=yes ./a.out
 
+g++ using c++11 e.g. auto type.
+$ g++ -std=c++11 file.cc
+
 [vim]
 vim 鼠标copy & paste(source inside of vim)
 select area => push button 'y' => using mouse middle key to paste to *anywhere*.

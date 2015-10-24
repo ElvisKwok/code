@@ -21,6 +21,8 @@
 
 
 #include <iostream>
+#include <sstream>
+#include <algorithm>
 #include <vector>
 #include <string>
 using namespace std;
@@ -38,8 +40,11 @@ public:
             for (int j = 1; j < prev.size(); ++j) {
                 char next = prev[j];
                 if (next != first) {
-                    cur.append(1, cnt+'0');
-                    cur.append(1, first);
+                    //cur.append(1, cnt+'0');
+                    //cur.append(1, first);
+                    cur += intToStr(cnt);
+                    cur += first;
+                    //if (i == n-1) cout << intToStr(cnt) << "个" << first << ", ";
                     cnt = 1;
                     first = next;   // replace with first different char.
                 }
@@ -49,17 +54,47 @@ public:
             }
             cur.append(1, cnt+'0');    // remain string.
             cur.append(1, first);
+            //if (i == n-1) cout << intToStr(cnt) << "个" << first << endl;
             prev = cur;
         }
         return cur;
+    }
+    // soulmachine solution: STL, include <sstream> and <algorithm> for find_if
+    string countAndSay0(int n) {
+        string s("1");
+        while (--n)
+            s = getNext(s);
+        return s;
+    }
+    string getNext(const string &s) {
+        stringstream ss;
+        for (auto i = s.begin(); i != s.end(); ) {
+            //auto j = find_if(i, s.end(), bind1st(not_equal_to<char>(), *i));    // bind1st is a binder(function adapter)
+            auto j = find_if(i, s.end(), bind2nd(not_equal_to<char>(), *i));    // bind2nd is a binder(function adapter), bind *i as the 2nd parameter for function "not_equal_to()"
+            ss << distance(i, j) << *i;
+            i = j;
+        }
+        return ss.str();
+    }
+private:
+    string intToStr(int n) {
+        string str;
+        while (n != 0) {
+            char bit = (n % 10) + '0';
+            n /= 10;
+            str = bit + str;
+        } 
+        return (n >= 0 ? str : '-'+str);
     }
 };
 
 int main(int argc, char **argv)
 {
     Solution s;
-    for (int i = 1; i <= 5; ++i)
-        cout << s.countAndSay(i) << endl;
+    for (int i = 5; i <= 8; ++i) {
+        cout << s.countAndSay(i) << "\n" << endl;
+        cout << s.countAndSay0(i) << "\n" << endl;
+    }
 
     if (argc < 2)
         return 0;
