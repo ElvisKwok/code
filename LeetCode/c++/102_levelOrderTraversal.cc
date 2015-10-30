@@ -44,9 +44,6 @@
  * The above binary tree is serialized as "{1,2,3,#,#,4,#,#,5}". 
  * 
  *               
- *               
- * 
- *               
  **********************************************************************************/
 
 
@@ -78,9 +75,9 @@ public:
         TreeNode* node;
 
         while (!q.empty()) {        // q is empty() when all leaf are processed.
-            int size = q.size();
+            int size = q.size();    // queue size of last iteration(last level)
             //if (size == 0) break; // this is need only if the upper while is set to while(true)
-            while ((size--) > 0) {
+            while ((size--) > 0) {  // enqueue for current level.
                 node = q.front(); q.pop();
                 ivec.push_back(node->val);  // not need to check if node is NULL
                 if (node->left != NULL)
@@ -101,7 +98,12 @@ public:
         return ivec_vec;
     }
     void traverse(TreeNode *root, size_t level, vector< vector<int> > &ivec_vec) {
-            
+        if (!root)  return ;
+        if (level > ivec_vec.size())
+            ivec_vec.push_back(vector<int>());
+        ivec_vec[level-1].push_back(root->val);     // because level start from 1 instead of 0
+        traverse(root->left, level+1, ivec_vec);
+        traverse(root->right, level+1, ivec_vec);
     }
 
     // soulmachine sollution: [iteratively] using two queues to swap instead of using size
