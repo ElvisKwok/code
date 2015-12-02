@@ -30,7 +30,7 @@ public:
         int distance = INT_MAX;
         int closestSum;
         int n = nums.size();
-        for (int i=0; i < n; ++i) {
+        for (int i=0; i < n-2; ++i) {
             if (i>0 && nums[i-1]==nums[i]) continue;    // skip
             int a = nums[i];
             int low = i+1;
