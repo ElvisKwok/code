@@ -27,8 +27,20 @@
 #include <algorithm>
 using namespace std;
 
+/********************************************************************************** 
+ * 
+ * General solution: K-sum  O(max{nlogn, n^(k-1)})
+ * 1) sort              
+ * 2) k-2 for loops, starting point is next by next: a1, a2(next to a1), ..., ak-2
+ * 3) 1 while loop, "while(index[ak-1] < index[ak])"
+ * 4) ak-1 start from index[ak-2]+1, ak start from vector.size()-1
+ * 5) two pointer(ak-1, ak) search from both sides to center,
+ *               
+ **********************************************************************************/
+
 class Solution {
 public:
+    // july solution: sort, two pointer from both sides to center.
     vector<int> twoSum(vector<int>& nums, int target) {
         int small = 0, big = 0, index1 = 0, index2 = 0, j=0;
         vector<int> nums_copy(nums);
@@ -61,6 +73,25 @@ public:
         int b = index1 > index2 ? index1 : index2;
         result.push_back(a);
         result.push_back(b);
+        return result;
+    }
+
+    // haoel solution: map
+    vector<int> twoSum2(vector<int> &numbers, int target) {
+        unordered_map<int, int> m;
+        vector<int> result;
+        for(int i=0; i<numbers.size(); i++){
+            // not found the second one
+            if (m.find(numbers[i])==m.end() ) { 
+                // store the first one poisition into the second one's key
+                m[target - numbers[i]] = i; 
+            }else { 
+                // found the second one
+                result.push_back(m[numbers[i]]+1);
+                result.push_back(i+1);
+                break;
+            }
+        }
         return result;
     }
 };

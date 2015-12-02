@@ -26,7 +26,7 @@ public:
     // O(N) solution: using (i - lastRepeatPos) to check if it's max
     // haoel solution using map:
     int lengthOfLongestSubstring(string s) {
-        unordered_map<char, int> m;
+        unordered_map<char, int> m; // <char, last_pos>
         int max = 0;
         int lastRepeatPos = -1;     // 0 - lastRepeatPos = 1
         for (int i = 0; i < s.size(); ++i) {
