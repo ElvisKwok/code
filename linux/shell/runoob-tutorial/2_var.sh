@@ -14,8 +14,8 @@ done
 #----------------------------------------------------------------------------
 # STRING
 # 
-# why prefer using “” instead of ''
 # "" allow using $var, and "\" as a escape character like "\n"
+# while using ' ', the value is exactly what you see, without change(transter)
 #----------------------------------------------------------------------------
 
 # concatenation
