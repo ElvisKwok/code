@@ -1,0 +1,7 @@
+The substitute command is applied to the lines matching the address. If no
+address is specified, it is applied to all lines that match the pattern, a
+regular expression. If a regular expression is supplied as an address, and no
+pattern is specified, the substitute command matches what is matched by the
+address.  This can be useful when the substitute command is one of multiple
+commands applied at the same address. For an example, see the section "Checking
+Out Reference Pages" later in this chapter.
