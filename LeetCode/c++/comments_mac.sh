@@ -71,10 +71,20 @@ current_time=`date +%Y-%m-%d`
 
 if [ $# -gt 1 ] && [ -f $2 ]; then
     source_file=$2
-    current_time=`stat -c %x ${source_file} | awk '{print \$1}'`
+    # mac differ from linux in comman "stat"
+    # current_time=`stat -c %x ${source_file} | awk '{print \$1}'`
+    current_time=`stat -f %Sa -t %Y-%m-%d\ %H:%M:%S ${source_file}`
 else
+    # delete the shortest matched pattern of ${LEETCODE_URL} from $1
+    # e.g., gets "letter-combinations-of-a-phone-number/" of the following $1 and ${LEETCODE_URL}
+    # https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+    # https://leetcode.com/problems/
     source_file=${1#${LEETCODE_URL}}
+    # remove last char
+    # gets "letter-combinations-of-a-phone-number"
     source_file=${source_file::${#source_file}-1}
+    # seperated by '-', then capitalize each section
+    # gets "LetterCombinationsOfAPhoneNumber"
     source_file=`echo $source_file | awk -F '-' '{for (i=1; i<=NF; i++) printf("%s", toupper(substr($i,1,1)) substr($i,2)) }'`${FILE_EXT}
 
     if [ ! -f ${source_file} ]; then
@@ -82,7 +92,8 @@ else
         echo -e "\n" > ${source_file}
         current_time=`date +%Y-%m-%d`
     else
-        current_time=`stat -c %x ${source_file} | awk '{print \$1}'`
+        # current_time=`stat -c %x ${source_file} | awk '{print \$1}'`
+        current_time=`stat -f %Sa -t %Y-%m-%d\ %H:%M:%S ${source_file}`
     fi
 fi
 
