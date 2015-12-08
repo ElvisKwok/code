@@ -32,35 +32,104 @@ using namespace std;
 
 class Solution {
 public:
-    inline int romanMap(const char c) {
-        int d = 0;
-        switch (c) {
-            case 'I': d = 1;    break;
-            case 'V': d = 5;    break;
-            case 'X': d = 10;   break; 
-            case 'L': d = 50;   break;
-            case 'C': d = 100;  break;
-            case 'D': d = 500;  break;
-            case 'M': d = 1000; break;
-            default :           break;
-        }
-        return d;
+    string thousands(int num) {
+        int n = num / 1000;
+        return string(n, 'M');
     }
- 
+
+    string hundreds(int num) {
+        int newNum = num % 1000;
+        int n = newNum / 100;
+        if (n == 0)
+            return "";
+        else if (n<=3)
+            return string(n, 'C');
+        else if (n == 4)
+            return "CD";
+        else if (n<=8)
+            return "D" + string((n-5), 'C');
+        else
+            return "CM";
+    }
+
+    string tens(int num) {
+        int newNum = num % 100;
+        int n = newNum / 10;
+        if (n == 0)
+            return "";
+        else if (n<=3)
+            return string(n, 'X');
+        else if (n == 4)
+            return "XL";
+        else if (n<=8)
+            return "L" + string((n-5), 'X');
+        else
+            return "XC";
+    }
+
+    string units(int num) {
+        int n = num % 10;
+        if (n == 0)
+            return "";
+        else if (n<=3)
+            return string(n, 'I');
+        else if (n == 4)
+            return "IV";
+        else if (n<=8)
+            return "V" + string((n-5), 'I');
+        else
+            return "IX";
+    }
+
     string intToRoman(int num) {
         string result;
-        
+        if (num >= 0 && num <= 3999)
+            result = thousands(num) + hundreds(num) + tens(num) + units(num);
+        return result;
+    }
 
+    // haoel solution:
+    string intToRoman2(int num) {
+        string symbol[] =  {"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};    
+        int value[]     =  {1000,900,500,400, 100, 90,  50, 40,  10, 9,   5,  4,   1}; 
+        string result;
+    
+        for(int i=0; num!=0; i++){
+            while(num >= value[i]){
+                num -= value[i];
+                result+=symbol[i];
+            }
+        }
+    
+        return result;
+    }
+
+    // soulmachine solution:
+    string intToRoman3(int num) {
+        const string symbol[] =  {"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};    
+        const int value[]     =  {1000,900,500,400, 100, 90,  50, 40,  10, 9,   5,  4,   1}; 
+        string result;
+    
+        for(size_t i=0; num>0; i++){
+            int count = num / value[i];
+            num %= value[i];
+            for (; count > 0; --count)
+                result += symbol[i];
+        }
         return result;
     }
 };
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
     Solution s;
+    int num = 1234;
+    if (argc>1){
+        num = atoi(argv[1]);
+    }    
 
-    if (argc < 2)
-        return 0;
-
+    cout << num << " : " << s.intToRoman(num) << endl;
+    cout << num << " : " << s.intToRoman2(num) << endl;
+    cout << num << " : " << s.intToRoman3(num) << endl;
     return 0;
 }
