@@ -34,7 +34,7 @@ using namespace std;
  * 2) k-2 for loops, starting point is next by next: a1, a2(next to a1), ..., ak-2
  * 3) 1 while loop, "while(index[ak-1] < index[ak])"
  * 4) ak-1 start from index[ak-2]+1, ak start from vector.size()-1
- * 5) two pointer(ak-1, ak) search from both sides to center,
+ * 5) two pointer(ak-1, ak) search from both sides to center
  *               
  **********************************************************************************/
 
