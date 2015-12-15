@@ -83,7 +83,8 @@ void printMatrix(vector<vector <int> > &matrix) {
 int main(int argc, char **argv)
 {
     Solution s;
-    int a[] = {-1, 0, 1, 2, -1, -4};
+    //int a[] = {-1, 0, 1, 2, -1, -4};
+    int a[] = {0, 0, 0, 0};
     vector<int> nums(a, a+sizeof(a)/sizeof(int));
     vector<vector <int> > result = s.threeSum(nums);
     printMatrix(result);
