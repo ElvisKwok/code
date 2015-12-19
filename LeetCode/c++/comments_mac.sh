@@ -89,25 +89,30 @@ else
 
     if [ ! -f ${source_file} ]; then
         echo "Create a new file - ${source_file}."
-        echo -e "\n" > ${source_file}
+        # in mac OS X, sed '3i\'... need require the file already contains 3 lines.
+        echo -e "\n\n\n" > ${source_file}
         current_time=`date +%Y-%m-%d`
     else
         # current_time=`stat -c %x ${source_file} | awk '{print \$1}'`
-        current_time=`stat -f %Sa -t %Y-%m-%d\ %H:%M:%S ${source_file}`
+        current_time=`stat -f %Sa -t %Y-%m-%d ${source_file}`
     fi
 fi
 
 # the source file is existed but it is empty, add a line, 
 # otherwise it could casue the comments inserts failed.
 if [ ! -s $source_file ]; then
-    echo "" > $source_file 
+    echo -e "\n\n\n" > $source_file 
 fi
 
 #adding the Copyright Comments
 if  ! grep -Fq  "${COMMENT_TAG} Author :" $source_file ; then
-    sed -i '1i\'"${COMMENT_TAG} Source : ${leetcode_url}" $source_file
-    sed -i '2i\'"${COMMENT_TAG} Author : ${AUTHOR}" $source_file
-    sed -i '3i\'"${COMMENT_TAG} Date   : ${current_time}\n" $source_file
+    # if you're doing this on OSx, you need to use sed -i "" to rename your file in-place
+    # sed -i '1i\'"${COMMENT_TAG} Source : ${leetcode_url}" $source_file
+    # the POSIX specification for sed requires a newline after i\ or a\
+    # e.g. sed -e 'a\'$'\n''text'
+    sed -i "" '1i\'$'\n'"${COMMENT_TAG} Source : ${leetcode_url}" $source_file
+    sed -i "" '2i\'$'\n'"${COMMENT_TAG} Author : ${AUTHOR}" $source_file
+    sed -i "" '3i\'$'\n'"${COMMENT_TAG} Date   : ${current_time}\n" $source_file
 fi
 
 #grab the problem description and add the comments
@@ -123,13 +128,16 @@ fi
 case $FILE_EXT in
     .cc )      xidel ${leetcode_url} -q -e "css('div.question-content')"  | \
                     grep -v '                ' |sed '/^$/N;/^\n$/D'  | fold -w 85 -s |\
-                    sed 's/^/ * /' | sed "1i/*$(printf '%.0s*' {0..80}) \n * " | \
-                    sed "\$a \ $(printf '%.0s*' {0..80})*/\n" > /tmp/tmp.txt
+                    #sed 's/^/ * /' | sed "1i/*$(printf '%.0s*' {0..80}) \n * " | \
+                    sed 's/^/ * /' | sed '1i\'$'\n'"/*$(printf '%.0s*' {0..80}) \n * " | \
+                    # sed "\$a \ $(printf '%.0s*' {0..80})*/\n" > /tmp/tmp.txt
+                    sed '$a\'$'\n'"\ $(printf '%.0s*' {0..80})*/\n" > /tmp/tmp.txt
                 ;;
     .sh )      xidel ${leetcode_url} -q -e "css('div.question-content')"  | \
                     grep -v '                ' |sed '/^$/N;/^\n$/D'  | fold -w 85 -s| \
-                    sed 's/^/# /' | sed "1i#$(printf '%.0s#' {0..80}) \n# " | \
-                    sed "\$a \#$(printf '%.0s#' {0..80})\n" > /tmp/tmp.txt
+                    sed 's/^/# /' | sed '1i\'$'\n'"#$(printf '%.0s#' {0..80}) \n# " | \
+                    #sed "\$a \#$(printf '%.0s#' {0..80})\n" > /tmp/tmp.txt
+                    sed '$a\'$'\n'"#$(printf '%.0s#' {0..80})\n" > /tmp/tmp.txt
                 ;;
       * )       echo "Bad file extension!"
                 exit 1;
@@ -137,7 +145,7 @@ case $FILE_EXT in
 esac
 
 #insert the problem description into the source file, and remove it
-sed -i '4 r /tmp/tmp.txt' ${source_file}
+sed -i "" '4 r /tmp/tmp.txt' ${source_file}
 rm -f /tmp/tmp.txt
 
 echo "${source_file} updated !"
