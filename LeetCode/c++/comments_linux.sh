@@ -117,6 +117,16 @@ fi
 # using xidel grab the problem description
 # 1) the `fold` command is used to wrap the text at centain column
 # 2) the last two `sed` commands are used to add the comments tags
+#
+# grep:
+# grep -v: select the non-matching line(some useless content lines contain '     ') 
+# 
+# sed:
+# sed '/^$/N;/^\n$/D    # delete redundant empty line into one line
+# sed 's/^/ * /'        # insert a '*' into the beginning of every line
+# sed "1i/*$(printf '%.0s*' {0..80}) \n * "     # insert "/******...**"(80 '*') into the first line
+# sed "\$a \ $(printf '%.0s*' {0..80})*/\n"     # append "*******...*/"(80 '*') to the last line
+
 case $FILE_EXT in
     .cc )      xidel ${leetcode_url} -q -e "css('div.question-content')"  | \
                     grep -v '                ' |sed '/^$/N;/^\n$/D'  | fold -w 85 -s |\
