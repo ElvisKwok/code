@@ -1,7 +1,8 @@
-Adams, Henrietta Northeast
-Banks, Freda South
-Dennis, Jim Midwest
-Garvey, Bill Northeast
-Jeffries, Jane West
-Madison, Sylvia Midwest
-Sommes, Tom South
+We will use phrase.sed to print any line which contains
+the word. Or if the word appears across two lines, like
+below:
+
+It will print this line, because the
+word appears across two lines.
+
+You can run sed -f phrase.sed text to test this.

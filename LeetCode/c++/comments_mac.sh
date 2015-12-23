@@ -89,7 +89,7 @@ else
 
     if [ ! -f ${source_file} ]; then
         echo "Create a new file - ${source_file}."
-        # in mac OS X, sed '3i\'... need require the file already contains 3 lines.
+        # in mac OS X, sed '3i\'... requires that the file already contains 3 lines.
         echo -e "\n\n\n" > ${source_file}
         current_time=`date +%Y-%m-%d`
     else
@@ -110,9 +110,11 @@ if  ! grep -Fq  "${COMMENT_TAG} Author :" $source_file ; then
     # sed -i '1i\'"${COMMENT_TAG} Source : ${leetcode_url}" $source_file
     # the POSIX specification for sed requires a newline after i\ or a\
     # e.g. sed -e 'a\'$'\n''text'
+    # also: '\n' isn't behave well in Mac OSX
     sed -i "" '1i\'$'\n'"${COMMENT_TAG} Source : ${leetcode_url}" $source_file
     sed -i "" '2i\'$'\n'"${COMMENT_TAG} Author : ${AUTHOR}" $source_file
-    sed -i "" '3i\'$'\n'"${COMMENT_TAG} Date   : ${current_time}\n" $source_file
+    sed -i "" '3i\'$'\n'"${COMMENT_TAG} Date   : ${current_time}"$'\n' $source_file
+    #sed -i "" '3i\'$'\n'"${COMMENT_TAG} Date   : ${current_time}\n" $source_file
 fi
 
 #grab the problem description and add the comments
@@ -122,6 +124,10 @@ if [ -z "${xidel}" ]; then
     install_xidel
 fi
 
+lf=$'\n'
+# OS X's sed doesn't interpret \n in the replace pattern, but you can use a literal linefeed
+# sed "s/,/\\$lf/g" file     # same effect:  tr , '\n' < file
+
 # using xidel grab the problem description
 # 1) the `fold` command is used to wrap the text at centain column
 # 2) the last two `sed` commands are used to add the comments tags
@@ -129,15 +135,16 @@ case $FILE_EXT in
     .cc )      xidel ${leetcode_url} -q -e "css('div.question-content')"  | \
                     grep -v '                ' |sed '/^$/N;/^\n$/D'  | fold -w 85 -s |\
                     #sed 's/^/ * /' | sed "1i/*$(printf '%.0s*' {0..80}) \n * " | \
-                    sed 's/^/ * /' | sed '1i\'$'\n'"/*$(printf '%.0s*' {0..80}) \n * " | \
+                    sed 's/^/ * /' | sed '1i\'$'\n'"/*$(printf '%.0s*' {0..80}) \\$lf \ * \\$lf" | \
                     # sed "\$a \ $(printf '%.0s*' {0..80})*/\n" > /tmp/tmp.txt
-                    sed '$a\'$'\n'"\ $(printf '%.0s*' {0..80})*/\n" > /tmp/tmp.txt
+                    sed '$a\'$'\n'"\ $(printf '%.0s*' {0..80})*/"$'\n' > /tmp/tmp.txt
                 ;;
     .sh )      xidel ${leetcode_url} -q -e "css('div.question-content')"  | \
                     grep -v '                ' |sed '/^$/N;/^\n$/D'  | fold -w 85 -s| \
-                    sed 's/^/# /' | sed '1i\'$'\n'"#$(printf '%.0s#' {0..80}) \n# " | \
+                    #sed 's/^/# /' | sed '1i\'$'\n'"#$(printf '%.0s#' {0..80}) "$'\n'"# " | \
+                    sed 's/^/# /' | sed '1i\'$'\n'"#$(printf '%.0s#' {0..80}) \\$lf # \\$lf" | \
                     #sed "\$a \#$(printf '%.0s#' {0..80})\n" > /tmp/tmp.txt
-                    sed '$a\'$'\n'"#$(printf '%.0s#' {0..80})\n" > /tmp/tmp.txt
+                    sed '$a\'$'\n'"#$(printf '%.0s#' {0..80})"$'\n' > /tmp/tmp.txt
                 ;;
       * )       echo "Bad file extension!"
                 exit 1;

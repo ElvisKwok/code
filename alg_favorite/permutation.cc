@@ -17,7 +17,7 @@ void perm_recursive(int array[], int begin, int end) {
 }
 
 int main() {
-    int a[] = {0, 1, 2, 3};
+    int a[] = {1, 2, 3, 4, 5};
     perm_recursive(a, 0, sizeof(a)/sizeof(int)-1);
 
     return 0;
