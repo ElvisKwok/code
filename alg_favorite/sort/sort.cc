@@ -15,55 +15,73 @@ using std::vector;
 using std::swap;
 
 // 严版1
-template <typename Type>
-void insertSort(vector<Type> &vec, int left, int right) 
-{
-    for (int i = left+1; i <= right; ++i) {
-        if (vec[i] < vec[i-1]) {
-            Type tmp = vec[i];  // 复制为哨兵，储存待排序元素&&判断数组边界
-            int j = i - 1;
-            while ((j >= left) && (tmp < vec[j])) {
-                vec[j+1] = vec[j];
-                --j;
-            }
-            vec[j+1] = tmp;     // --j后，要把j+1
-        }
-    }
-}
-
-// 严版2同1
 //template <typename Type>
 //void insertSort(vector<Type> &vec, int left, int right) 
 //{
 //    for (int i = left+1; i <= right; ++i) {
-//        Type tmp = vec[i];  // 复制为哨兵，储存待排序元素&&判断数组边界
-//        int j;
-//        for (j = i; (j > left) && (tmp < vec[j-1]); --j)
-//            vec[j] = vec[j-1];
-//        vec[j] = tmp;
+//        if (vec[i] < vec[i-1]) {
+//            Type tmp = vec[i];  // 复制为哨兵，储存待排序元素&&判断数组边界
+//            int j = i - 1;
+//            while ((j >= left) && (tmp < vec[j])) {
+//                vec[j+1] = vec[j];
+//                --j;
+//            }
+//            vec[j+1] = tmp;     // --j后，要把j+1
+//        }
 //    }
 //}
 
+// ds_alg版 
+template <typename Type>
+void insertSort(vector<Type> &vec, int left, int right) 
+{
+    for (int i = left+1; i <= right; ++i) {
+        Type tmp = vec[i];  // 复制为哨兵，储存待排序元素&&判断数组边界
+        int j;
+        for (j = i; (j > left) && (tmp < vec[j-1]); --j)
+            vec[j] = vec[j-1];
+        vec[j] = tmp;
+    }
+}
 
+
+//template <typename Type>
+//void shellInsertSort(vector<Type> &vec, int len, int step) 
+//{
+//    for (int i = step; i < len; ++i) {  // 注意：这里i从step开始，不是从left+1开始
+//        if (vec[i] < vec[i-step]) {
+//            Type tmp = vec[i];
+//            int j = i - step;
+//            while ((j >= 0) && (tmp < vec[j])) { // 注意：j不能越界, j>=0要放前面, 不然vec[j]访问出错（vec[负数下标]）
+//            //while ((tmp < vec[j]) && (j >= 0)) { // error:段错误，核心已转储
+//                vec[j+step] = vec[j];
+//                j -= step;
+//            }
+//            vec[j+step] = tmp;
+//        }
+//    }
+//}
+
+// ds_alg
 template <typename Type>
 void shellInsertSort(vector<Type> &vec, int len, int step) 
 {
     for (int i = step; i < len; ++i) {  // 注意：这里i从step开始，不是从left+1开始
-        if (vec[i] < vec[i-step]) {
-            Type tmp = vec[i];
-            int j = i - step;
-            while ((j >= 0) && (tmp < vec[j])) { // 注意：j不能越界, j>=0要放前面, 不然vec[j]访问出错（vec[负数下标]）
-            //while ((tmp < vec[j]) && (j >= 0)) { // error:段错误，核心已转储
-                vec[j+step] = vec[j];
-                j -= step;
-            }
-            vec[j+step] = tmp;
+        Type tmp = vec[i];
+        int j;
+        for (j = i; j >= step; j -= step) {
+            if (tmp < vec[j-step])
+                vec[j] = vec[j-step];
+            else 
+                break;
         }
+        vec[j] = tmp;
     }
 }
 
-/* step = {n/2, n/4, ... , 1}
+/* 希尔增量：step = {n/2, n/4, ... , 1}
  * 使用直接插入排序对子序列排序
+ * 优化：使用Sedgewick增量（最好的是{1, 5, 19, 41, 109, ...}）
  */
 template <typename Type>
 void shellSort(vector<Type> &vec, int left, int right) 
@@ -164,6 +182,7 @@ void bubbleSort(vector<Type> &vec, int left, int right)
 //}
 
 
+// ds_alg版：三数中值选取枢纽元
 template <typename Type>
 const Type& median3(vector<Type> &vec, int left, int right)
 {
@@ -185,7 +204,7 @@ int partition(vector<Type> &vec, int left, int right)
 {
     Type pivot = median3(vec, left, right);    
     
-    int i = left, j = right-1; // begin partitioning
+    int i = left, j = right-1; // begin partitioning，实际划分区间是[left+1, right-2]
     while(true) {
         /* 分别找出第一个比pivot大的i，第一个比pivot小的j
          * 在median3函数中，已经使得(i<pivot)，不参与比较
@@ -239,6 +258,7 @@ void selectSort(vector<Type> &vec, int left, int right)
 }
 
 
+// PercolateDown
 // 堆调整的“渗透函数”, 大顶堆 
 // i是待调整的元素位置
 template <typename Type>
@@ -250,7 +270,6 @@ void filterDown(vector<Type> &vec, int i, int n)
         child = 2*i+1;      // 注意数组下标0开始，孩子是2i+1和2i+2, 父亲是(i-1)/2
         if (child != n-1 && vec[child] < vec[child+1])  // 选较大的child进行比较
             child++;
-
         if (tmp < vec[child]) {
             vec[i] = vec[child];    // 与child交换，进行下一次迭代，从被“掏空”的child开始
         } else {
@@ -266,10 +285,10 @@ void heapSort(vector<Type> &vec, int left, int right)
     int n = right - left + 1;
 
     // 1. 建立“初始堆”(使用“渗透函数”)
-    for (int i = (n-1)/2; i >= 0; --i)  // 从第一个非叶子节点开始，进行"初始"堆调整
+    for (int i = n/2; i >= 0; --i)  // 从第一个非叶子节点开始，进行"初始"堆调整
         filterDown(vec, i, n);
 
-    // 2. 堆顶与最后一个元素换位，然后调整堆
+    // 2. 堆顶与最后一个元素换位(DeleteMax)，然后调整堆
     for (int j = n-1; j > 0; --j) {
         swap(vec[0], vec[j]);       // 当前子序列最大值，放到末尾
         filterDown(vec, 0, j);      // 每次输出最大值后，再调整
@@ -333,6 +352,7 @@ void mergeSort(vector<Type> &vec, int left, int right)
     while (size < n) {
         left1 = left;           // 左起点
         while (left1 + size < n) { // 当前size的子序列1后，还剩下子序列2(长度>=1)
+            // 第一趟left1=right1，left2=right2，相邻两个merge
             left2 = left1 + size;
             right1 = left2 - 1;
             if (left2 + size > n)
@@ -351,7 +371,7 @@ void mergeSort(vector<Type> &vec, int left, int right)
 //void mergeSort(vector<Type> &vec, int left, int right) 
 //{
 //    if (left < right) {
-//        int mid = (left+right)/2;   // 这里不能用(right-left)/2
+//        int mid = (left+right)/2;   // 这里不能用(right-left)/2，因为left不一定是0开始
 //        mergeSort(vec, left, mid);
 //        mergeSort(vec, mid+1, right);
 //        merge(vec, left, mid, mid+1, right);
@@ -383,7 +403,7 @@ void countingSort(vector<Type> &vec, int left, int right)
      * 所以，在下面的for循环要先逐个--counting_tmp[vec[i]]
      */
     for (int i = right; i >= left; --i) {
-        --counting_tmp[vec[i]];     // 这里有两个作用：1. 下标迁移；2. 保证排序稳定性（相同元素）
+        --counting_tmp[vec[i]];     // 这里有两个作用：1. 下标前移；2. 保证排序稳定性（相同元素）
         output_tmp[counting_tmp[vec[i]]] = vec[i];
     }
 
