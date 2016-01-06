@@ -1,13 +1,13 @@
-// Source : https://leetcode.com/problems/combination-sum/
+// Source : https://leetcode.com/problems/combination-sum-ii/
 // Author : Elvis Kwok
-// Date   : 2015-12-24
+// Date   : 2015-12-31
 
 /********************************************************************************** 
  * 
- * Given a set of candidate numbers (C) and a target number (T), find all unique 
- * combinations in C where the candidate numbers sums to T. 
+ * Given a collection of candidate numbers (C) and a target number (T), find all unique 
+ * combinations in C where the candidate numbers sums to T.
  * 
- * The same repeated number may be chosen from C unlimited number of times.
+ * Each number in C may only be used once in the combination.
  * 
  * Note:
  * 
@@ -16,10 +16,12 @@
  * ≤ a2 ≤ … ≤ ak).
  * The solution set must not contain duplicate combinations.
  * 
- * For example, given candidate set 2,3,6,7 and target 7, 
+ * For example, given candidate set 10,1,2,7,6,1,5 and target 8, 
  * A solution set is: 
- * [7] 
- * [2, 2, 3] 
+ * [1, 7] 
+ * [1, 2, 5] 
+ * [2, 6] 
+ * [1, 1, 6] 
  *               
  **********************************************************************************/
 
@@ -32,7 +34,7 @@ public:
     // soulmachine&haoel solution: backtracking(dfs)
     // O(N!), O(N)
     // soulmachine version with bug: duplicates.
-    vector<vector<int> > combinationSum(vector<int>& candidates, int target) {
+    vector<vector<int> > combinationSum2(vector<int>& candidates, int target) {
         sort(candidates.begin(), candidates.end());
         vector<vector<int> > result;
         vector<int> intermediate;   // intermediate result;
@@ -41,7 +43,7 @@ public:
     }
     void dfs(vector<int>& candidates, int gap, int start, vector<int>& intermediate, 
              vector<vector<int> >& result) {
-        if (gap == 0) {         // find a solution
+        if (gap == 0) {     // find a solution
             result.push_back(intermediate);
             return;
         }
@@ -51,7 +53,7 @@ public:
             if (gap < candidates[i])    // pruning strategy
                 return;
             intermediate.push_back(candidates[i]);
-            dfs(candidates, gap-candidates[i], i, intermediate, result);
+            dfs(candidates, gap-candidates[i], i+1, intermediate, result);
             intermediate.pop_back();    // undo/revocation
         }
     }
@@ -77,13 +79,13 @@ void printVector(vector<int> &v) {
 int main(int argc, char **argv)
 {
     Solution s;
-    int a[] = {2, 3, 6, 7, 7};
+    int a[] = {10, 1, 2, 7, 6, 1, 5};
     vector<int> candidates(a, a+sizeof(a)/sizeof(int));
-    int target = 7;
+    int target = 8;
     cout << "Array = ";
     printVector(candidates);
     cout << "target = " << target << endl;
-    vector<vector<int> > result = s.combinationSum(candidates, target);
+    vector<vector<int> > result = s.combinationSum2(candidates, target);
     printMatrix(result);
 
     if (argc < 2)
