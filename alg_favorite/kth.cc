@@ -6,16 +6,23 @@
  Top K: 寻找最大的k个数
  解法一：快排，遍历输出前k个
          O(N*logN+k) = O(NlogN)
- 解法二：RANDOMIZED-SELECT，随机选取一个数组元素作为pivot，划分成Sa和Sb两个子数组。
+ 解法二：快排的改进
+         RANDOMIZED-SELECT，随机选取一个数组元素作为pivot，划分成Sa和Sb两个子数组。
          1. 如果Sa元素个数>k, 则返回Sa中较小的K个元素
          2. 如果Sa元素个数<k，则返回Sa所有元素 + Sb中k-|Sa|个元素
          递归本函数
          线性期望时间O(N) （平均）
+         median3的pivot也是平均O(N)
  解法三：N/5个5元组，中位数的中位数作为pivot，若N>75, 则每次能将两个子数组分别缩短1/4，
-         O(N)
- 解法四：维护K个元素的最小堆（堆顶元素k个中最小）。读入k个数，假设它们是Top K，建堆费时O(k)。
+         O(N) （最坏情形下）
+ 解法四：堆：
+         法1): 建立一个k堆，n-k次比较
+         维护K个元素的最小堆（堆顶元素k个中最小）。读入k个数，假设它们是Top K，建堆费时O(k)。
          每次遍历一个元素，与堆顶比较，若大于堆顶，更新堆（淘汰堆顶），费时O(logk)
          O(k+(N-k)logk) = O(Nlogk)
+         法2): 建立一个N元素堆，k次DeleteMin
+         BuildHeap最坏情形O(N)，每次DeleteMin用时O(logN)
+         总运行时间O(N+klogN)，若k=O(N/logN)，则总O(N)；对于大的k值，运行时间O(klogN)；如果k=N/2，总O(NlogN)
  解法五：计数排序O(N)，需申请空间。
  */
 
@@ -41,13 +48,13 @@ int find_median(int array[], int left, int right) {
         return array[left];
     
     int index;
-    for (index = left; index < right-5; index += 5) {
-        insert_sort(array, index, 5);
+    for (index = left; index < right-5; index += 5) {       // O(N)
+        insert_sort(array, index, 5);                       // O(1)
         int num = index - left;
         median_array[num/5] = array[index+2];
     }
 
-    // 处理N%5个剩余元素
+    // 处理N%5个剩余元素    // O(1)
     int remain_num = right - index + 1;
     if (remain_num > 0) {
         insert_sort(array, index, remain_num);
@@ -55,7 +62,7 @@ int find_median(int array[], int left, int right) {
         median_array[num/5] = array[index + remain_num/2];
     }
     
-    // eleme_aux_array: 中位数数组的下标
+    // elem_aux_array: 中位数数组的下标
     //int elem_aux_array = (right - left) / 5 - 1;
     int elem_aux_array = (right - left + 1) / 5 - 1;
     //if ((right - left) % 5 != 0)
@@ -66,6 +73,7 @@ int find_median(int array[], int left, int right) {
         return median_array[0];
     else
         return find_median(median_array, 0, elem_aux_array);    // 中位数的中位数
+        // 这里对N/5个中位数递归调用“选择算法”O(N)。不能采用排序后返回中间元素的做法O(NlogN)
 }
 
 int find_index(int array[], int left, int right, int median) {
@@ -115,5 +123,3 @@ int main()
     cout << q_select(array, 0, num_array-1, k) << endl;
     return 0;
 }
-
-
