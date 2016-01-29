@@ -14,14 +14,8 @@
  * Note:
  * A valid Sudoku board (partially filled) is not necessarily solvable. Only the filled 
  * cells need to be validated.
- * 
- *               
- *               
- * 
  *               
  **********************************************************************************/
-
-
 
 #include <iostream>
 #include <vector>
@@ -30,8 +24,6 @@ using namespace std;
 class Solution {
 public:
     // soulmachine solution
-class Solution {
-public:
     bool isValidSudoku(vector< vector<char> >& board) {
         bool used[9];
         

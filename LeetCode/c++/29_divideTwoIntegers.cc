@@ -91,17 +91,19 @@ public:
 
     // haoel solution: bit operation
     // a/b can be illustrated as follow:
-    // a = (a%b) + sum_of_one_subset{1, 2 , 4 , ... , (i^2)} * b
+    // a = (a%b) + (a/b)*b
+    // a = (a%b) + sum_of_one_subset{1, 2 , 4 , ... , (2^i)} * b
     // according to bit representation, every number can be represent as binary bits like 6=(110)
-    // then a/b = sum_of_chosen_subset, like a/b = i^0 + i^3 + ...
+    // then a/b = sum_of_chosen_subset, like a/b = 2^0 + 2^3 + ...
     // e.g., 20/3 = 6, 20%3 = 2 
     // 20 = (2) + (2 + 4)*3, so 20/3 = 2+4 = 6
+    // In this algorithm, only using ">>" and "-" to implement "/"
     int divide3(int dividend, int divisor) {
         int sign = (float)dividend / divisor > 0 ? 1 : -1;
         unsigned int a = dividend >= 0 ? dividend : -dividend;
         unsigned int b = divisor >= 0 ? divisor : -divisor;
         
-        unsigned int bit_num[32];   // store: b, b*2, b*4, b*8, ... b*(i^2)
+        unsigned int bit_num[32];   // store: b, b*2, b*4, b*8, ... b*(2^i) 
         unsigned int i = 0;
         long long bb = b;
         bit_num[i] = bb;
@@ -113,8 +115,8 @@ public:
         unsigned int result = 0;
         while (a >= b) {
             if (a >= bit_num[i]) {  // chosen subset element.
-                a -= bit_num[i];    // a -= (b*(i^2))
-                result += (1<<i);   // result += (i^2)
+                a -= bit_num[i];    // a -= (b*(2^i))
+                result += (1<<i);   // result += (2^i)
             } else {                // ignore unchosen subset element.
                 i--;
             }

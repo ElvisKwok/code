@@ -16,3 +16,7 @@ select area => push button 'y' => using mouse middle key to paste to *anywhere*.
 [about Ubuntu]
 set default display manager(lightdm(unity)/gdm(gnome))
 $ sudo dpkg-reconfigure gdm
+
+[shell]
+查找内容包含patern的文件，并显示文件名
+$ find ./ | xargs grep "pattern"

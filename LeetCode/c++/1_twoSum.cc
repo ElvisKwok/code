@@ -37,6 +37,41 @@ using std::unordered_map;
  * 3) 1 while loop, "while(index[ak-1] < index[ak])"
  * 4) ak-1 start from index[ak-2]+1, ak start from vector.size()-1
  * 5) two pointer(ak-1, ak) search from both sides to center
+ * 
+ * e.g.,
+ * for (i=0; i<n-(k-1); ++i) {
+ *     if (i>0 & nums[i-1]==nums[i]) continue;  // skip duplication
+ *     a1 = nums[i];
+ *     for (j=i+1; j<n-(k-2); ++j) {
+ *         // skip duplication
+ *         a2 = nums[j];
+ *         ...
+ *             ...
+ *                 for (t = s+1; t<n-2; ++t) {
+ *                     ak_2 = nums[t];
+ *                     low = t+1;
+ *                     high = n-1;
+ *                     while (low < high) {
+ *                         ak_1 = nums[low];
+ *                         ak   = nums[high];
+ *                         if (a1 + a2 + ... + ak_1 + ak == target) {
+ *                             vec.push_back(...);
+ *                             result.push_back(vec);
+ *                             while (low<n && nums[low]==nums[low+1]) ++low;
+ *                             while (high>0 && nums[high]==nums[high-1]) --high;
+ *                             ++low; --high;
+ *                         }
+ *                         else if (a1 + a2 +... + ak < target) {
+ *                             while (low<n && nums[low]==nums[low+1]) ++low;
+ *                             ++low;
+ *                         } 
+ *                         else {
+ *                             while (high>0 && nums[high]==nums[high-1]) --high;
+ *                             --high;
+ *                         }
+ *                     }
+ *                 }
+ *     }
  *               
  **********************************************************************************/
 
