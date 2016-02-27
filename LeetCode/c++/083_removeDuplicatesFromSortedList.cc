@@ -10,11 +10,8 @@
  * For example,
  * Given 1->1->2, return 1->2.
  * Given 1->1->2->3->3, return 1->2->3.
- * 
  *               
  **********************************************************************************/
-
-
 
 #include <iostream>
 #include <vector>
@@ -32,14 +29,14 @@ public:
         if (head == NULL) return NULL;
         ListNode *prev = head, *p = prev->next;
         while (p != NULL) {
-            if (prev->val == p->val) {      // skip same val, until meet the first different value.
+            if (prev->val == p->val) { // skip same val, until meet the first different value.
                 p = p->next;
                 continue;
             }
-            prev->next = p;                 // p is the first different value.
+            prev->next = p;            // p is the first different value.
             prev = prev->next;
         }
-        prev->next = NULL;                  // beware if remaining same values like ->val->val->val, cut them.
+        prev->next = NULL;    // beware if remaining same values like ->val->val->val, cut them.
         return head;
     }
        

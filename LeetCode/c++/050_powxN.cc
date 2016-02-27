@@ -19,7 +19,7 @@ public:
     // O(N)
     double myPow(double x, int n) {
         if (n == 0) return 1.0;
-        if (x == 0) return x;
+        if (fabs(x-0.0) < 0.0000001) return 0.0;
         int sign = (n>0 ? 1 : -1);
         n = abs(n);
         int odd = n % 2;
@@ -34,9 +34,12 @@ public:
         return (n>0 ? power(x, n) : 1/power(x, -n));
     }
     double power(double x, int n) {
-        if (n == 0) return 1.0;
-        double v = power(x, n/2);     // store the value to avoid unneccesary computation, faster than just return power()*power()
-        if (n%2)
+        if (fabs(x-0.0) < 0.0000001) return 0.0;
+        if (n == 0) return 1.0;     
+        //double v = power(x, n/2);
+        double v = power(x, n<<1);     // store the value to avoid unneccesary computation, faster than just return power()*power()
+        //if (n%2)
+        if (n & 0x1 == 1)
             return v * v * x;
         else
             return v * v;
@@ -46,6 +49,7 @@ public:
     // in each iteration, if exp is even, do 'x *= x' and 'exp >>= 1'; else do extra 'result *= x'
     // O(logN)
     double myPow3(double x, int n) {
+        if (fabs(x-0.0) < 0.0000001) return 0.0;
         unsigned int exp = abs(n);
         double result = 1.0;
         while (exp) {

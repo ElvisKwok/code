@@ -96,9 +96,8 @@ void shellSort(vector<Type> &vec, int left, int right)
 //template <typename Type>
 //void bubbleSort(vector<Type> &vec, int left, int right) 
 //{
-//    bool swaped;
 //    for (int i = left; i < right; ++i) {
-//        swaped = false;
+//        bool swaped = false;
 //        for (int j = right; j > i; --j) {
 //        // from right to left version, smaller up.
 //            if (vec[j] < vec[j-1]) {
@@ -118,9 +117,8 @@ void shellSort(vector<Type> &vec, int left, int right)
 template <typename Type>
 void bubbleSort(vector<Type> &vec, int left, int right) 
 {
-    bool swaped;
     for (int i = right; i > left; --i) {
-        swaped = false;
+        bool swaped = false;
         for (int j = left; j < i; ++j) {
         // from left to right version, bigger down.
             if (vec[j] > vec[j+1]) {
@@ -186,7 +184,7 @@ void bubbleSort(vector<Type> &vec, int left, int right)
 template <typename Type>
 const Type& median3(vector<Type> &vec, int left, int right)
 {
-    int center = (left + right) / 2;
+    int center = left + (right-left) / 2;
     if (vec[center] < vec[left])
         swap(vec[center], vec[left]);
     if (vec[right] < vec[left])
@@ -371,7 +369,7 @@ void mergeSort(vector<Type> &vec, int left, int right)
 //void mergeSort(vector<Type> &vec, int left, int right) 
 //{
 //    if (left < right) {
-//        int mid = (left+right)/2;   // 这里不能用(right-left)/2，因为left不一定是0开始
+//        int mid = left+(right-left)/2;   
 //        mergeSort(vec, left, mid);
 //        mergeSort(vec, mid+1, right);
 //        merge(vec, left, mid, mid+1, right);
@@ -396,7 +394,7 @@ void countingSort(vector<Type> &vec, int left, int right)
     for (int i = left; i <= right; ++i)
         ++counting_tmp[vec[i]];                 // 第j元素包含等于j的元素个数
     for (int i = 1; i <= max_val; ++i)          // i<=max_val (size为max_val+1)
-        counting_tmp[i] += counting_tmp[i-1];   // 包含<=j的元素个数
+        counting_tmp[i] += counting_tmp[i-1];   // 包含<=j的元素个数(包括自己，所以>=1)
     /* 注意：这里countint_tmp[max_val]的值为vec长度（这只是其中一个例子）
      * 但是output_tmp和vec最后一个元素下标应该是vec长度-1（其他值的下标也要对应前移）
      * 又例如：最小的那个值如只出现一次，而它的counting_tmp的值却是1，所以要-1，放到0下标位置

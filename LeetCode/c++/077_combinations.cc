@@ -1,6 +1,6 @@
 // Source : https://leetcode.com/problems/combinations/
 // Author : Elvis Kwok
-// Date   : 2016-01-29
+// Date   : 2016-02-17
 
 /********************************************************************************** 
  * 

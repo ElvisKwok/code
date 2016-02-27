@@ -31,22 +31,24 @@ public:
             fakeHead->next = p;
             p = prev->next;
        }
-       return fakeHead->next;
+       ListNode* result = fakeHead->next;
+       delete fakeHead;
+       return result;
     }
     // haoel solution:
     ListNode* reverseList_iteratively(ListNode* head) { 
-        ListNode *h=NULL, *p=NULL;
+        ListNode *reversedHead=NULL, *p=NULL;
         // 1->2->3->4
         // 1st round: 2->3->4, 1, gets head->val=2, h->val=1
         // 2nd round: 3->4, 2->1
         // 3nd round: 4, 3->2->1, after this, head->val=4, h->val=3
         while (head) {
             p = head->next; //(1): (1)&(4) move forward
-            head->next = h;
-            h = head;
+            head->next = reversedHead;
+            reversedHead = head;
             head = p;       //(4)
         }
-        return h;
+        return reversedHead;
     }
     // haoel solution:
     // 1->2->3->4:
@@ -59,6 +61,22 @@ public:
         head->next->next = head;
         head->next = NULL;
         return h;
+    }
+    
+    // CI solution
+    ListNode* reverseList_CI(ListNode* head) { 
+        ListNode* pReversedHead = NULL;
+        ListNode* pNode = head;
+        ListNode* pPrev = NULL;
+        while (pNode != NULL) {
+            ListNode* pNext = pNode->next;
+            if (pNext == NULL)
+                pReversedHead = pNode;
+            pNode->next = pPrev;
+            pPrev = pNode;
+            pNode = pNext;
+        }
+        return pReversedHead;
     }
 };
 
