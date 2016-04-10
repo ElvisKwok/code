@@ -72,6 +72,9 @@ public:
         }
     }        
 
+	// CICT solution: i = (0 ~ 1<<n), k = i, if (k & 0x1) choose cur index of bit in nums
+	// k >>= 1;
+
     // soulmachine solution 1: 增量构造法dfs，每个元素都有两种选择：选、不选
     // O(2^N) O(N)
     vector<vector<int> > subsets2(vector<int>& nums) {

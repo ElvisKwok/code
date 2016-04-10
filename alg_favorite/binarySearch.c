@@ -67,6 +67,7 @@ int binarySearch_minEqual(int a[], int n, int v) {
         return -1;
 }
 
+// lower_bound
 // 最大的i使得a[i] < v
 int binarySearch_maxLess(int a[], int n, int v) {
     int low = 0, high = n-1, mid;
@@ -85,6 +86,7 @@ int binarySearch_maxLess(int a[], int n, int v) {
         return -1;
 }
 
+// upper_bound
 // 最小的i使得a[i] > v
 int binarySearch_minLarge(int a[], int n, int v) {
     int low = 0, high = n-1, mid;
@@ -101,6 +103,67 @@ int binarySearch_minLarge(int a[], int n, int v) {
         return high;
     else
         return -1;
+}
+
+// ======================================================================
+// count the times number of K exist in array data[]
+// O(logN)
+int getFirstK(int* data, int length, int k, int low, int high);
+int getLastK(int* data, int length, int k, int low, int high);
+
+int getNumberOfK(int* data, int length, int k) {
+    int number = 0;
+    if (data != NULL || length > 0) {
+        int first = getFirstK(data, length, k, 0, length-1);
+        int last = getLastK(data, length, k, 0, length-1);
+        if (first > -1 && last > -1)
+            number = last - first + 1;
+    }
+    return number;
+}
+
+int getFirstK(int* data, int length, int k, int low, int high) {
+    if (low > high)
+        return -1;
+    int mid = low + (high - low) / 2;
+    if (data[mid] == k) {
+        if ((mid > 0 && data[mid-1] != k)
+            || mid == 0) {
+            return mid;
+        }
+        else {
+            high = mid - 1;
+        }
+    }
+    else if (data[mid] > k) {
+        high = mid - 1;
+    }
+    else {
+        low = mid + 1;
+    }
+    return getFirstK(data, length, k, low, high);
+}
+
+int getLastK(int* data, int length, int k, int low, int high) {
+    if (low > high)
+        return -1;
+    int mid = low + (high - low) / 2;
+    if (data[mid] == k) {
+        if ((mid < length-1 && data[mid+1] != k)
+            || mid == length-1) {
+            return mid;
+        }
+        else {
+            low = mid + 1;
+        }
+    }
+    else if (data[mid] > k) {
+        high = mid - 1;
+    }
+    else {
+        low = mid + 1;
+    }
+    return getLastK(data, length, k, low, high);
 }
 
 int main()
@@ -121,5 +184,6 @@ int main()
     printf("minEqual: \t%d\n", binarySearch_minEqual(a, n, v));
     printf("maxLess: \t%d\n", binarySearch_maxLess(a, n, v));
     printf("minLarge: \t%d\n", binarySearch_minLarge(a, n, v));
+    printf("numberOfK: \t%d\n", getNumberOfK(a, n, v));
     return 0;
 }

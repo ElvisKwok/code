@@ -27,6 +27,7 @@
  */
 
  #include<iostream>
+ #include <vector>
  using namespace std;
 
  const int num_array = 13;
@@ -57,16 +58,17 @@ int find_median(int array[], int left, int right) {
     // 处理N%5个剩余元素    // O(1)
     int remain_num = right - index + 1;
     if (remain_num > 0) {
-        insert_sort(array, index, remain_num);
+        //insert_sort(array, index, remain_num);
+        insert_sort(array, index, right);
         int num = index - left;
         median_array[num/5] = array[index + remain_num/2];
     }
     
-    // elem_aux_array: 中位数数组的下标
+    // elem_aux_array: 中位数数组的下标(last)
     //int elem_aux_array = (right - left) / 5 - 1;
-    int elem_aux_array = (right - left + 1) / 5 - 1;
+    int elem_aux_array = (right - left + 1) / 5 - 1;    // 5的倍数（完整）部分下标
     //if ((right - left) % 5 != 0)
-    if ((right - left + 1) % 5 != 0)
+    if ((right - left + 1) % 5 != 0)                    // 是否有多出
         elem_aux_array++;
 
     if (elem_aux_array == 0)
@@ -119,7 +121,14 @@ int q_select(int array[], int left, int right, int k) {
 int main() 
 {
     int array[num_array] = {0, 45, 78, 55, 47, 4, 10, 2, 7, 8, 96, 36, 45};
-    int k = 4;
+    int k = 8;
+    cout << "the " << k << "th num is: ";
     cout << q_select(array, 0, num_array-1, k) << endl;
+    int a[num_array] = {0, 45, 78, 55, 47, 4, 10, 2, 7, 8, 96, 36, 45};
+    vector<int> vec(a, a+sizeof(a)/sizeof(int));
+    sort(vec.begin(), vec.end());
+    for (int i=0; i<vec.size(); ++i)
+        cout << vec[i] << "  ";
+    cout << endl;
     return 0;
 }

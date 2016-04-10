@@ -127,7 +127,7 @@ void bubbleSort(vector<Type> &vec, int left, int right)
             }
         }
         if (!swaped)
-            return;
+            break;
     }
 }
 
@@ -258,7 +258,7 @@ void selectSort(vector<Type> &vec, int left, int right)
 
 // PercolateDown
 // 堆调整的“渗透函数”, 大顶堆 
-// i是待调整的元素位置
+// i是待调整的元素位置, n是当前堆元素个数（每heapSort一次减1）
 template <typename Type>
 void filterDown(vector<Type> &vec, int i, int n)
 {
@@ -322,7 +322,7 @@ void merge(vector<Type> &vec, int left1, int right1, int left2, int right2)
 
     // merge到tmp
     while (i <= right1 && j <= right2)
-        if (vec[i] < vec[j])
+        if (vec[i] <= vec[j]) // stable <=
             tmp[k++] = vec[i++];
         else
             tmp[k++] = vec[j++];

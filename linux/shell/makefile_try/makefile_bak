@@ -1,0 +1,28 @@
+all: myapp
+
+# which compiler
+CC = g++
+
+# where are include files kept
+INCLUDE = .
+
+# option for development
+FLAGS = -g -Wall -ansi
+
+# option for release 
+# CFLAGS = -O -Wall -ansi
+
+.SUFFIXES: .cc .o
+
+SOURCE = main.cc pub.cc
+OBJ = $(SOURCE:.cc=.o)	#将.cc 全部替换成.o文件
+EXEC = myapp
+
+$(EXEC): $(OBJ)
+	$(CC) -o $(EXEC) $(OBJ)
+
+.cc.o:
+	$(CC) -o $(EXEC) $@ -I$(INCLUDE) $(FLAGS) -c $<
+
+clean: 
+	rm -rf $(OBJ) $(EXEC)

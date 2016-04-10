@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-void levelOrder(Tree T)£û
+void levelOrder(Tree T) {
     if (T == NULL)
         return ;
     vector<Node> vec;
@@ -10,7 +10,7 @@ void levelOrder(Tree T)£û
     int cur = 0;   // level head and move forward
     int last = 1;  // each level's last_pos+1 
     while (cur < vec.size()) {
-        last = vec.size();
+        last = vec.size();		// update end point
         while (cur < last) {    // each level
             cout << vec[cur]->data << " ";
             if (vec[cur]->lchild) 
@@ -21,3 +21,4 @@ void levelOrder(Tree T)£û
         }
         cout << endl;  // cur==last means that level finished
     }
+}

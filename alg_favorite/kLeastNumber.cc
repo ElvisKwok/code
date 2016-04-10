@@ -56,6 +56,42 @@ void getLeastNumbers_2(const vector<int>& data, intSet& leastNumbers, int k) {
     }
 }
 
+// =====================solution 3=====================
+// implement max-heap
+void filterDown(int a[], int i, int n) {
+    int tmp = a[i];
+    int child;
+    for ( ; i*2+1 < n; i = child) {
+        child = i*2 + 1;
+        if (child+1 < n && a[child] < a[child+1]) 
+            ++child;
+        if (a[child] > a[i])
+            swap(a[child], a[i]);
+        else
+            break;
+    }
+    a[i] = tmp;
+}
+
+void buildHeap(int a[], int k) {
+    for (int i=k/2; i>=0; --i)
+        filterDown(a, i, k);
+}
+
+void getLeastNumbers_3(int* input, int n, int* heap, int k) {
+    if (input == NULL || heap == NULL || k > n || n <= 0 || k <= 0)
+        return ;
+    for (int i = 0; i < k; ++i)
+        heap[i] = input[i];
+    buildHeap(heap, k);
+    for (int i=k+1; i<n; ++i) {
+        if (heap[0] > input[i]) {
+            heap[0] = input[i];
+            filterDown(heap, 0, k);
+        }
+    }
+}
+
 // =====================Test Code=====================
 void Test(char* testName, int* data, int n, int* expectedResult, int k)
 {
@@ -94,7 +130,22 @@ void Test(char* testName, int* data, int n, int* expectedResult, int k)
     printf("The actual output numbers are:\n");
     for(setIterator iter = leastNumbers.begin(); iter != leastNumbers.end(); ++iter)
         printf("%d\t", *iter);
+    printf("\n");
+
+    printf("Result for solution3:\n");
+    int* output3 = new int[k];
+    getLeastNumbers_3(data, n, output3, k);
+    if(expectedResult != NULL)
+    {
+        for(int i = 0; i < k; ++ i)
+            printf("%d\t", output3[i]);
+        printf("\n");
+    }
+
+    delete[] output3;
     printf("\n\n");
+
+
 }
 
 void Test1()

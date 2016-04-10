@@ -145,16 +145,26 @@ esac
 # break & continue
 #----------------------------------------------------------------------------
 
-while true
-do
-    echo -n "input num(1~4): "
-    read n
-    case $n in
-        1|2|3|4) echo "you choose a num: $n"
-        ;;
-        *) echo "you didn't choose 1~4, over"
-            break
-        ;;
-    esac
-done
+#while true
+#do
+#    echo -n "input num(1~4): "
+#    read n
+#    case $n in
+#        1|2|3|4) echo "you choose a num: $n"
+#        ;;
+#        *) echo "you didn't choose 1~4, over"
+#            break
+#        ;;
+#    esac
+#done
  
+
+sum=0
+i=0
+while [ $i -ne 10 ]
+do
+    i=$(($i+1))
+    #let i++
+    sum=`expr $i + $sum`
+done
+echo $sum

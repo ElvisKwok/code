@@ -22,8 +22,9 @@
 # NOTE: echo automatically append '\n' 
 #----------------------------------------------------------------------------
 
-echo -n "input your name: "
-read name
+#echo -n "input your name: "
+#read name
+read -p "input your name: " name
 echo "hello $name"
 
 # -e enable '\', '\c' means continue printing

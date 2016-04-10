@@ -21,6 +21,9 @@ int main(int argc, char **argv)
     else
         n = sum2(atoi(argv[1]));
     cout << n << endl;
+   
+    int num = atoi(argv[1]);
+    cout << !!(num) << endl;
 
     return 0;
 }

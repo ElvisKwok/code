@@ -1,0 +1,14 @@
+.PHONY: clean all
+
+CC=g++
+CFLAGS=-Wall -g
+BIN=echoServer echoClient
+OBJ=$(BIN:=.o)
+
+all:$(BIN)
+
+%.o:%.cc
+	$(CC)  $(CFLAGS)   -c $<   -o $@
+
+clean:
+	rm -f $(OBJ) $(BIN)

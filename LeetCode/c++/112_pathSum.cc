@@ -1,6 +1,6 @@
 // Source : https://leetcode.com/problems/path-sum/
 // Author : Elvis Kwok
-// Date   : 2015-10-30
+// Date   : 2016-03-21
 
 /********************************************************************************** 
  * 
@@ -20,9 +20,7 @@
  * 
  * return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
  *               
- *               
  **********************************************************************************/
-
 
 #include <iostream>
 #include <vector>
@@ -30,8 +28,14 @@ using namespace std;
 
 class Solution {
 public:
+	// soulmachine solution:
     bool hasPathSum(TreeNode* root, int sum) {
-
+		if (root == NULL)
+			return false;
+		if (root->left == NULL && root->right == NULL)
+			if (root->val == sum)
+				return true;
+		return hasPathSum(root->left, sum-root->val) || hasPathSum(root->right, sum-root->val);
     }
 };
 
