@@ -1,7 +1,7 @@
 /*
  * example of chdir() with bug.
  * because chdir() only work in the process called it, but 
- * when execute this program(complied as a.out), shell fork a son process to run it
+ * when execute this program(complied as a.out), shell fork a child process to run it
  * so the directory will not change for shell
  */
 
